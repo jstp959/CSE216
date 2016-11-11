@@ -1,4 +1,5 @@
 package GUI;
+import Controller.*;
 //elise!!!!!!!!!!
 //CHRISSSS!!!!
 //Rachel :-) 
@@ -131,7 +132,7 @@ public class GUI extends javax.swing.JFrame {
     private void addNewETButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewETButtonMouseClicked
         if (examTypeNameField.getText() != null && examTypeDescriptionField.getText() != null){
             //Create new ExamType object
-            //ExamType newExamType = ExamType(examTypeNameField.getText(),examTypeDescriptionField.getText());
+            //ExamType(examTypeNameField.getText(),examTypeDescriptionField.getText());
         }
         else if (examTypeNameField.getText() != null){
             //Error, please enter a description
