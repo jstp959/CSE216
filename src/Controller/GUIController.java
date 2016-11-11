@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication1;
+package Controller;
 
 /**
  *
- * @author owner
+ * @author elisecross
  */
-public class JavaApplication1 {
-
-   
+public class GUIController {
     
 }
