@@ -15,7 +15,7 @@ public class User {
     private String password;
     private String privilege;
     
-    public String checkPrivilege() {
+    public String getPrivilege() {
         return this.privilege;
     }
 }
