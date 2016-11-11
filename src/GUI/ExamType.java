@@ -1,4 +1,4 @@
-package javaapplication1;
+package GUI;
 //elise!!!!!!!!!!
 //CHRISSSS!!!!
 
