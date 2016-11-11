@@ -1,4 +1,5 @@
 package GUI;
+
 import Controller.*;
 //elise!!!!!!!!!!
 //CHRISSSS!!!!
@@ -9,10 +10,10 @@ import Controller.*;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
- * @author owner
+ * @authors Chris Alexander, Elise Cross, Rachel Okun, John St. Pierre, Ferguson
+ * Watkins
  */
 public class GUI extends javax.swing.JFrame {
 
@@ -137,8 +138,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addNewETButtonActionPerformed
 
     private void addNewETButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewETButtonMouseClicked
-        if (!examTypeNameField.getText().equals("")  && !examTypeDescriptionField.getText().equals("")){
+        if (!examTypeNameField.getText().equals("") && !examTypeDescriptionField.getText().equals("")) {
             //Create new ExamType object
+<<<<<<< HEAD
             GUIController.createExamType(examTypeNameField.getText(),examTypeDescriptionField.getText());
             addExamTypeStatus.setText("Exam Type " +examTypeNameField.getText()+" Added");
         }
@@ -148,6 +150,13 @@ public class GUI extends javax.swing.JFrame {
         }
         else {
             addExamTypeStatus.setText("ERROR: Exam Type Name Missing!");
+=======
+            GUIController.createExamType(examTypeNameField.getText(), examTypeDescriptionField.getText());
+        } else if (!examTypeNameField.getText().equals("")) {
+            //Error, please enter a description
+        } else {
+            //Error, please enter a name
+>>>>>>> origin/master
         }
     }//GEN-LAST:event_addNewETButtonMouseClicked
 
