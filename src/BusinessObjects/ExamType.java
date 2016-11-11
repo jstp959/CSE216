@@ -28,6 +28,7 @@ public class ExamType implements Comparable<ExamType> {
         this.name = name;
         this.description = description;
         this.status = true; // active
+        //System.out.println("Exam Created with: " + name + " and " + description);
     }
 
     // ----------------------------------------------------------

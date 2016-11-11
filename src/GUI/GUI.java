@@ -100,8 +100,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(examTypeNameLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(examTypeNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                                        .addGap(6, 6, 6)))))))
+                                        .addComponent(examTypeNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))))))
                 .addGap(431, 431, 431))
         );
         layout.setVerticalGroup(
@@ -130,11 +129,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addNewETButtonActionPerformed
 
     private void addNewETButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewETButtonMouseClicked
-        if (examTypeNameField.getText() != null && examTypeDescriptionField.getText() != null){
+        if (!examTypeNameField.getText().equals("")  && !examTypeDescriptionField.getText().equals("")){
             //Create new ExamType object
             GUIController.createExamType(examTypeNameField.getText(),examTypeDescriptionField.getText());
         }
-        else if (examTypeNameField.getText() != null){
+        else if (!examTypeNameField.getText().equals("")){
             //Error, please enter a description
         }
         else {
