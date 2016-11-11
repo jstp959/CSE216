@@ -13,15 +13,15 @@ import BusinessObjects.*;
  */
 public class DBManager {
     
-    public Boolean checkUnique(ExamType e1, ExamType e2) {
+    public static Boolean checkUnique(ExamType e1) {
         return false;
     }
     
-    public ExamType getExam(String name) {
+    public static ExamType getExamType(String name) {
         return null;
     }
     
-    public Boolean saveExam(ExamType e) {
+    public static Boolean saveExamType(ExamType e) {
         return false;
     }
 }

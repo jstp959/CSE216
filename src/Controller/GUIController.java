@@ -6,6 +6,7 @@
 package Controller;
 
 import BusinessObjects.*;
+import DBManager.*;
 
 /**
  *
@@ -28,14 +29,18 @@ public class GUIController {
     public static Boolean addExamType(String name, String desc) {
         //check privilege
         ExamType e = createExamType(name, desc);
-        /*
-        if (checkUnique(e) == true) {
-            saveExamType(e);
+        
+        if (DBManager.checkUnique(e) == true) {
+            if (DBManager.saveExamType(e) == true) {
+                return true;
+            }
+            return false;
         }
         else {
             //some error
+            return false;
         }
-        */
+        
     }
 }
 
