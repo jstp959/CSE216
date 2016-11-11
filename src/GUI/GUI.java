@@ -128,7 +128,15 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addNewETButtonActionPerformed
 
     private void addNewETButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewETButtonMouseClicked
-        examTypeNameField
+        if (examTypeNameField.getText() != null && examTypeDescriptionField.getText() != null){
+            //Create ExamType Object
+        }
+        else if (examTypeNameField.getText() != null){
+            //Error, please enter a description
+        }
+        else {
+            //Error, please enter a name
+        }
     }//GEN-LAST:event_addNewETButtonMouseClicked
 
     /**
