@@ -5,10 +5,27 @@
  */
 package Controller;
 
+import BusinessObjects.*;
+
 /**
  *
  * @author elisecross
  */
 public class GUIController {
+
+    public Boolean checkPrivilege(User u) {
+        if ((u.getPrivilege()).equals("admin")) {
+            return true;
+        }
+        return false;
+    }
     
+    public ExamType createExam() {
+        return null;
+    }
+    
+    public Boolean addExam() {
+        return null;
+    }
 }
+
