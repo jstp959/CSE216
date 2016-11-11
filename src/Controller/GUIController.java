@@ -26,7 +26,16 @@ public class GUIController {
     }
     
     public Boolean addExamType(String name, String desc) {
-        return null;
+        //check privilege
+        ExamType e = createExamType(name, desc);
+        /*
+        if (checkUnique(e) == true) {
+            saveExamType(e);
+        }
+        else {
+            //some error
+        }
+        */
     }
 }
 
