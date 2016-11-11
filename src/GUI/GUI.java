@@ -40,6 +40,7 @@ public class GUI extends javax.swing.JFrame {
         examTypeNameLabel = new javax.swing.JLabel();
         examTypeDescriptionLabel = new javax.swing.JLabel();
         addNewETButton = new javax.swing.JButton();
+        addExamTypeStatus = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,6 +79,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        addExamTypeStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,16 +95,19 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(37, 37, 37)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(examTypeDescriptionLabel)
-                                        .addGap(99, 99, 99))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(examTypeNameLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(examTypeNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))))))
-                .addGap(431, 431, 431))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(examTypeDescriptionLabel)
+                                    .addGap(99, 99, 99))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(examTypeNameLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(examTypeNameField))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane1)
+                                        .addComponent(addExamTypeStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(0, 0, Short.MAX_VALUE))))))
+                .addGap(451, 451, 451))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +124,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(addNewETButton)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addExamTypeStatus)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -132,12 +140,14 @@ public class GUI extends javax.swing.JFrame {
         if (!examTypeNameField.getText().equals("")  && !examTypeDescriptionField.getText().equals("")){
             //Create new ExamType object
             GUIController.createExamType(examTypeNameField.getText(),examTypeDescriptionField.getText());
+            addExamTypeStatus.setText("Exam Type " +examTypeNameField.getText()+" Added");
         }
         else if (!examTypeNameField.getText().equals("")){
-            //Error, please enter a description
+            addExamTypeStatus.setText("ERROR: Exam Type Description Missing!");
+
         }
         else {
-            //Error, please enter a name
+            addExamTypeStatus.setText("ERROR: Exam Type Name Missing!");
         }
     }//GEN-LAST:event_addNewETButtonMouseClicked
 
@@ -179,6 +189,7 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addETHeader;
+    private javax.swing.JLabel addExamTypeStatus;
     private javax.swing.JButton addNewETButton;
     private javax.swing.JTextArea examTypeDescriptionField;
     private javax.swing.JLabel examTypeDescriptionLabel;
