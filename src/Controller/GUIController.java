@@ -20,11 +20,12 @@ public class GUIController {
         return false;
     }
     
-    public ExamType createExam() {
-        return null;
+    public ExamType createExamType(String type, String desc) {
+        ExamType e = new ExamType(type, desc);
+        return e;
     }
     
-    public Boolean addExam() {
+    public Boolean addExamType(String name, String desc) {
         return null;
     }
 }
