@@ -66,6 +66,7 @@ public class ExamType implements Comparable<ExamType> {
      * @param examtype another exam
      * @return a number (negative or zero)
      */
+    @Override
     public int compareTo(ExamType examtype) {
         if (!this.name.equals(examtype.name)) {
             return -1;
