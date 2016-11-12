@@ -21,11 +21,16 @@ public class GuiController {
     
     public static Lab createLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         //check other besides just name
-        if(!name.equals("")){
+        if(isValidLab(name, street, city, state, zip, email, faxNo, phoneNo, onSite)){
             Lab lab = new Lab(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
             return lab;
         }
         return null;
+    }
+    
+    public static boolean isValidLab(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite){
+        return !name.equals("") && !street.equals("") && !city.equals("") && !state.equals("") 
+                && !zip.equals("") && !faxNo.equals("") && !phoneNo.equals("");
     }
     
     public static String addLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
