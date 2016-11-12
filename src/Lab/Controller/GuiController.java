@@ -19,7 +19,8 @@ public class GuiController {
         return false;
     }
     
-    public static Lab createLabType(String name, String street, String city, String state, int zip, String email, String faxNo, String phoneNo, Boolean onSite) {
+    public static Lab createLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
+        //check other besides just name
         if(!name.equals("")){
             Lab lab = new Lab(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
             return lab;
@@ -27,7 +28,7 @@ public class GuiController {
         return null;
     }
     
-    public static String addLabType(String name, String street, String city, String state, int zip, String email, String faxNo, String phoneNo, Boolean onSite) {
+    public static String addLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         //check privilege
         Lab lab = createLabType(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
         if(lab == null)

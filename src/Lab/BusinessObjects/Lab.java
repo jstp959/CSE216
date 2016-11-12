@@ -18,7 +18,7 @@ public class Lab {
     private String phoneNo;
     private Boolean onSite;
 
-    public Lab(String name, String street, String city, String state, int zip, String email, String faxNo, String phoneNo, Boolean onSite) {
+    public Lab(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         this.name = name;
         this.address = new Address(street, city, state, zip);
         this.email = email;

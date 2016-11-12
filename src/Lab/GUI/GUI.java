@@ -1,7 +1,7 @@
 package Lab.GUI;
 
 
-import Controller.*;
+import Lab.Controller.*;
 //elise!!!!!!!!!!
 //CHRISSSS!!!!
 //Rachel :-) 
@@ -35,7 +35,7 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        examLabNameField = new javax.swing.JTextField();
+        labNameField = new javax.swing.JTextField();
         addLabHeader = new javax.swing.JLabel();
         labNameLabel = new javax.swing.JLabel();
         labInformationLabel = new javax.swing.JLabel();
@@ -143,7 +143,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(labNameLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(examLabNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(labNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(17, 17, 17)
                                         .addComponent(addNewLabButton)
@@ -175,7 +175,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(addLabHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(examLabNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labInformationLabel)
@@ -231,8 +231,19 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addNewLabButtonActionPerformed
 
     private void addNewLabButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewLabButtonMouseClicked
-
-
+        String name = labNameField.getText();
+        String street = labStreetField.getText();
+        String city = labCityField.getText();
+        String state = labStateField.getText();
+        String zip = labZipField.getText();
+        String faxNo = labFaxField.getText();
+        String phoneNo = labPhoneField.getText();
+        String email = labEmailField.getText();
+        Boolean onSite = labOnSiteCheckBox.isSelected();
+        String message = GuiController.addLabType(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
+        
+        addLabStatus.setText(message);
+        
     }//GEN-LAST:event_addNewLabButtonMouseClicked
 
     /**
@@ -275,7 +286,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel addLabHeader;
     private javax.swing.JLabel addLabStatus;
     private javax.swing.JButton addNewLabButton;
-    private javax.swing.JTextField examLabNameField;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField labCityField;
     private javax.swing.JLabel labCityLabel;
@@ -284,6 +294,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField labFaxField;
     private javax.swing.JLabel labFaxLabel;
     private javax.swing.JLabel labInformationLabel;
+    private javax.swing.JTextField labNameField;
     private javax.swing.JLabel labNameLabel;
     private javax.swing.JCheckBox labOnSiteCheckBox;
     private javax.swing.JLabel labOnSiteLabel;
