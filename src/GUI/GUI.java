@@ -141,14 +141,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addNewETButtonActionPerformed
 
     private void addNewETButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewETButtonMouseClicked
-        if (!examTypeNameField.getText().equals("") && !examTypeDescriptionField.getText().equals("")) {
-            //Create new ExamType object
-            GUIController.createExamType(examTypeNameField.getText(),examTypeDescriptionField.getText());
+        if (GUIController.addExamType(examTypeNameField.getText(),examTypeDescriptionField.getText())) {
             addExamTypeStatus.setText("Exam Type " +examTypeNameField.getText()+" Added");
-        }
-        else if (!examTypeNameField.getText().equals("")){
-            addExamTypeStatus.setText("ERROR: Exam Type Description Missing!");
-
         }
         else {
             addExamTypeStatus.setText("ERROR: Exam Type Name Missing!");

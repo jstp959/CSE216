@@ -13,6 +13,7 @@ import DBManager.*;
  * @author elisecross
  */
 public class GUIController {
+    String error; 
 
     public static Boolean checkPrivilege(User u) {
         if ((u.getPrivilege()).equals("admin")) {
