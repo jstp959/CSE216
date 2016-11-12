@@ -35,28 +35,28 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        examTypeNameField = new javax.swing.JTextField();
-        addETHeader = new javax.swing.JLabel();
-        examTypeNameLabel = new javax.swing.JLabel();
-        examTypeDescriptionLabel = new javax.swing.JLabel();
-        addNewETButton = new javax.swing.JButton();
-        addExamTypeStatus = new javax.swing.JLabel();
-        examTypeNameField1 = new javax.swing.JTextField();
-        examTypeNameLabel1 = new javax.swing.JLabel();
-        examTypeNameField2 = new javax.swing.JTextField();
-        examTypeNameLabel2 = new javax.swing.JLabel();
-        examTypeNameLabel3 = new javax.swing.JLabel();
-        examTypeNameField3 = new javax.swing.JTextField();
-        examTypeNameField4 = new javax.swing.JTextField();
-        examTypeNameLabel4 = new javax.swing.JLabel();
-        examTypeNameLabel5 = new javax.swing.JLabel();
-        examTypeNameField5 = new javax.swing.JTextField();
-        examTypeNameLabel6 = new javax.swing.JLabel();
-        examTypeNameField6 = new javax.swing.JTextField();
-        examTypeNameField7 = new javax.swing.JTextField();
-        examTypeNameLabel8 = new javax.swing.JLabel();
-        examTypeNameLabel9 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        examLabNameField = new javax.swing.JTextField();
+        addLabHeader = new javax.swing.JLabel();
+        labNameLabel = new javax.swing.JLabel();
+        labInformationLabel = new javax.swing.JLabel();
+        addNewLabButton = new javax.swing.JButton();
+        addLabStatus = new javax.swing.JLabel();
+        labStreetField = new javax.swing.JTextField();
+        labStreetLabel = new javax.swing.JLabel();
+        labCityField = new javax.swing.JTextField();
+        labZipLabel = new javax.swing.JLabel();
+        labCityLabel = new javax.swing.JLabel();
+        labStateField = new javax.swing.JTextField();
+        labZipField = new javax.swing.JTextField();
+        labStateLabel = new javax.swing.JLabel();
+        labFaxLabel = new javax.swing.JLabel();
+        labFaxField = new javax.swing.JTextField();
+        labPhoneLabel = new javax.swing.JLabel();
+        labPhoneField = new javax.swing.JTextField();
+        labEmailField = new javax.swing.JTextField();
+        labEmailLabel = new javax.swing.JLabel();
+        labOnSiteLabel = new javax.swing.JLabel();
+        labOnSiteCheckBox = new javax.swing.JCheckBox();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -71,56 +71,56 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        addETHeader.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        addETHeader.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        addETHeader.setText("Add Lab");
-        addETHeader.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        addLabHeader.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        addLabHeader.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        addLabHeader.setText("Add Lab");
+        addLabHeader.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        examTypeNameLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeNameLabel.setText("Lab Name");
+        labNameLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labNameLabel.setText("Lab Name");
 
-        examTypeDescriptionLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeDescriptionLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        examTypeDescriptionLabel.setText("Lab Information");
+        labInformationLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        labInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        labInformationLabel.setText("Lab Information");
 
-        addNewETButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        addNewETButton.setText("Add New Lab");
-        addNewETButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        addNewLabButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        addNewLabButton.setText("Add New Lab");
+        addNewLabButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addNewETButtonMouseClicked(evt);
+                addNewLabButtonMouseClicked(evt);
             }
         });
-        addNewETButton.addActionListener(new java.awt.event.ActionListener() {
+        addNewLabButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addNewETButtonActionPerformed(evt);
+                addNewLabButtonActionPerformed(evt);
             }
         });
 
-        addExamTypeStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        addLabStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
-        examTypeNameLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeNameLabel1.setText("Street");
+        labStreetLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labStreetLabel.setText("Street");
 
-        examTypeNameLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeNameLabel2.setText("Zip Code");
+        labZipLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labZipLabel.setText("Zip Code");
 
-        examTypeNameLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeNameLabel3.setText("City");
+        labCityLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labCityLabel.setText("City");
 
-        examTypeNameLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeNameLabel4.setText("State");
+        labStateLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labStateLabel.setText("State");
 
-        examTypeNameLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeNameLabel5.setText("Fax Number");
+        labFaxLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labFaxLabel.setText("Fax Number");
 
-        examTypeNameLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeNameLabel6.setText("Phone Number");
+        labPhoneLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labPhoneLabel.setText("Phone Number");
 
-        examTypeNameLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeNameLabel8.setText("Email Address");
+        labEmailLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labEmailLabel.setText("Email Address");
 
-        examTypeNameLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeNameLabel9.setText("On Site Lab");
+        labOnSiteLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labOnSiteLabel.setText("On Site Lab");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,110 +130,110 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(examTypeNameLabel6)
+                        .addComponent(labPhoneLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(examTypeNameLabel5)
-                            .addComponent(examTypeNameLabel9)
+                            .addComponent(labFaxLabel)
+                            .addComponent(labOnSiteLabel)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(addETHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(examTypeDescriptionLabel)
+                                    .addComponent(addLabHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labInformationLabel)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(examTypeNameLabel)
+                                        .addComponent(labNameLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(examTypeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(examLabNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(17, 17, 17)
-                                        .addComponent(addNewETButton)
+                                        .addComponent(addNewLabButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(addExamTypeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(addLabStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(examTypeNameLabel1)
-                                        .addComponent(examTypeNameLabel3)
-                                        .addComponent(examTypeNameLabel2)
-                                        .addComponent(examTypeNameLabel4)
-                                        .addComponent(examTypeNameLabel8))
+                                        .addComponent(labStreetLabel)
+                                        .addComponent(labCityLabel)
+                                        .addComponent(labZipLabel)
+                                        .addComponent(labStateLabel)
+                                        .addComponent(labEmailLabel))
                                     .addGap(37, 37, 37)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(examTypeNameField2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(examTypeNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(examTypeNameField3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(examTypeNameField4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(examTypeNameField5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(examTypeNameField6, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(examTypeNameField7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jCheckBox1)))))
+                                        .addComponent(labCityField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labStreetField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labStateField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labZipField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labFaxField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labOnSiteCheckBox)))))
                         .addContainerGap(268, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(92, 92, 92)
-                .addComponent(addETHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addLabHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(examTypeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(examTypeNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(examLabNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(examTypeDescriptionLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(examTypeNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(examTypeNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(labInformationLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(examTypeNameLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(examTypeNameField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labStreetField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labStreetLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labCityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labCityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(examTypeNameField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(examTypeNameLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labStateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labStateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(examTypeNameField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labZipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(examTypeNameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labZipLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(examTypeNameLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(examTypeNameField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labFaxLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labFaxField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(examTypeNameLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(examTypeNameField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labPhoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(examTypeNameField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(examTypeNameLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labEmailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(examTypeNameLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox1))))
+                            .addComponent(labOnSiteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labOnSiteCheckBox))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addNewETButton)
+                        .addComponent(addNewLabButton)
                         .addGap(22, 22, 22))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(addExamTypeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addLabStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addNewETButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewETButtonActionPerformed
+    private void addNewLabButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewLabButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addNewETButtonActionPerformed
+    }//GEN-LAST:event_addNewLabButtonActionPerformed
 
-    private void addNewETButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewETButtonMouseClicked
+    private void addNewLabButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewLabButtonMouseClicked
 
 
-    }//GEN-LAST:event_addNewETButtonMouseClicked
+    }//GEN-LAST:event_addNewLabButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -272,28 +272,28 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel addETHeader;
-    private javax.swing.JLabel addExamTypeStatus;
-    private javax.swing.JButton addNewETButton;
-    private javax.swing.JLabel examTypeDescriptionLabel;
-    private javax.swing.JTextField examTypeNameField;
-    private javax.swing.JTextField examTypeNameField1;
-    private javax.swing.JTextField examTypeNameField2;
-    private javax.swing.JTextField examTypeNameField3;
-    private javax.swing.JTextField examTypeNameField4;
-    private javax.swing.JTextField examTypeNameField5;
-    private javax.swing.JTextField examTypeNameField6;
-    private javax.swing.JTextField examTypeNameField7;
-    private javax.swing.JLabel examTypeNameLabel;
-    private javax.swing.JLabel examTypeNameLabel1;
-    private javax.swing.JLabel examTypeNameLabel2;
-    private javax.swing.JLabel examTypeNameLabel3;
-    private javax.swing.JLabel examTypeNameLabel4;
-    private javax.swing.JLabel examTypeNameLabel5;
-    private javax.swing.JLabel examTypeNameLabel6;
-    private javax.swing.JLabel examTypeNameLabel8;
-    private javax.swing.JLabel examTypeNameLabel9;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel addLabHeader;
+    private javax.swing.JLabel addLabStatus;
+    private javax.swing.JButton addNewLabButton;
+    private javax.swing.JTextField examLabNameField;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField labCityField;
+    private javax.swing.JLabel labCityLabel;
+    private javax.swing.JTextField labEmailField;
+    private javax.swing.JLabel labEmailLabel;
+    private javax.swing.JTextField labFaxField;
+    private javax.swing.JLabel labFaxLabel;
+    private javax.swing.JLabel labInformationLabel;
+    private javax.swing.JLabel labNameLabel;
+    private javax.swing.JCheckBox labOnSiteCheckBox;
+    private javax.swing.JLabel labOnSiteLabel;
+    private javax.swing.JTextField labPhoneField;
+    private javax.swing.JLabel labPhoneLabel;
+    private javax.swing.JTextField labStateField;
+    private javax.swing.JLabel labStateLabel;
+    private javax.swing.JTextField labStreetField;
+    private javax.swing.JLabel labStreetLabel;
+    private javax.swing.JTextField labZipField;
+    private javax.swing.JLabel labZipLabel;
     // End of variables declaration//GEN-END:variables
 }
