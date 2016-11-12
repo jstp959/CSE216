@@ -14,7 +14,7 @@ import BusinessObjects.*;
 public class DBManager {
     
     public static Boolean checkUnique(ExamType e1) {
-        return false;
+        return true;
     }
     
     public static ExamType getExamType(String name) {
@@ -22,6 +22,6 @@ public class DBManager {
     }
     
     public static Boolean saveExamType(ExamType e) {
-        return false;
+        return true;
     }
 }

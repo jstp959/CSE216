@@ -30,23 +30,23 @@ public class GUIController {
         return null;
     }
     
-    public static Boolean addExamType(String name, String desc) {
+    public static String addExamType(String name, String desc) {
         //check privilege
         ExamType exam = createExamType(name, desc);
         if(exam == null)
         {
-            return false;
+            return "Error: Exam Type requires a name";
         }
         
         if (DBManager.checkUnique(exam)) {
             if (DBManager.saveExamType(exam)) {
-                return true;
+                return "Exam Type \"" + name + "\" Added";
             }
-            return false;
+            return "Error: Could not save in Database";
         }
         else {
             //some error
-            return false;
+            return "Exam Type with name \"" + name + "\" already exists";
         }
         
     }

@@ -85,7 +85,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        addExamTypeStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addExamTypeStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,7 +110,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jScrollPane1)
                                         .addComponent(addExamTypeStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 70, Short.MAX_VALUE)))
                         .addGap(108, 108, 108))))
         );
         layout.setVerticalGroup(
@@ -130,7 +130,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(addNewETButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addExamTypeStatus)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         pack();
@@ -141,12 +141,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addNewETButtonActionPerformed
 
     private void addNewETButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewETButtonMouseClicked
-        if (GUIController.addExamType(examTypeNameField.getText(),examTypeDescriptionField.getText())) {
-            addExamTypeStatus.setText("Exam Type " +examTypeNameField.getText()+" Added");
-        }
-        else {
-            addExamTypeStatus.setText("ERROR: Exam Type Name Missing!");
-        }
+        String message = GUIController.addExamType(examTypeNameField.getText(), examTypeDescriptionField.getText());
+        addExamTypeStatus.setText(message);
     }//GEN-LAST:event_addNewETButtonMouseClicked
 
     /**
