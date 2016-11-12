@@ -22,16 +22,23 @@ public class GUIController {
     }
     
     public static ExamType createExamType(String type, String desc) {
-        ExamType e = new ExamType(type, desc);
-        return e;
+        if(!type.equals("")){
+            ExamType exam = new ExamType(type, desc);
+            return exam;
+        }
+        return null;
     }
     
     public static Boolean addExamType(String name, String desc) {
         //check privilege
-        ExamType e = createExamType(name, desc);
+        ExamType exam = createExamType(name, desc);
+        if(exam == null)
+        {
+            return false;
+        }
         
-        if (DBManager.checkUnique(e) == true) {
-            if (DBManager.saveExamType(e) == true) {
+        if (DBManager.checkUnique(exam)) {
+            if (DBManager.saveExamType(exam)) {
                 return true;
             }
             return false;
