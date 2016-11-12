@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package ExamType.Controller;
 
-import BusinessObjects.*;
-import DBManager.*;
+import ExamType.BusinessObjects.*;
+import ExamType.DBManager.*;
 
 /**
  *
  * @author elisecross
  */
 public class GUIController {
-    String error; 
 
     public static Boolean checkPrivilege(User u) {
         if ((u.getPrivilege()).equals("admin")) {
@@ -46,7 +45,7 @@ public class GUIController {
         }
         else {
             //some error
-            return "Exam Type with name \"" + name + "\" already exists";
+            return "Error: Exam Type with name \"" + name + "\" already exists";
         }
         
     }

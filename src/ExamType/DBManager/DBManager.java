@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DBManager;
+package ExamType.DBManager;
 
-import BusinessObjects.*;
+import ExamType.BusinessObjects.*;
 
 /**
  *

@@ -1,6 +1,6 @@
-package GUI;
+package ExamType.GUI;
 
-import Controller.*;
+import ExamType.Controller.*;
 //elise!!!!!!!!!!
 //CHRISSSS!!!!
 //Rachel :-) 
