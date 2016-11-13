@@ -61,7 +61,7 @@
                                       <Component id="labNameField" min="-2" pref="111" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                                       <Component id="addNewLabButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="addLabStatus" min="-2" pref="166" max="-2" attributes="0"/>
@@ -76,15 +76,15 @@
                                       <Component id="labEmailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="labCityField" min="-2" pref="77" max="-2" attributes="0"/>
-                                      <Component id="labStreetField" min="-2" pref="77" max="-2" attributes="0"/>
-                                      <Component id="labStateField" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                                      <Component id="labZipField" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                                      <Component id="labFaxField" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                                      <Component id="labPhoneField" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                                      <Component id="labEmailField" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="labOnSiteCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labStreetField" alignment="0" pref="160" max="32767" attributes="0"/>
+                                      <Component id="labCityField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labStateField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labZipField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labFaxField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labPhoneField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labEmailField" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -151,14 +151,14 @@
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="addNewLabButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="addLabStatus" min="-2" pref="62" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="addNewLabButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
