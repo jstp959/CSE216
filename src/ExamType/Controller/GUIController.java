@@ -7,12 +7,14 @@ package ExamType.Controller;
 
 import ExamType.BusinessObjects.*;
 import ExamType.DBManager.*;
+import ExamType.GUI.*;
 
 /**
  *
  * @author elisecross
  */
 public class GUIController {
+    
 
     public static Boolean checkPrivilege(User u) {
         if ((u.getPrivilege()).equals("admin")) {

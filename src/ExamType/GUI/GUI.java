@@ -15,7 +15,9 @@ import ExamType.Controller.*;
  * @authors Chris Alexander, Elise Cross, Rachel Okun, John St. Pierre, Ferguson
  * Watkins
  */
+
 public class GUI extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form ExamType
@@ -151,6 +153,7 @@ public class GUI extends javax.swing.JFrame {
     private void addNewETButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewETButtonMouseClicked
         String message = GUIController.addExamType(examTypeNameField.getText(), examTypeDescriptionField.getText());
         addExamTypeStatus.setText(message);
+
     }//GEN-LAST:event_addNewETButtonMouseClicked
 
     /**
