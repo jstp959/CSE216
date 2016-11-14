@@ -38,7 +38,7 @@ public class GuiController {
         Lab lab = createLabType(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
         if(lab == null)
         {
-            return "Error: Lab requires a name";
+            return "Error: Lab requires all fields be filled";
         }
         
         if (DBManager.checkUnique(lab)) {
