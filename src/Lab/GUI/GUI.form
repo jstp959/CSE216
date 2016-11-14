@@ -53,7 +53,7 @@
                               <Component id="addLabStatus" min="-2" pref="166" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="labOnSiteLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="labPhoneLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="labFaxLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -61,7 +61,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="labNameLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="labNameField" min="-2" pref="111" max="-2" attributes="0"/>
+                                      <Component id="labNameField" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -337,7 +337,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="374" max="-2" attributes="0"/>
-                  <EmptySpace pref="98" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -358,7 +358,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/christopheralexander/Desktop/DTHC.png"/>
+              <Image iconType="3" name="/resources/DTHC.png"/>
             </Property>
           </Properties>
         </Component>
