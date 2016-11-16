@@ -47,41 +47,47 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="addLabHeader" min="-2" pref="422" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                              <Component id="addNewLabButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
                               <Component id="addLabStatus" min="-2" pref="166" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="labOnSiteLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labPhoneLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labFaxLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labInformationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="labNameLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="labNameField" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="labInformationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="labNameLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="labNameField" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="labStreetLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labCityLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labZipLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labStateLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labEmailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labFaxLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labPhoneLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labOnSiteLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="labOnSiteCheckBox" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="labStreetField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="labCityField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="labStateField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="labZipField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="labFaxField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="labPhoneField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="labEmailField" min="-2" pref="160" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labStreetLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labCityLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labZipLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labStateLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labEmailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="labOnSiteCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labStreetField" alignment="0" pref="160" max="32767" attributes="0"/>
-                                          <Component id="labCityField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="labStateField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="labZipField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="labFaxField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="labPhoneField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="labEmailField" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                      <Component id="addNewLabButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
@@ -121,53 +127,44 @@
                           <Component id="labCityLabel" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                           <Component id="labCityField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="labStateField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="labStateLabel" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labZipField" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="labZipLabel" min="-2" pref="28" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="labFaxLabel" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="labFaxField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="labPhoneLabel" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="labPhoneField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="labEmailField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labEmailLabel" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labOnSiteLabel" min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="labOnSiteCheckBox" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labZipField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labZipLabel" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="addLabStatus" min="-2" pref="62" max="-2" attributes="0"/>
-                      <EmptySpace pref="79" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labFaxField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labFaxLabel" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labPhoneLabel" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="labPhoneField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labEmailField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labEmailLabel" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="labOnSiteLabel" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="labOnSiteCheckBox" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="addNewLabButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jScrollPane1" min="-2" pref="408" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="addLabStatus" min="-2" pref="62" max="-2" attributes="0"/>
+              <EmptySpace pref="58" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
