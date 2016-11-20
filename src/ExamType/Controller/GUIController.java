@@ -47,6 +47,7 @@ public class GUIController {
         }
         else {
             //some error
+            
             return "Error: Exam Type with name \"" + name + "\" already exists";
         }
         

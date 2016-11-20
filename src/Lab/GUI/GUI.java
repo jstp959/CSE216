@@ -2,6 +2,7 @@ package Lab.GUI;
 
 
 import Lab.Controller.*;
+import java.awt.Color;
 //elise!!!!!!!!!!
 //CHRISSSS!!!!
 //Rachel :-) 
@@ -35,6 +36,7 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
         labNameField = new javax.swing.JTextField();
         addLabHeader = new javax.swing.JLabel();
         labNameLabel = new javax.swing.JLabel();
@@ -82,11 +84,11 @@ public class GUI extends javax.swing.JFrame {
         addLabHeader.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         labNameLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labNameLabel.setText("Lab Name");
+        labNameLabel.setText("Lab Name: ");
 
         labInformationLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         labInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        labInformationLabel.setText("Lab Information");
+        labInformationLabel.setText("Lab Information: ");
 
         addNewLabButton.setBackground(new java.awt.Color(250, 0, 0));
         addNewLabButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -107,28 +109,28 @@ public class GUI extends javax.swing.JFrame {
         addLabStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         labStreetLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labStreetLabel.setText("Street");
+        labStreetLabel.setText("Street: ");
 
         labZipLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labZipLabel.setText("Zip Code");
+        labZipLabel.setText("Zip Code: ");
 
         labCityLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labCityLabel.setText("City");
+        labCityLabel.setText("City: ");
 
         labStateLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labStateLabel.setText("State");
+        labStateLabel.setText("State: ");
 
         labFaxLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labFaxLabel.setText("Fax Number");
+        labFaxLabel.setText("Fax Number: ");
 
         labPhoneLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labPhoneLabel.setText("Phone Number");
+        labPhoneLabel.setText("Phone Number: ");
 
         labEmailLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labEmailLabel.setText("Email Address");
+        labEmailLabel.setText("Email Address: ");
 
         labOnSiteLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labOnSiteLabel.setText("On Site Lab");
+        labOnSiteLabel.setText("On-Site Lab?");
 
         jScrollPane1.setViewportView(jList1);
 
@@ -201,7 +203,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(94, 94, 94)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 90, Short.MAX_VALUE))
+                .addGap(0, 80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,6 +279,14 @@ public class GUI extends javax.swing.JFrame {
         Boolean onSite = labOnSiteCheckBox.isSelected();
         String message = GuiController.addLabType(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
         
+        if (message.substring(0,5).equals("Error")){
+            addLabStatus.setForeground(Color.red);
+            addLabStatus.setFont(new java.awt.Font("Lucida Grande", 1, 16));
+        }
+        else{
+            addLabStatus.setForeground(Color.black);
+            addLabStatus.setFont(new java.awt.Font("Lucida Grande", 0, 16));
+        }
         addLabStatus.setText(message);
         
     }//GEN-LAST:event_addNewLabButtonMouseClicked
@@ -327,6 +337,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextField labCityField;
     private javax.swing.JLabel labCityLabel;
     private javax.swing.JTextField labEmailField;

@@ -17,6 +17,10 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Container class="javax.swing.JSplitPane" name="jSplitPane1">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -92,7 +96,7 @@
                   </Group>
                   <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="90" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -182,7 +186,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Lab Name"/>
+        <Property name="text" type="java.lang.String" value="Lab Name: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labInformationLabel">
@@ -191,7 +195,7 @@
           <Font name="Dialog" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Lab Information"/>
+        <Property name="text" type="java.lang.String" value="Lab Information: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="addNewLabButton">
@@ -227,7 +231,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Street"/>
+        <Property name="text" type="java.lang.String" value="Street: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="labCityField">
@@ -237,7 +241,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Zip Code"/>
+        <Property name="text" type="java.lang.String" value="Zip Code: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labCityLabel">
@@ -245,7 +249,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="City"/>
+        <Property name="text" type="java.lang.String" value="City: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="labStateField">
@@ -257,7 +261,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="State"/>
+        <Property name="text" type="java.lang.String" value="State: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labFaxLabel">
@@ -265,7 +269,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Fax Number"/>
+        <Property name="text" type="java.lang.String" value="Fax Number: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="labFaxField">
@@ -275,7 +279,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Phone Number"/>
+        <Property name="text" type="java.lang.String" value="Phone Number: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="labPhoneField">
@@ -287,7 +291,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Email Address"/>
+        <Property name="text" type="java.lang.String" value="Email Address: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labOnSiteLabel">
@@ -295,7 +299,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="On Site Lab"/>
+        <Property name="text" type="java.lang.String" value="On-Site Lab?"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="labOnSiteCheckBox">
