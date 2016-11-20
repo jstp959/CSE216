@@ -10,10 +10,10 @@ package Lab.BusinessObjects;
  * @author owner
  */
 public class Address {
-    private String street;
-    private String city;
-    private String state;
-    private String zip;
+    private final String street;
+    private final String city;
+    private final String state;
+    private final String zip;
 
     public Address(String street, String city, String state, String zip) {
         this.street = street;
@@ -21,6 +21,21 @@ public class Address {
         this.state = state;
         this.zip = zip;
     }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getCity() {
+        return city;
+    }
     
-   
+    public String getState() {
+        return state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+    
 }

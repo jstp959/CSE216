@@ -7,48 +7,52 @@ package Lab.Controller;
 
 import Lab.BusinessObjects.*;
 import Lab.DBManager.*;
+
 /**
  *
  * @author owner
  */
 public class GuiController {
+
     public static Boolean checkPrivilege(User u) {
-        if ((u.getPrivilege()).equals("admin")) {
-            return true;
+        if (u == null) {
+            return false;
         }
-        return false;
+        return (u.getPrivilege()).equals("admin");
     }
-    
+
     public static Lab createLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         //check other besides just name
-        if(isValidLab(name, street, city, state, zip, email, faxNo, phoneNo, onSite)){
+        if (isValidLab(name, street, city, state, zip, email, faxNo, phoneNo, onSite)) {
             Lab lab = new Lab(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
             return lab;
         }
         return null;
     }
-    
-    public static boolean isValidLab(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite){
-        return !name.equals("") && !street.equals("") && !city.equals("") && !state.equals("") 
+
+    public static boolean isValidLab(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
+        return !name.equals("") && !street.equals("") && !city.equals("") && !state.equals("")
                 && !zip.equals("") && !faxNo.equals("") && !phoneNo.equals("");
     }
-    
+
     public static String addLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         //check privilege
+        DBManager.connector();
         Lab lab = createLabType(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
-        if(lab == null)
-        {
+        if (lab == null) {
+            DBManager.closer();
             return "Error: Lab requires all fields be filled";
         }
-        
+
         if (DBManager.checkUnique(lab)) {
             if (DBManager.saveExamType(lab)) {
+                DBManager.closer();
                 return "Lab \"" + name + "\" Added";
             }
+            DBManager.closer();
             return "Error: Could not save in Database";
-        }
-        else {
-            //some error
+        } else {
+            DBManager.closer();
             return "Error: Lab with name \"" + name + "\" already exists";
         }
     }
