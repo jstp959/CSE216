@@ -98,7 +98,7 @@ public class GUI extends javax.swing.JFrame {
 
         addExamTypeStatus.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         addExamTypeStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        addExamTypeStatus.setText("Status");
+        addExamTypeStatus.setText("                                   ");
 
         jPanel2.setPreferredSize(new java.awt.Dimension(7, 212));
 
