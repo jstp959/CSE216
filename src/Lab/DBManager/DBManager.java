@@ -20,12 +20,14 @@ public class DBManager {
     static String psswd = "leak-deer";
 
     public static void connector() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance(); // loading driver
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
-            System.out.println("Incorrect Driver! ");
-            System.out.println("Error Type: " + e.getClass().getName());
-        }
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver").newInstance(); // loading driver
+//        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+//            System.out.println("Incorrect Driver! ");
+//            System.out.println("Error Type: " + e.getClass().getName());
+//            System.out.println("Error Message: " + e.getMessage());
+//
+//        }
         try {
             globalCon = DriverManager.getConnection(url, userName, psswd);
         } catch (SQLException e) {

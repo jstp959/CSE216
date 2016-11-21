@@ -32,7 +32,7 @@ public class GuiController {
 
     public static boolean isValidLab(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         return !name.equals("") && !street.equals("") && !city.equals("") && !state.equals("")
-                && !zip.equals("") && !faxNo.equals("") && !phoneNo.equals("");
+                && !zip.equals("") && !email.equals("") && !faxNo.equals("") && !phoneNo.equals("");
     }
 
     public static String addLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
