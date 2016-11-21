@@ -279,6 +279,58 @@ public class GUI extends javax.swing.JFrame {
         Boolean onSite = labOnSiteCheckBox.isSelected();
         String message = GuiController.addLabType(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
         
+        //Changes the Color of the labels depending on if the field is missing
+        if (name.equals("")){
+            labNameLabel.setForeground(Color.red);
+        }
+        else {
+            labNameLabel.setForeground(Color.black);
+        }
+        if (street.equals("")){
+            labStreetLabel.setForeground(Color.red);
+        }
+        else {
+            labStreetLabel.setForeground(Color.black);
+        }
+        if (city.equals("")){
+            labCityLabel.setForeground(Color.red);
+        }
+        else {
+            labCityLabel.setForeground(Color.black);
+        }
+        if (state.equals("")){
+            labStateLabel.setForeground(Color.red);
+        }
+        else {
+            labStateLabel.setForeground(Color.black);
+        }
+        if (zip.equals("")){
+            labZipLabel.setForeground(Color.red);
+        }
+        else {
+            labZipLabel.setForeground(Color.black);
+        }
+        if (faxNo.equals("")){
+            labFaxLabel.setForeground(Color.red);
+        }
+        else {
+            labFaxLabel.setForeground(Color.black);
+        }
+        if (phoneNo.equals("")){
+            labPhoneLabel.setForeground(Color.red);
+        }
+        else {
+            labPhoneLabel.setForeground(Color.black);
+        }
+        if (email.equals("")){
+            labEmailLabel.setForeground(Color.red);
+        }
+        else {
+            labEmailLabel.setForeground(Color.black);
+        }
+
+        
+        //Changes the Error message to Bold and RED
         if (message.substring(0,5).equals("Error")){
             addLabStatus.setForeground(Color.red);
             addLabStatus.setFont(new java.awt.Font("Lucida Grande", 1, 16));

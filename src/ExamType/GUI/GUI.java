@@ -76,11 +76,11 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(examTypeDescriptionField);
 
         examTypeNameLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeNameLabel.setText("Exam Type Name: ");
+        examTypeNameLabel.setText(" Exam Type Name: ");
 
         examTypeDescriptionLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         examTypeDescriptionLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        examTypeDescriptionLabel.setText("Exam Type Description: ");
+        examTypeDescriptionLabel.setText(" Exam Type Description: ");
 
         addNewETButton.setBackground(new java.awt.Color(250, 0, 0));
         addNewETButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -136,28 +136,32 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(examTypeNameLabel)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(examTypeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(addNewETButton, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(59, 59, 59)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(examTypeDescriptionLabel)
-                                    .addComponent(addETHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(addExamTypeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(examTypeDescriptionLabel)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(examTypeNameLabel)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(examTypeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(addNewETButton, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(47, 47, 47))))
-                                .addGap(12, 12, 12))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(addExamTypeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(110, 110, 110)))
+                                            .addGap(6, 6, 6)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(63, 63, 63)))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 33, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(addETHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,17 +201,21 @@ public class GUI extends javax.swing.JFrame {
 
     private void addNewETButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewETButtonMouseClicked
         String message = GUIController.addExamType(examTypeNameField.getText(), examTypeDescriptionField.getText());
+        
+        //Changes the ERROR message to Red and Bold
         if (message.substring(0,5).equals("Error")){
             addExamTypeStatus.setForeground(Color.red);
             addExamTypeStatus.setFont(new java.awt.Font("Lucida Grande", 1, 16));
             examTypeNameLabel.setForeground(Color.red);
-            examTypeNameLabel.setText("*"+examTypeNameLabel.getText());
+            examTypeNameLabel.setText("*Exam Type Name:");
 
         }
         else{
             addExamTypeStatus.setForeground(Color.black);
             addExamTypeStatus.setFont(new java.awt.Font("Lucida Grande", 0, 16));
             examTypeNameLabel.setForeground(Color.black);
+            examTypeNameLabel.setText(" Exam Type Name:");
+
         }
         addExamTypeStatus.setText(message);
     }//GEN-LAST:event_addNewETButtonMouseClicked
