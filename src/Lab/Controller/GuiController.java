@@ -37,7 +37,7 @@ public class GuiController {
 
     public static String addLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         //check privilege
-        if(!DBManager.connector()) {
+        if (!DBManager.connector()) {
             return "Error: Connection Failed";
         }
         Lab lab = createLabType(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
@@ -51,7 +51,7 @@ public class GuiController {
             return msg;
         } else {
             DBManager.closer();
-            return "Error: Lab with name \"" + name + "\" already exists";
+            return "Error: Lab with name \"" + name + "\" and street \"" + street + "\" already exists";
         }
     }
 }

@@ -8,10 +8,9 @@ package Lab.DBManager;
 import Lab.BusinessObjects.Lab;
 import java.sql.*;
 
-
 /**
  *
- * @author owner
+ * @author Rachel Okun
  */
 public class DBManager {
 
@@ -21,14 +20,6 @@ public class DBManager {
     static String psswd = "leak-deer";
 
     public static boolean connector() {
-//        try {
-//              Class.forName("com.mysql.jdbc.Driver");
-//        } catch (ClassNotFoundException e){ //| InstantiationException | IllegalAccessException e) {
-//            System.out.println("Incorrect Driver! ");
-//            System.out.println("Error Type: " + e.getClass().getName());
-//            System.out.println("Error Message: " + e.getMessage());
-//            System.out.println("Error ToString: " + e.toString());
-//        }
         try {
             globalCon = DriverManager.getConnection(url, userName, psswd);
             return true;
@@ -58,6 +49,7 @@ public class DBManager {
         } finally {
             if (pStmt != null) {
                 try {
+                    System.out.println("CLOSED! Query!");
                     pStmt.close();
                 } catch (SQLException ex) {
                     System.out.println("pStmt.close() failed");
@@ -75,14 +67,14 @@ public class DBManager {
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
-            pStmt.setString(1, testString(lab.getName(), 20));
-            pStmt.setString(2, testString(lab.getAddress().getStreet(), 20));
-            pStmt.setString(3, testString(lab.getAddress().getCity(), 20));
-            pStmt.setString(4, testString(lab.getAddress().getState(), 2));
-            pStmt.setLong(5, testInt(lab.getAddress().getZip(), 99999));
+            pStmt.setString(1, testString(lab.getName(), 0, 20));
+            pStmt.setString(2, testString(lab.getAddress().getStreet(), 0, 20));
+            pStmt.setString(3, testString(lab.getAddress().getCity(), 0, 20));
+            pStmt.setString(4, testString(lab.getAddress().getState(), 2, 2));
+            pStmt.setLong(5, testInt(lab.getAddress().getZip(), 10000, 99999));
             pStmt.setString(6, testString(lab.getEmail(), 50, "@"));
-            pStmt.setLong(7, testInt(lab.getFaxNo(), 9999999999L));
-            pStmt.setLong(8, testInt(lab.getPhoneNo(), 9999999999L));
+            pStmt.setLong(7, testInt(lab.getFaxNo(), 1000000000, 9999999999L));
+            pStmt.setLong(8, testInt(lab.getPhoneNo(), 1000000000, 9999999999L));
             String status;
             if (lab.getOnSite()) {
                 status = "On Site";
@@ -93,13 +85,13 @@ public class DBManager {
             pStmt.executeUpdate();
             return "Lab \"" + lab.getName() + "\" Added";//true
         } catch (SQLException e) {
-            return "Error: Update Failed (Contact developers): " + querySQL; //false
+            return "Error: Update Failed (Contact developers): " + e.getMessage(); //false
         } catch (Exception e) {
             return "Error: " + e.getMessage(); //false
         } finally {
             if (pStmt != null) {
                 try {
-                    System.out.println("CLOSED!");
+                    System.out.println("CLOSED! Save!");
                     pStmt.close();
                 } catch (SQLException ex) {
                     System.out.println("pStmt.close() failed");
@@ -109,22 +101,26 @@ public class DBManager {
         }
     }
 
-    private static long testInt(String num, long max) throws Exception {
+    private static long testInt(String num, long min, long max) throws Exception {
+        long ans;
         try {
-            long ans = Long.parseLong(num);
-            if (ans > max && ans < 1) {
-                throw new Exception(ans + " not in valid range: [1," + max + "]");
-            }
-            return ans;
+            ans = Long.parseLong(num);
         } catch (Exception ex) {
             throw new Exception(num + " cannot be parsed to a number");
         }
+        if (ans > max || ans < min) {
+            throw new Exception(ans + " not in valid range: [" + min + ", " + max + "]");
+        }
+        return ans;
 
     }
 
-    private static String testString(String str, int maxLen) throws Exception {
-        if (str.length() > maxLen) {
-            throw new Exception(str + " has a length greater than " + maxLen);
+    private static String testString(String str, int minLen, int maxLen) throws Exception {
+        if (str.length() > maxLen || str.length() < minLen) {
+            throw new Exception(str + " has a length not in [" + minLen + ", " + maxLen + "]");
+        }
+        if (maxLen == 2 && minLen == 2) {
+            str = str.toUpperCase();
         }
         return str;
     }
