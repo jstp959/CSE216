@@ -7,8 +7,7 @@ package Lab.DBManager;
 
 import Lab.BusinessObjects.Lab;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -21,20 +20,25 @@ public class DBManager {
     static String userName = "user06";
     static String psswd = "leak-deer";
 
-    public static void connector() {
+    public static boolean connector() {
 //        try {
-//            Class.forName("com.mysql.jdbc.Driver").newInstance(); // loading driver
-//        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+//              Class.forName("com.mysql.jdbc.Driver");
+//        } catch (ClassNotFoundException e){ //| InstantiationException | IllegalAccessException e) {
 //            System.out.println("Incorrect Driver! ");
 //            System.out.println("Error Type: " + e.getClass().getName());
 //            System.out.println("Error Message: " + e.getMessage());
-//
+//            System.out.println("Error ToString: " + e.toString());
 //        }
         try {
             globalCon = DriverManager.getConnection(url, userName, psswd);
+            return true;
         } catch (SQLException e) {
             System.out.println("Incorrect URL or User ID or Password!");
             System.out.println("Error Type: " + e.getClass().getName());
+            System.out.println("Error Code: " + e.getErrorCode());
+            System.out.println("Error SQLstate: " + e.getSQLState());
+            System.out.println("Error ToString: " + e.toString());
+            return false;
         }
     }
 
@@ -63,7 +67,7 @@ public class DBManager {
         }
     }
 
-    public static Boolean saveExamType(Lab lab) {
+    public static String saveExamType(Lab lab) {
         String querySQL = "INSERT INTO lab "
                 + "(lab_name, street, city, us_state_abbr, "
                 + "zip, email, fnum, pnum, onsite) "
@@ -87,18 +91,15 @@ public class DBManager {
             }
             pStmt.setString(9, status);
             pStmt.executeUpdate();
-            return true;
+            return "Lab \"" + lab.getName() + "\" Added";//true
         } catch (SQLException e) {
-            System.out.println("Query Failed: " + querySQL);
-            System.out.println("Error Type: " + e.getClass().getName());
-            return false;
+            return "Error: Update Failed (Contact developers): " + querySQL; //false
         } catch (Exception e) {
-            System.out.println("Message: " + e.getMessage());
-            System.out.println("Error Type: " + e.getClass().getName());
-            return false;
+            return "Error: " + e.getMessage(); //false
         } finally {
             if (pStmt != null) {
                 try {
+                    System.out.println("CLOSED!");
                     pStmt.close();
                 } catch (SQLException ex) {
                     System.out.println("pStmt.close() failed");
@@ -109,11 +110,16 @@ public class DBManager {
     }
 
     private static long testInt(String num, long max) throws Exception {
-        long ans = Long.parseLong(num);
-        if (ans > max) {
-            throw new Exception(ans + " not in valid range");
+        try {
+            long ans = Long.parseLong(num);
+            if (ans > max && ans < 1) {
+                throw new Exception(ans + " not in valid range: [1," + max + "]");
+            }
+            return ans;
+        } catch (Exception ex) {
+            throw new Exception(num + " cannot be parsed to a number");
         }
-        return ans;
+
     }
 
     private static String testString(String str, int maxLen) throws Exception {

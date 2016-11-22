@@ -37,20 +37,18 @@ public class GuiController {
 
     public static String addLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         //check privilege
-        DBManager.connector();
+        if(!DBManager.connector()) {
+            return "Error: Connection Failed";
+        }
         Lab lab = createLabType(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
         if (lab == null) {
             DBManager.closer();
             return "Error: Lab requires all fields be filled";
         }
-
         if (DBManager.checkUnique(lab)) {
-            if (DBManager.saveExamType(lab)) {
-                DBManager.closer();
-                return "Lab \"" + name + "\" Added";
-            }
+            String msg = DBManager.saveExamType(lab);
             DBManager.closer();
-            return "Error: Could not save in Database";
+            return msg;
         } else {
             DBManager.closer();
             return "Error: Lab with name \"" + name + "\" already exists";
