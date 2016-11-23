@@ -5,6 +5,8 @@
  */
 package ExamTests;
 
+import ExamType.BusinessObjects.*;
+import ExamType.Controller.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,26 +20,35 @@ import static org.junit.Assert.*;
  */
 public class GUIControllerJUnitTest {
     
-    public GUIControllerJUnitTest() {
-        
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    User testUser;
+    ExamType nullExam;
     
     @Before
     public void setUp() {
+        testUser = new User("testID", "testPassword", "testPrivilege");
+        nullExam = new ExamType("", "");
     }
     
-    @After
-    public void tearDown() {
+    @Test
+    public void testCheckPrivilege(){
+        setUp();
+        assertEquals(testUser.getPrivilege(), "testPrivilege");
     }
 
+    @Test
+    public void testCreateExamType(){
+        setUp();
+        ExamType testExam2 = GUIController.createExamType("", "testDesc");
+        assertEquals(testExam2,  null);
+    }
+    
+    @Test
+    public void testAddExamType(){
+        setUp();
+        String testResult = GUIController.addExamType("", "");
+        assertEquals(testResult, "Error: Exam Type requires a name");
+        
+    }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
