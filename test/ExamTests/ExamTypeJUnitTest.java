@@ -5,6 +5,7 @@
  */
 package ExamTests;
 
+import ExamType.BusinessObjects.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,25 +18,22 @@ import static org.junit.Assert.*;
  * @author owner
  */
 public class ExamTypeJUnitTest {
+
+    ExamType testExam; 
     
-    public ExamTypeJUnitTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+    /**
+     * sets up the test ExamType
+     */
     @Before
     public void setUp() {
+        testExam = new ExamType("Test", "This Description");
     }
     
-    @After
-    public void tearDown() {
-    }
+    @Test
+   public void testGetName(){
+       setUp();
+       assertEquals(testExam.getName(), "Test");       
+   }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
