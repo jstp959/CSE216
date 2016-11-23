@@ -60,6 +60,15 @@ public class ExamType implements Comparable<ExamType> {
     public Boolean getStatus() {
         return this.status;
     }
+    
+    // ----------------------------------------------------------
+    /**
+     * Set an Exam Type's status (1 = active; 0 = inactive)
+     * @param newStatus - the status it should be set to
+     */
+    public void setStatus(Boolean newStatus){
+        this.status = newStatus;        
+    }
 
     /**
      * Compares exams.

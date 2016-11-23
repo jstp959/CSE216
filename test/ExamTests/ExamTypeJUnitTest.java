@@ -1,11 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * JUnit tests for the method in the ExamType class
+ * 
  */
 package ExamTests;
 
 import ExamType.BusinessObjects.*;
+import java.util.HashSet;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,29 +15,58 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author owner
+ * @author John St. Pierre, Ferguson Watkins
+ * @version Nov 22, 2016
  */
 public class ExamTypeJUnitTest {
 
-    ExamType testExam; 
-    
+    ExamType testExam, testExamClone, nullTest;
+
     /**
      * sets up the test ExamType
      */
     @Before
     public void setUp() {
         testExam = new ExamType("Test", "This Description");
+        testExamClone = new ExamType("Test", "This Description");
+        nullTest = new ExamType("", "");
+    }
+
+    @Test
+    public void testGetName() {
+        setUp();
+        assertEquals(testExam.getName(), "Test");
+        assertEquals(nullTest.getName(), "");
     }
     
     @Test
-   public void testGetName(){
-       setUp();
-       assertEquals(testExam.getName(), "Test");       
-   }
+    public void testGetDescription(){
+        setUp();
+        assertEquals(testExam.getDescription(), "This Description");
+        assertEquals(nullTest.getDescription(), "");
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    }
+    
+    @Test
+    public void testGetStatus() {
+        setUp();
+        assertEquals(testExam.getStatus(), true);
+        assertEquals(nullTest.getName(), "");
+
+    }
+    
+    @Test
+    public void testSetStatus() {
+        setUp();
+        assertEquals(nullTest.getStatus(), true);
+        nullTest.setStatus(false);
+        assertEquals(nullTest.getStatus(), false);
+    }
+    
+    @Test
+    public void testCompareTo(){
+        setUp();
+        assertEquals(testExam.compareTo(testExamClone), 0);
+    }
+
 }
