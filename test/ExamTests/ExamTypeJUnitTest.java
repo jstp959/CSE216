@@ -67,6 +67,7 @@ public class ExamTypeJUnitTest {
     public void testCompareTo(){
         setUp();
         assertEquals(testExam.compareTo(testExamClone), 0);
+        assertEquals(testExam.compareTo(nullTest), -1);
     }
 
 }

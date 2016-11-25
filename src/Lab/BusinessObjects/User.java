@@ -16,6 +16,14 @@ public class User {
     private String userID;
     private String password;
     private String privilege;
+
+    public User(String userID, String password, String privilege) {
+        this.userID = userID;
+        this.password = password;
+        this.privilege = privilege;
+    }
+    
+
     
     public String getPrivilege() {
         return this.privilege;

@@ -20,33 +20,38 @@ import static org.junit.Assert.*;
  */
 public class GUIControllerJUnitTest {
     
-    User testUser;
+    User admin;
+    User noAdmin;
     ExamType nullExam;
+    ExamType exam;
     
     @Before
     public void setUp() {
-        testUser = new User("testID", "testPassword", "testPrivilege");
+        admin = new User("testID", "testPassword", "admin");
+        noAdmin = new User("testID", "testPassword", "staff");
         nullExam = new ExamType("", "");
+        exam = new ExamType("Colonoscopy", "Ouch");
     }
     
     @Test
     public void testCheckPrivilege(){
-        setUp();
-        assertEquals(testUser.getPrivilege(), "testPrivilege");
+        assertEquals(admin.getPrivilege(), "admin");
+        assertEquals(GUIController.checkPrivilege(admin), true);
+        assertEquals(GUIController.checkPrivilege(noAdmin), false);
     }
 
     @Test
     public void testCreateExamType(){
-        setUp();
-        ExamType testExam2 = GUIController.createExamType("", "testDesc");
-        assertEquals(testExam2,  null);
+        assertEquals(GUIController.createExamType("","Irrelevant"),  null);
+        assertEquals((GUIController.createExamType("Colonoscopy", "Ouch")).compareTo(exam), 0);        
     }
     
     @Test
     public void testAddExamType(){
-        setUp();
         String testResult = GUIController.addExamType("", "");
         assertEquals(testResult, "Error: Exam Type requires a name");
+        
+        //*****NEED TO CHECK WHEN CALLS TO DBMANAGER*****
         
     }
     // TODO add test methods here.

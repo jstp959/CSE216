@@ -9,7 +9,7 @@ package Lab.BusinessObjects;
  *
  * @author owner
  */
-public class Address {
+public class Address implements Comparable<Address>{
     private final String street;
     private final String city;
     private final String state;
@@ -37,5 +37,20 @@ public class Address {
     public String getZip() {
         return zip;
     }
+
+
+    @Override
+    public int compareTo(Address address) {
+        if (this.street.equals(address.getStreet())
+                && this.city.equals(address.getCity())
+                && this.state.equals(address.getState())
+                && this.zip.equals(address.getZip())) {
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+    
+    
     
 }

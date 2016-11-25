@@ -5,11 +5,12 @@
  */
 package Lab.BusinessObjects;
 
+
 /**
  *
  * @author owner
  */
-public class Lab {
+public class Lab implements Comparable<Lab> {
 
     private String name;
     private Address address;
@@ -49,6 +50,15 @@ public class Lab {
 
     public Boolean getOnSite() {
         return onSite;
+    }
+    
+    @Override
+    public int compareTo(Lab lab) {
+        if (!this.name.equals(lab.getName())) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
 
