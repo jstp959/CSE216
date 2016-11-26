@@ -33,23 +33,26 @@ public class DBManager {
         }
     }
 
-    public static Boolean checkUnique(Lab lab) {
+    public static boolean checkUnique(Lab lab) {
         String querySQL = "select lab_name,street from lab where lab_name = ? AND street = ?";
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
-            pStmt.setString(1, lab.getName());
-            pStmt.setString(2, lab.getAddress().getStreet());
+            pStmt.setString(1, testString(lab.getName(), 0, 20));
+            pStmt.setString(2, testString(lab.getAddress().getStreet(), 0, 20));
             ResultSet result = pStmt.executeQuery();
             return (!result.next());
         } catch (SQLException e) {
             System.out.println("Query Failed: " + querySQL);
             System.out.println("Error Type: " + e.getClass().getName());
             return false;
+        } catch (Exception e) {
+            System.out.println("Failed: " + e.getMessage());
+            System.out.println("Error Type: " + e.getClass().getName());
+            return false;
         } finally {
             if (pStmt != null) {
                 try {
-                    System.out.println("CLOSED! Query!");
                     pStmt.close();
                 } catch (SQLException ex) {
                     System.out.println("pStmt.close() failed");
@@ -91,7 +94,6 @@ public class DBManager {
         } finally {
             if (pStmt != null) {
                 try {
-                    System.out.println("CLOSED! Save!");
                     pStmt.close();
                 } catch (SQLException ex) {
                     System.out.println("pStmt.close() failed");
@@ -133,6 +135,35 @@ public class DBManager {
             throw new Exception(str + " does not have " + x + " in it");
         }
         return str;
+    }
+
+    public static boolean delete(String name, String street) {
+        String querySQL = "delete from lab where lab_name = ? AND street = ?";
+        PreparedStatement pStmt = null;
+        try {
+            pStmt = globalCon.prepareStatement(querySQL);
+            pStmt.setString(1, testString(name, 0, 20));
+            pStmt.setString(2, testString(street, 0, 20));
+            pStmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Query Failed: " + querySQL);
+            System.out.println("Error Type: " + e.getClass().getName());
+            return false;
+        } catch (Exception e) {
+            System.out.println("Failed: " + e.getMessage());
+            System.out.println("Error Type: " + e.getClass().getName());
+            return false;
+        } finally {
+            if (pStmt != null) {
+                try {
+                    pStmt.close();
+                } catch (SQLException ex) {
+                    System.out.println("pStmt.close() failed");
+                    System.out.println("Error Type: " + ex.getClass().getName());
+                }
+            }
+        }
     }
 
     public static void closer() {

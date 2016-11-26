@@ -51,7 +51,7 @@ public class GuiControllerJUnitTest {
     }
     
     @Test
-    public void isValidLab(){
+    public void testIsValidLab(){
         Boolean notValid = GuiController.isValidLab("" , "10 Holyoke Road", "Rockville Centre,", "NY",
             "11570", "jes418", "516", "6328925", true);
         assertFalse(notValid);
