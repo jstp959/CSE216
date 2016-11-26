@@ -54,7 +54,8 @@ public class Lab implements Comparable<Lab> {
     
     @Override
     public int compareTo(Lab lab) {
-        if (!this.name.equals(lab.getName())) {
+        if (!this.name.equals(lab.getName()) || 
+                !this.address.getStreet().equals(lab.getAddress().getStreet())) {
             return -1;
         } else {
             return 0;

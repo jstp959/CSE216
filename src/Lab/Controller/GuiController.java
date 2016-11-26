@@ -46,7 +46,7 @@ public class GuiController {
             return "Error: Lab requires all fields be filled";
         }
         if (DBManager.checkUnique(lab)) {
-            String msg = DBManager.saveExamType(lab);
+            String msg = DBManager.saveLab(lab);
             DBManager.closer();
             return msg;
         } else {

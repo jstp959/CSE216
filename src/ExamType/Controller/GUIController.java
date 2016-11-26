@@ -17,10 +17,10 @@ public class GUIController {
     
 
     public static Boolean checkPrivilege(User u) {
-        if ((u.getPrivilege()).equals("admin")) {
-            return true;
+        if (u == null) {
+            return false;
         }
-        return false;
+        return (u.getPrivilege()).equals("admin");
     }
     
     public static ExamType createExamType(String type, String desc) {
@@ -33,24 +33,23 @@ public class GUIController {
     
     public static String addExamType(String name, String desc) {
         //check privilege
+        if (!DBManager.connector()) {
+            return "Error: Connection Failed";
+        }
         ExamType exam = createExamType(name, desc);
         if(exam == null)
         {
+            DBManager.closer();
             return "Error: Exam Type requires a name";
         }
-        
         if (DBManager.checkUnique(exam)) {
-            if (DBManager.saveExamType(exam)) {
-                return "Exam Type \"" + name + "\" Added";
-            }
-            return "Error: Could not save in Database";
-        }
-        else {
-            //some error
-            
+            String msg = DBManager.saveExamType(exam);
+            DBManager.closer();
+            return msg;
+        } else {
+            DBManager.closer();
             return "Error: Exam Type with name \"" + name + "\" already exists";
-        }
-        
+        }        
     }
 }
 

@@ -59,7 +59,7 @@ public class DBManager {
         }
     }
 
-    public static String saveExamType(Lab lab) {
+    public static String saveLab(Lab lab) {
         String querySQL = "INSERT INTO lab "
                 + "(lab_name, street, city, us_state_abbr, "
                 + "zip, email, fnum, pnum, onsite) "
