@@ -2,6 +2,7 @@ package ExamType.GUI;
 
 import ExamType.Controller.*;
 import java.awt.Color;
+import java.util.ArrayList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -213,9 +214,34 @@ public class GUI extends javax.swing.JFrame {
             examTypeNameLabel.setText(" Exam Type Name:");
 
         }
-        addExamTypeStatus.setText(message);
+        
+        addExamTypeStatus.setText(splitMessage(message));
     }//GEN-LAST:event_addNewETButtonMouseClicked
 
+    private String splitMessage(String originalMessage){
+        String formattedMessage = "<html>";
+        return splitMessage(formattedMessage, originalMessage);
+    }
+    private String splitMessage(String formattedMessage, String originalMessage){
+        if (originalMessage.length() > 30){
+            String temp = "";
+            for (int i = 30; i >= 0; i--){
+                if (originalMessage.charAt(i) == ' '){
+                    formattedMessage += originalMessage.substring (0,i) + "<br>";
+                    temp = originalMessage.substring (i+1,originalMessage.length());
+                    originalMessage = temp;
+                    break;
+                }
+            }
+            
+        return splitMessage(formattedMessage, originalMessage);
+        }
+        else {
+              formattedMessage += originalMessage + "</html>";
+              return formattedMessage;
+        }
+
+    }
     /**
      * @param args the command line arguments
      */

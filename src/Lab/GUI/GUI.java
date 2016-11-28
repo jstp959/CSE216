@@ -3,6 +3,7 @@ package Lab.GUI;
 
 import Lab.Controller.*;
 import java.awt.Color;
+import java.util.ArrayList;
 
 
 /*
@@ -104,6 +105,7 @@ public class GUI extends javax.swing.JFrame {
 
         addLabStatus.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         addLabStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addLabStatus.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         labStreetLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         labStreetLabel.setText("Street: ");
@@ -205,7 +207,7 @@ public class GUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addLabHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,8 +255,8 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(addNewLabButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addLabStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+                .addComponent(addLabStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -336,10 +338,35 @@ public class GUI extends javax.swing.JFrame {
             addLabStatus.setForeground(Color.black);
             addLabStatus.setFont(new java.awt.Font("Lucida Grande", 0, 16));
         }
-        addLabStatus.setText(message);
+        
+        addLabStatus.setText(splitMessage(message));
         
     }//GEN-LAST:event_addNewLabButtonMouseClicked
 
+    private String splitMessage(String originalMessage){
+        String formattedMessage = "<html>";
+        return splitMessage(formattedMessage, originalMessage);
+    }
+    private String splitMessage(String formattedMessage, String originalMessage){
+        if (originalMessage.length() > 30){
+            String temp = "";
+            for (int i = 30; i >= 0; i--){
+                if (originalMessage.charAt(i) == ' '){
+                    formattedMessage += originalMessage.substring (0,i) + "<br>";
+                    temp = originalMessage.substring (i+1,originalMessage.length());
+                    originalMessage = temp;
+                    break;
+                }
+            }
+            
+        return splitMessage(formattedMessage, originalMessage);
+        }
+        else {
+              formattedMessage += originalMessage + "</html>";
+              return formattedMessage;
+        }
+
+    }
     /**
      * @param args the command line arguments
      */
