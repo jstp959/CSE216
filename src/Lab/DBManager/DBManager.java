@@ -9,7 +9,9 @@ import Lab.BusinessObjects.Lab;
 import java.sql.*;
 
 /**
- *
+ *  DBManager deals with the database of labs.
+ * Allows access to current entries, creation of new ones, and deletion.
+ * 
  * @author Rachel Okun
  */
 public class DBManager {
@@ -19,6 +21,11 @@ public class DBManager {
     static String userName = "user06";
     static String psswd = "leak-deer";
 
+    /**
+     * Connects to database.
+     * 
+     * @return  true if successful, false o/w
+     */
     public static boolean connector() {
         try {
             globalCon = DriverManager.getConnection(url, userName, psswd);
@@ -33,6 +40,13 @@ public class DBManager {
         }
     }
 
+    /**
+     * Checks if a lab object has a duplicate in the database already.
+     * Labs are unique if their name and address combination is unique.
+     * 
+     * @param lab   lab object to check
+     * @return      true if it is unique, false o/w
+     */
     public static boolean checkUnique(Lab lab) {
         String querySQL = "select lab_name,street from lab where lab_name = ? AND street = ?";
         PreparedStatement pStmt = null;
@@ -62,6 +76,12 @@ public class DBManager {
         }
     }
 
+    /**
+     * Save a lab object to the database.
+     * 
+     * @param lab   Lab object to save
+     * @return      message with result
+     */
     public static String saveLab(Lab lab) {
         String querySQL = "INSERT INTO lab "
                 + "(lab_name, street, city, us_state_abbr, "
@@ -103,6 +123,15 @@ public class DBManager {
         }
     }
 
+    /**
+     * Test if an int is within a range.
+     * 
+     * @param num   number to test 
+     * @param min   min value
+     * @param max   max value
+     * @return      the number
+     * @throws Exception 
+     */
     private static long testInt(String num, long min, long max) throws Exception {
         long ans;
         try {
@@ -117,6 +146,15 @@ public class DBManager {
 
     }
 
+    /**
+     * Test length of a string against a min and a max.
+     * 
+     * @param str       string to test
+     * @param minLen    minimum length
+     * @param maxLen    maximum length
+     * @return          true if within bounds, false o/w
+     * @throws Exception 
+     */
     private static String testString(String str, int minLen, int maxLen) throws Exception {
         if (str.length() > maxLen || str.length() < minLen) {
             throw new Exception(str + " has a length not in [" + minLen + ", " + maxLen + "]");
@@ -127,6 +165,16 @@ public class DBManager {
         return str;
     }
 
+    /**
+     * Test if a string is less than a max length and does contain another 
+     * specified string.
+     * 
+     * @param str       string to test
+     * @param maxLen    max length
+     * @param x         string that str must contain
+     * @return          string if the criteria are met
+     * @throws Exception 
+     */
     private static String testString(String str, int maxLen, String x) throws Exception {
         if (str.length() > maxLen) {
             throw new Exception(str + " has a length greater than " + maxLen);
@@ -137,6 +185,13 @@ public class DBManager {
         return str;
     }
 
+    /**
+     * Delete lab from database.
+     * 
+     * @param name      name of lab
+     * @param street    street address of lab
+     * @return          true if successful, false o/w
+     */
     public static boolean delete(String name, String street) {
         String querySQL = "delete from lab where lab_name = ? AND street = ?";
         PreparedStatement pStmt = null;
@@ -166,6 +221,9 @@ public class DBManager {
         }
     }
 
+    /**
+     * Close DB connection.
+     */
     public static void closer() {
         try {
             if (globalCon != null) {

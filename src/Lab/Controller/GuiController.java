@@ -9,11 +9,20 @@ import Lab.BusinessObjects.*;
 import Lab.DBManager.*;
 
 /**
- *
+ *  GUI controller deals with communication between GUI and business objects
+ * for lab interactions.
+ * 
  * @author owner
  */
 public class GuiController {
 
+    /**
+     * Check privilege of user logged into system.
+     * Ensures the user has permission to make changes.
+     * 
+     * @param u     Current user logged in to system
+     * @return      true if admin, false o/w
+     */
     public static Boolean checkPrivilege(User u) {
         if (u == null) {
             return false;
@@ -21,6 +30,20 @@ public class GuiController {
         return (u.getPrivilege()).equals("admin");
     }
 
+    /**
+     * Create new Lab object
+     * 
+     * @param name      Lab name
+     * @param street    street address
+     * @param city      city
+     * @param state     2 letter state abbreviation
+     * @param zip       5 digit zip code
+     * @param email     email
+     * @param faxNo     fax number   
+     * @param phoneNo   phone number
+     * @param onSite    whether or not the lab is on-site (relative to hospital)
+     * @return          lab object is creation is successful, null o/w
+     */
     public static Lab createLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         //check other besides just name
         if (isValidLab(name, street, city, state, zip, email, faxNo, phoneNo, onSite)) {
@@ -30,11 +53,41 @@ public class GuiController {
         return null;
     }
 
+    /**
+     * Check if all data is filled in for a new lab to be created.
+     * All fields are mandatory.
+     * 
+     * @param name      lab name
+     * @param street    street address
+     * @param city      city
+     * @param state     2 letter state abbreviation
+     * @param zip       5 digit zip code
+     * @param email     email contact
+     * @param faxNo     fax number
+     * @param phoneNo   phone number
+     * @param onSite    whether the lab is on-site, relative to the hospital
+     * @return          true if lab is valid, false o/w
+     */
     public static boolean isValidLab(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         return !name.equals("") && !street.equals("") && !city.equals("") && !state.equals("")
                 && !zip.equals("") && !email.equals("") && !faxNo.equals("") && !phoneNo.equals("");
     }
 
+    /**
+     * Add new lab to database.
+     * This method deals with the DBManager and ensuring new labs are unique.
+     * 
+     * @param name      lab name
+     * @param street    street address
+     * @param city      city
+     * @param state     2 letter state abbreviation
+     * @param zip       5 digit zip code
+     * @param email     email contact
+     * @param faxNo     fax number
+     * @param phoneNo   phone number
+     * @param onSite    whether the lab is on-site, relative to the hospital
+     * @return          message with result
+     */
     public static String addLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         //check privilege
         if (!DBManager.connector()) {

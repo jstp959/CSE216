@@ -16,7 +16,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ *  Test class for ExamType classes/methods.
+ * 
  * @author owner
  */
 public class DBManagerJUnitTest {

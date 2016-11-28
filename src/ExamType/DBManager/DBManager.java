@@ -9,7 +9,9 @@ import ExamType.BusinessObjects.*;
 import java.sql.*;
 
 /**
- *
+ *  Database Manager deals with transactions with the database.
+ * Creates new objects and views existing ones.
+ * 
  * @author Rachel Okun
  */
 public class DBManager {
@@ -19,6 +21,11 @@ public class DBManager {
     static String userName = "user06";
     static String psswd = "leak-deer";
 
+    /**
+     * Opens database connection.
+     * 
+     * @return true if connected, false o/w
+     */
     public static boolean connector() {
         try {
             globalCon = DriverManager.getConnection(url, userName, psswd);
@@ -33,6 +40,12 @@ public class DBManager {
         }
     }
 
+    /**
+     * Checks if an ExamType object has a duplicate in the database already.
+     * 
+     * @param examType  new ExamType object to be checked
+     * @return          true if unique, false o/w
+     */
     public static Boolean checkUnique(ExamType examType) {
         String querySQL = "select exam_type_name from exam_type where exam_type_name = ?";
         PreparedStatement pStmt = null;
@@ -65,6 +78,12 @@ public class DBManager {
 //        return null;
 //    }
 
+    /**
+     * Method to save an ExamType object into the database.
+     * 
+     * @param examType  new object to save
+     * @return          message with result
+     */
     public static String saveExamType(ExamType examType) {
         String querySQL = "INSERT INTO exam_type "
                 + "(exam_type_name, description, status0) "
@@ -99,13 +118,27 @@ public class DBManager {
         }
     }
 
+    /**
+     * Test length of a string against a min and a max.
+     * 
+     * @param str       string to test
+     * @param minLen    minimum length
+     * @param maxLen    maximum length
+     * @return          true if within bounds, false o/w
+     * @throws Exception 
+     */
     private static String testString(String str, int minLen, int maxLen) throws Exception {
         if (str.length() > maxLen || str.length() < minLen) {
             throw new Exception(str + " has a length not in [" + minLen + ", " + maxLen + "]");
         }
         return str;
     }
-    
+    /**
+     * Delete and ExamType from the database.
+     * 
+     * @param name  name of ExamType to delete
+     * @return      true if successful, false o/w
+     */
     public static boolean delete(String name) {
         String querySQL = "delete from exam_type where exam_type_name = ?";
         PreparedStatement pStmt = null;
@@ -134,6 +167,9 @@ public class DBManager {
         }
     }
 
+    /**
+     * Close database connection
+     */
     public static void closer() {
         try {
             if (globalCon != null) {

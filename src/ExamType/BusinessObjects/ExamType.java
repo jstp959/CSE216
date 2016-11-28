@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ExamType.BusinessObjects;
 
 /**
- * Blah
+ * Exam Type is a category of exam that can be done on a patient.
+ * It contains the name, a description, and can be either active or inactive. 
  *
  * @author Rachel
  * @version Nov 10, 2016
