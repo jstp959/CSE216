@@ -12,7 +12,7 @@ import Lab.DBManager.*;
  *  GUI controller deals with communication between GUI and business objects
  * for lab interactions.
  * 
- * @author owner
+ * @author JSP, Ferg
  */
 public class GuiController {
 

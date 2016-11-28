@@ -8,7 +8,7 @@ package Lab.BusinessObjects;
 /**
  *  Address represents a street address for a physical location.
  * 
- * @author owner
+ * @author Elise
  */
 public class Address implements Comparable<Address>{
     private final String street;

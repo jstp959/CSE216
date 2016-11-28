@@ -3,9 +3,7 @@ package Lab.GUI;
 
 import Lab.Controller.*;
 import java.awt.Color;
-//elise!!!!!!!!!!
-//CHRISSSS!!!!
-//Rachel :-) 
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,8 +12,7 @@ import java.awt.Color;
  */
 /**
  *
- * @authors Chris Alexander, Elise Cross, Rachel Okun, John St. Pierre, Ferguson
- * Watkins
+ * @authors Chris Alexander
  */
 public class GUI extends javax.swing.JFrame {
 

@@ -9,7 +9,7 @@ package Lab.BusinessObjects;
  *  Lab object represents a physical lab location.
  * Labs are utilized by hospital for testing, etc.
  * 
- * @author owner
+ * @author Elise
  */
 public class Lab implements Comparable<Lab> {
 

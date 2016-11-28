@@ -5,7 +5,7 @@ package ExamType.BusinessObjects;
  * Exam Type is a category of exam that can be done on a patient.
  * It contains the name, a description, and can be either active or inactive. 
  *
- * @author Rachel
+ * @author Elise
  * @version Nov 10, 2016
  */
 public class ExamType implements Comparable<ExamType> {

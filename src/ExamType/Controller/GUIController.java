@@ -10,7 +10,7 @@ import ExamType.GUI.*;
  * Handles interaction between GUI and business objects when interacting 
  * with ExamTypes.
  * 
- * @author elisecross
+ * @author JSP, Ferg
  */
 public class GUIController {
     
