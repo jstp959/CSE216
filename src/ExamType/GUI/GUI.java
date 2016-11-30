@@ -46,9 +46,15 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         examTypeDescriptionField = new javax.swing.JTextArea();
         addNewETButton = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        examTypeList = new javax.swing.JList<>();
         addExamTypeStatus = new javax.swing.JLabel();
+        examTypeUpdateScrollPane = new javax.swing.JScrollPane();
+        examTypeUpdatePanel = new javax.swing.JPanel();
+        examTypeUpdateLabel = new javax.swing.JLabel();
+        examTypeListScrollPane = new javax.swing.JScrollPane();
+        labList = new javax.swing.JList<>();
+        examTypeUpdateButton = new javax.swing.JButton();
+        examTypeActivationButton = new javax.swing.JButton();
+        examTypeRefreshButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,7 +92,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel1.setMinimumSize(new java.awt.Dimension(82, 72));
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        examTypeScrollPane.setBorder(null);
+        examTypeScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         addETHeader.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         addETHeader.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -119,8 +125,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane2.setViewportView(examTypeList);
-
         addExamTypeStatus.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         addExamTypeStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addExamTypeStatus.setText("                                   ");
@@ -134,51 +138,128 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(examTypePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(examTypePaneLayout.createSequentialGroup()
                         .addComponent(examTypeNameLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(examTypeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(examTypeDescriptionLabel))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(examTypePaneLayout.createSequentialGroup()
-                .addGroup(examTypePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(examTypeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(examTypeDescriptionLabel)
                     .addGroup(examTypePaneLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(examTypePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addETHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(examTypePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(examTypePaneLayout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(addETHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(6, 6, 6))))
+                    .addGroup(examTypePaneLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(addNewETButton, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(examTypePaneLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(addExamTypeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(examTypePaneLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(addNewETButton, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addComponent(addExamTypeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
         );
         examTypePaneLayout.setVerticalGroup(
             examTypePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(examTypePaneLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(addETHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(examTypePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(examTypePaneLayout.createSequentialGroup()
-                        .addGroup(examTypePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(examTypeNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(examTypeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(examTypeDescriptionLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(examTypePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(examTypeNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(examTypeNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(examTypeDescriptionLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addNewETButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addExamTypeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addExamTypeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         examTypeScrollPane.setViewportView(examTypePane);
+
+        examTypeUpdateScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        examTypeUpdateLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        examTypeUpdateLabel.setText("Update Exam Types");
+
+        labList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        examTypeListScrollPane.setViewportView(labList);
+
+        examTypeUpdateButton.setBackground(new java.awt.Color(250, 0, 0));
+        examTypeUpdateButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        examTypeUpdateButton.setForeground(new java.awt.Color(238, 238, 238));
+        examTypeUpdateButton.setText("Update Lab");
+        examTypeUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                examTypeUpdateButtonActionPerformed(evt);
+            }
+        });
+
+        examTypeActivationButton.setBackground(new java.awt.Color(250, 0, 0));
+        examTypeActivationButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        examTypeActivationButton.setForeground(new java.awt.Color(238, 238, 238));
+        examTypeActivationButton.setText("Deactivate");
+        examTypeActivationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                examTypeActivationButtonActionPerformed(evt);
+            }
+        });
+
+        examTypeRefreshButton.setBackground(new java.awt.Color(250, 0, 0));
+        examTypeRefreshButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        examTypeRefreshButton.setForeground(new java.awt.Color(238, 238, 238));
+        examTypeRefreshButton.setText("Refresh Labs");
+        examTypeRefreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                examTypeRefreshButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout examTypeUpdatePanelLayout = new javax.swing.GroupLayout(examTypeUpdatePanel);
+        examTypeUpdatePanel.setLayout(examTypeUpdatePanelLayout);
+        examTypeUpdatePanelLayout.setHorizontalGroup(
+            examTypeUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(examTypeUpdatePanelLayout.createSequentialGroup()
+                .addGroup(examTypeUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, examTypeUpdatePanelLayout.createSequentialGroup()
+                        .addGap(0, 246, Short.MAX_VALUE)
+                        .addComponent(examTypeRefreshButton))
+                    .addGroup(examTypeUpdatePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(examTypeListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
+                    .addGroup(examTypeUpdatePanelLayout.createSequentialGroup()
+                        .addGroup(examTypeUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(examTypeUpdateLabel)
+                            .addGroup(examTypeUpdatePanelLayout.createSequentialGroup()
+                                .addGap(128, 128, 128)
+                                .addGroup(examTypeUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(examTypeActivationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(examTypeUpdateButton))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        examTypeUpdatePanelLayout.setVerticalGroup(
+            examTypeUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(examTypeUpdatePanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(examTypeUpdateLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(examTypeRefreshButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(examTypeListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(examTypeUpdateButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(examTypeActivationButton)
+                .addContainerGap())
+        );
+
+        examTypeUpdateScrollPane.setViewportView(examTypeUpdatePanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,14 +267,17 @@ public class GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(examTypeScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(examTypeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(examTypeUpdateScrollPane)
+                        .addGap(29, 29, 29))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,9 +287,11 @@ public class GUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(examTypeScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(examTypeUpdateScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                    .addComponent(examTypeScrollPane))
+                .addContainerGap())
         );
 
         pack();
@@ -236,6 +322,18 @@ public class GUI extends javax.swing.JFrame {
         
         addExamTypeStatus.setText(splitMessage(message));
     }//GEN-LAST:event_addNewETButtonMouseClicked
+
+    private void examTypeUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examTypeUpdateButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_examTypeUpdateButtonActionPerformed
+
+    private void examTypeActivationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examTypeActivationButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_examTypeActivationButtonActionPerformed
+
+    private void examTypeRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examTypeRefreshButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_examTypeRefreshButtonActionPerformed
 
     private String splitMessage(String originalMessage){
         String formattedMessage = "<html>";
@@ -301,17 +399,23 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel addETHeader;
     private javax.swing.JLabel addExamTypeStatus;
     private javax.swing.JButton addNewETButton;
+    private javax.swing.JButton examTypeActivationButton;
     private javax.swing.JTextArea examTypeDescriptionField;
     private javax.swing.JLabel examTypeDescriptionLabel;
-    private javax.swing.JList<String> examTypeList;
+    private javax.swing.JScrollPane examTypeListScrollPane;
     private javax.swing.JTextField examTypeNameField;
     private javax.swing.JLabel examTypeNameLabel;
     private javax.swing.JPanel examTypePane;
+    private javax.swing.JButton examTypeRefreshButton;
     private javax.swing.JScrollPane examTypeScrollPane;
+    private javax.swing.JButton examTypeUpdateButton;
+    private javax.swing.JLabel examTypeUpdateLabel;
+    private javax.swing.JPanel examTypeUpdatePanel;
+    private javax.swing.JScrollPane examTypeUpdateScrollPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> labList;
     // End of variables declaration//GEN-END:variables
 }
