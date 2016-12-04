@@ -90,17 +90,17 @@ public class DBManager {
             ResultSet result = pStmt.executeQuery();
             ArrayList<Lab> labs = new ArrayList<>();
             while (result.next())
-            {
+            { //lab_name, street, city, us_state_abbr, zip, email, fnum, pnum, onsite
                 //lab_name, street, city, us_state_abbr, zip, email, fnum, pnum, onsite
-                    String lab_name = result.getString(1);
-                    String street = result.getString(2);
-                    String city = result.getString(3);
-                    String state = result.getString(4);
-                    String zip = result.getString(5);
-                    String email = result.getString(6);
-                    String fnum = result.getString(7);
-                    String pnum = result.getString(8);
-                    String onOffSite = result.getString(9);
+                    String lab_name = result.getString("lab_name");
+                    String street = result.getString("street");
+                    String city = result.getString("city");
+                    String state = result.getString("us_state_abbr");
+                    String zip = result.getString("zip");
+                    String email = result.getString("email");
+                    String fnum = result.getString("fnum");
+                    String pnum = result.getString("pnum");
+                    String onOffSite = result.getString("onsite");
                     Boolean onSite;
                     if (onOffSite == "On Site") { 
                         onSite = true;
