@@ -10,9 +10,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- *  DBManager deals with the database of labs.
- * Allows access to current entries, creation of new ones, and deletion.
- * 
+ * DBManager deals with the database of labs. Allows access to current entries,
+ * creation of new ones, and deletion.
+ *
  * @author Rachel Okun
  */
 public class DBManager {
@@ -24,8 +24,8 @@ public class DBManager {
 
     /**
      * Connects to database.
-     * 
-     * @return  true if successful, false o/w
+     *
+     * @return true if successful, false o/w
      */
     public static boolean connector() {
         try {
@@ -42,11 +42,11 @@ public class DBManager {
     }
 
     /**
-     * Checks if a lab object has a duplicate in the database already.
-     * Labs are unique if their name and address combination is unique.
-     * 
-     * @param lab   lab object to check
-     * @return      true if it is unique, false o/w
+     * Checks if a lab object has a duplicate in the database already. Labs are
+     * unique if their name and address combination is unique.
+     *
+     * @param lab lab object to check
+     * @return true if it is unique, false o/w
      */
     public static boolean checkUnique(Lab lab) {
         String querySQL = "select lab_name,street from lab where lab_name = ? AND street = ?";
@@ -76,11 +76,12 @@ public class DBManager {
             }
         }
     }
-    
+
     /**
-     * Method to send an arrayList of ExamType objects to the GUIController and GUI. 
-     * 
-     * @return          an arrayList of ExamTypes
+     * Method to send an arrayList of ExamType objects to the GUIController and
+     * GUI.
+     *
+     * @return an arrayList of ExamTypes
      */
     public static ArrayList<Lab> getAllLabs() {
         String querySQL = "select * from lab";
@@ -89,34 +90,32 @@ public class DBManager {
             pStmt = globalCon.prepareStatement(querySQL);
             ResultSet result = pStmt.executeQuery();
             ArrayList<Lab> labs = new ArrayList<>();
-            while (result.next())
-            { 
-                    String lab_name = result.getString("lab_name");
-                    String street = result.getString("street");
-                    String city = result.getString("city");
-                    String state = result.getString("us_state_abbr");
-                    String zip = result.getString("zip");
-                    String email = result.getString("email");
-                    String fnum = result.getString("fnum");
-                    String pnum = result.getString("pnum");
-                    String onOffSite = result.getString("onsite");
-                    Boolean onSite;
-                    if (onOffSite == "On Site") { 
-                        onSite = true;
-                    }
-                    else {
-                        onSite = false; 
-                    }
-                    labs.add(new Lab(lab_name, street, city, state, zip, email, fnum, pnum, onSite));
-                    System.out.println(lab_name + " " +
-                                        street + " " +
-                                        city + " " +
-                                        state + " " +
-                                        zip + " " +
-                                        email + " " +
-                                        fnum + " " +
-                                        pnum + " " +
-                                        onOffSite);
+            while (result.next()) {
+                String lab_name = result.getString("lab_name");
+                String street = result.getString("street");
+                String city = result.getString("city");
+                String state = result.getString("us_state_abbr");
+                String zip = result.getString("zip");
+                String email = result.getString("email");
+                String fnum = result.getString("fnum");
+                String pnum = result.getString("pnum");
+                String onOffSite = result.getString("onsite");
+                Boolean onSite;
+                if (onOffSite == "On Site") {
+                    onSite = true;
+                } else {
+                    onSite = false;
+                }
+                labs.add(new Lab(lab_name, street, city, state, zip, email, fnum, pnum, onSite));
+                System.out.println(lab_name + " "
+                        + street + " "
+                        + city + " "
+                        + state + " "
+                        + zip + " "
+                        + email + " "
+                        + fnum + " "
+                        + pnum + " "
+                        + onOffSite);
             }
             return labs;
         } catch (SQLException e) {
@@ -139,15 +138,48 @@ public class DBManager {
 
     /**
      * Save a lab object to the database.
-     * 
-     * @param lab   Lab object to save
-     * @return      message with result
+     *
+     * @param lab Lab object to save
+     * @return message with result
      */
     public static String saveLab(Lab lab) {
         String querySQL = "INSERT INTO lab "
                 + "(lab_name, street, city, us_state_abbr, "
                 + "zip, email, fnum, pnum, onsite) "
                 + "VALUES (?,?,?,?,?,?,?,?,?)";
+        return saveUpdateLab(lab, querySQL, 1, 2, 3, 4, 5, 6, 7, 8, 9, "Added");
+    }
+
+    /**
+     * Method to update an ExamType object into the database.
+     *
+     * @param examType new object to save
+     * @return message with result
+     */
+    public static String updateExamType(Lab lab) { //, String type) {
+        String querySQL = "update lab set city = ?, us_state_abbr = ?, "
+                + "zip = ?, email = ?, fnum = ?, pnum = ?, onsite = ? where lab_name = ? AND street = ?";
+        return saveUpdateLab(lab, querySQL, 8, 9, 1, 2, 3, 4, 5, 6, 7, "Updated");
+    }
+
+    /**
+     * Method to save or to update an ExamType object into the database.
+     *
+     * @param examType new object to save
+     * @param querySQl string query
+     * @param a sql index for name
+     * @param b sql index for street
+     * @param c sql index for city
+     * @param d sql index for state
+     * @param e sql index for zip
+     * @param f sql index for email
+     * @param g sql index for fnum
+     * @param h sql index for pnum
+     * @param i sql index for status
+     * @param Action the action (either save new or update)
+     * @return message with result
+     */
+    public static String saveUpdateLab(Lab lab, String querySQL, int a, int b, int c, int d, int e, int f, int g, int h, int i, String action) {
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
@@ -168,10 +200,10 @@ public class DBManager {
             pStmt.setString(9, status);
             pStmt.executeUpdate();
             return "Lab \"" + lab.getName() + "\" Added";//true
-        } catch (SQLException e) {
-            return "Error: Update Failed (Contact developers): " + e.getMessage(); //false
-        } catch (Exception e) {
-            return "Error: " + e.getMessage(); //false
+        } catch (SQLException ex) {
+            return "Error: Update Failed (Contact developers): " + ex.getMessage(); //false
+        } catch (Exception ex) {
+            return "Error: " + ex.getMessage(); //false
         } finally {
             if (pStmt != null) {
                 try {
@@ -186,12 +218,12 @@ public class DBManager {
 
     /**
      * Test if an int is within a range.
-     * 
-     * @param num   number to test 
-     * @param min   min value
-     * @param max   max value
-     * @return      the number
-     * @throws Exception 
+     *
+     * @param num number to test
+     * @param min min value
+     * @param max max value
+     * @return the number
+     * @throws Exception
      */
     private static long testInt(String num, long min, long max) throws Exception {
         long ans;
@@ -209,12 +241,12 @@ public class DBManager {
 
     /**
      * Test length of a string against a min and a max.
-     * 
-     * @param str       string to test
-     * @param minLen    minimum length
-     * @param maxLen    maximum length
-     * @return          true if within bounds, false o/w
-     * @throws Exception 
+     *
+     * @param str string to test
+     * @param minLen minimum length
+     * @param maxLen maximum length
+     * @return true if within bounds, false o/w
+     * @throws Exception
      */
     private static String testString(String str, int minLen, int maxLen) throws Exception {
         if (str.length() > maxLen || str.length() < minLen) {
@@ -227,14 +259,14 @@ public class DBManager {
     }
 
     /**
-     * Test if a string is less than a max length and does contain another 
+     * Test if a string is less than a max length and does contain another
      * specified string.
-     * 
-     * @param str       string to test
-     * @param maxLen    max length
-     * @param x         string that str must contain
-     * @return          string if the criteria are met
-     * @throws Exception 
+     *
+     * @param str string to test
+     * @param maxLen max length
+     * @param x string that str must contain
+     * @return string if the criteria are met
+     * @throws Exception
      */
     private static String testString(String str, int maxLen, String x) throws Exception {
         if (str.length() > maxLen) {
@@ -248,10 +280,10 @@ public class DBManager {
 
     /**
      * Delete lab from database.
-     * 
-     * @param name      name of lab
-     * @param street    street address of lab
-     * @return          true if successful, false o/w
+     *
+     * @param name name of lab
+     * @param street street address of lab
+     * @return true if successful, false o/w
      */
     public static boolean delete(String name, String street) {
         String querySQL = "delete from lab where lab_name = ? AND street = ?";
