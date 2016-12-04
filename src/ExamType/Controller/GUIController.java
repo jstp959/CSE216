@@ -82,8 +82,14 @@ public class GUIController {
         }        
     }
     
+    public static String updateExamType(String name, String desc){
+        return " ";
+    }
+    
     public static ArrayList<ExamType> refreshList(){
+        DBManager.connector();
         examTypeList = DBManager.getAllExamTypes();
+        DBManager.closer();
         return examTypeList;
     }
     

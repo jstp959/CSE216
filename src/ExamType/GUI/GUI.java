@@ -19,6 +19,7 @@ import javax.swing.DefaultListModel;
 public class GUI extends javax.swing.JFrame {
 
     DefaultListModel dlm = new DefaultListModel();
+    boolean isUpdate = false;
 
     /**
      * Creates new form ExamType
@@ -197,6 +198,11 @@ public class GUI extends javax.swing.JFrame {
         examTypeSelectButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         examTypeSelectButton.setForeground(new java.awt.Color(238, 238, 238));
         examTypeSelectButton.setText("Select Exam Type");
+        examTypeSelectButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                examTypeSelectButtonMouseClicked(evt);
+            }
+        });
         examTypeSelectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 examTypeSelectButtonActionPerformed(evt);
@@ -217,6 +223,11 @@ public class GUI extends javax.swing.JFrame {
         examTypeRefreshButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         examTypeRefreshButton.setForeground(new java.awt.Color(238, 238, 238));
         examTypeRefreshButton.setText("Refresh Exam Types");
+        examTypeRefreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                examTypeRefreshButtonMouseClicked(evt);
+            }
+        });
         examTypeRefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 examTypeRefreshButtonActionPerformed(evt);
@@ -297,8 +308,16 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addNewETButtonActionPerformed
 
     private void addNewETButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewETButtonMouseClicked
-        String message = GUIController.addExamType(examTypeNameField.getText(), examTypeDescriptionField.getText());
-
+        String message;
+        if (isUpdate) {
+            message = GUIController.updateExamType(examTypeNameField.getText(), examTypeDescriptionField.getText());
+            addETHeader.setText("Add Exam Type");
+            addNewETButton.setText("Add New Exam Type");
+            isUpdate = false;
+            examTypeNameField.setEditable(true);
+        } else {
+            message = GUIController.addExamType(examTypeNameField.getText(), examTypeDescriptionField.getText());
+        }
         //Changes the ERROR message to Red and Bold
         if (message.substring(0, 5).equals("Error")) {
             addExamTypeStatus.setForeground(Color.red);
@@ -316,29 +335,42 @@ public class GUI extends javax.swing.JFrame {
         }
         examTypeList.setModel(dlm);
 
-        addExamTypeStatus.setText(splitMessage(message));
+        updateStatus(message);
         refreshList();
     }//GEN-LAST:event_addNewETButtonMouseClicked
 
     private void examTypeSelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examTypeSelectButtonActionPerformed
-        ExamType selectedExamType = selectExamType();
-        examTypeNameField.setText(selectedExamType.getName());
-        examTypeDescriptionField.setText(selectedExamType.getDescription());
     }//GEN-LAST:event_examTypeSelectButtonActionPerformed
-    
+
     private ExamType selectExamType() {
         int index = examTypeList.getSelectedIndex();
+        if(index == -1){
+            updateStatus("Error: Select an item to update");
+            return null;
+        }
         return GUIController.getExamType(index);
     }
 
     private void examTypeActivationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examTypeActivationButtonActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_examTypeActivationButtonActionPerformed
 
     private void examTypeRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examTypeRefreshButtonActionPerformed
-        refreshList();
-
     }//GEN-LAST:event_examTypeRefreshButtonActionPerformed
+
+    private void examTypeSelectButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_examTypeSelectButtonMouseClicked
+        ExamType selectedExamType = selectExamType();
+        examTypeNameField.setText(selectedExamType.getName());
+        examTypeDescriptionField.setText(selectedExamType.getDescription());
+        
+        addNewETButton.setText("Update Exam Type");
+        addETHeader.setText("Add Exam Type");
+        isUpdate = true;
+        examTypeNameField.setEditable(false);
+    }//GEN-LAST:event_examTypeSelectButtonMouseClicked
+
+    private void examTypeRefreshButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_examTypeRefreshButtonMouseClicked
+        refreshList();
+    }//GEN-LAST:event_examTypeRefreshButtonMouseClicked
 
     private void refreshList() {
         ArrayList<ExamType> list = GUIController.refreshList();
@@ -378,6 +410,10 @@ public class GUI extends javax.swing.JFrame {
 
     public String getExamTypeName() {
         return examTypeNameField.getName();
+    }
+    
+    private void updateStatus(String message){
+        addExamTypeStatus.setText(splitMessage(message));
     }
 
     /**
