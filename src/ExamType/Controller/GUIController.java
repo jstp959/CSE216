@@ -1,4 +1,3 @@
-
 package ExamType.Controller;
 
 import ExamType.BusinessObjects.*;
@@ -7,23 +6,21 @@ import ExamType.GUI.*;
 import java.util.ArrayList;
 
 /**
- * GUI Controller for ExamType class.
- * Handles interaction between GUI and business objects when interacting 
- * with ExamTypes.
- * 
+ * GUI Controller for ExamType class. Handles interaction between GUI and
+ * business objects when interacting with ExamTypes.
+ *
  * @author JSP, Ferg
  */
 public class GUIController {
-    
+
     static ArrayList<ExamType> examTypeList;
-    
 
     /**
-     * Check privilege of user logged in to make sure they have authority to 
+     * Check privilege of user logged in to make sure they have authority to
      * access Exam Types.
-     * 
-     * @param u     User logged into system
-     * @return      true if admin, false o/w
+     *
+     * @param u User logged into system
+     * @return true if admin, false o/w
      */
     public static Boolean checkPrivilege(User u) {
         if (u == null) {
@@ -31,34 +28,33 @@ public class GUIController {
         }
         return (u.getPrivilege()).equals("admin");
     }
-    
-    /** 
+
+    /**
      * Create a new Exam Type object in the database
-     * 
-     * @param type  name of new exam type
-     * @param desc  optional description of new exam type
-     * @return      the object created if successful, null o/w
+     *
+     * @param type name of new exam type
+     * @param desc optional description of new exam type
+     * @return the object created if successful, null o/w
      */
     public static ExamType createExamType(String type, String desc) {
-        if(!type.equals("")){
+        if (!type.equals("")) {
             ExamType exam = new ExamType(type, desc);
             return exam;
         }
         return null;
     }
-    
+
     /**
-     * Method to add new Exam Type. 
-     * Deals with checking if the new exam is unique and dealing with the 
-     * database.
-     * 
-     * @param name  name of new exam type
-     * @param desc  optional description
-     * @return      message with the result
+     * Method to add new Exam Type. Deals with checking if the new exam is
+     * unique and dealing with the database.
+     *
+     * @param name name of new exam type
+     * @param desc optional description
+     * @return message with the result
      */
     public static String addExamType(String name, String desc) {
         //TODO: check privilege
-        
+
         //open DB
         if (!DBManager.connector()) {
             return "Error: Connection Failed";
@@ -66,8 +62,7 @@ public class GUIController {
         //create exam type object
         ExamType exam = createExamType(name, desc);
         //check if creation was successfull
-        if(exam == null)
-        {
+        if (exam == null) {
             DBManager.closer();
             return "Error: Exam Type requires a name";
         }
@@ -79,22 +74,24 @@ public class GUIController {
         } else {
             DBManager.closer();
             return "Error: Exam Type with name \"" + name + "\" already exists";
-        }        
+        }
     }
-    
-    public static String updateExamType(String name, String desc){
+
+    public static String updateExamType(String name, String desc) {
         return " ";
     }
-    
-    public static ArrayList<ExamType> refreshList(){
-        DBManager.connector();
-        examTypeList = DBManager.getAllExamTypes();
-        DBManager.closer();
+
+    public static ArrayList<ExamType> refreshList() {
+        try {
+            DBManager.connector();
+            examTypeList = DBManager.getAllExamTypes();
+        } finally {
+            DBManager.closer();
+        }
         return examTypeList;
     }
-    
-    public static ExamType getExamType(int index){
+
+    public static ExamType getExamType(int index) {
         return examTypeList.get(index);
     }
 }
-
