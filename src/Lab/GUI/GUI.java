@@ -19,6 +19,7 @@ import javax.swing.DefaultListModel;
  */
 public class GUI extends javax.swing.JFrame {
 
+    
     boolean isUpdate = false;
     /**
      * Creates new form ExamType
