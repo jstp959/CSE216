@@ -10,9 +10,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- *  Database Manager deals with transactions with the database.
- * Creates new objects and views existing ones.
- * 
+ * Database Manager deals with transactions with the database. Creates new
+ * objects and views existing ones.
+ *
  * @author Rachel Okun
  */
 public class DBManager {
@@ -24,7 +24,7 @@ public class DBManager {
 
     /**
      * Opens database connection.
-     * 
+     *
      * @return true if connected, false o/w
      */
     public static boolean connector() {
@@ -43,16 +43,16 @@ public class DBManager {
 
     /**
      * Checks if an ExamType object has a duplicate in the database already.
-     * 
-     * @param examType  new ExamType object to be checked
-     * @return          true if unique, false o/w
+     *
+     * @param examType new ExamType object to be checked
+     * @return true if unique, false o/w
      */
     public static Boolean checkUnique(ExamType examType) {
-        String querySQL = "select exam_type_name from exam_type where exam_type_name = ?";
+        String querySQL = "select * where exam_type_name = ?";
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
-            pStmt.setString(1, testString(examType.getName(), 0, 20));
+            pStmt.setString(1, testString(examType.getName(), 0, 40));
             ResultSet result = pStmt.executeQuery();
             return (!result.next());
         } catch (SQLException e) {
@@ -74,28 +74,32 @@ public class DBManager {
             }
         }
     }
+
     /**
-     * Method to send an arrayList of ExamType objects to the GUIController and GUI. 
-     * 
-     * @return          an arrayList of ExamTypes
+     * Method to send an arrayList of ExamType objects to the GUIController and
+     * GUI.
+     *
+     * @return an arrayList of ExamTypes
      */
     public static ArrayList<ExamType> getAllExamTypes() {
-        String querySQL = "select exam_type_name, description, status0 from exam_type";
+        String querySQL = "select * from exam_type where status0 = 'Active'";
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
             ResultSet result = pStmt.executeQuery();
             ArrayList<ExamType> examTypes = new ArrayList<>();
-            while (result.next())
-	    {
-                    String exam_name = result.getString(0);
-                    String desc = result.getString(1);
-                    examTypes.add(new ExamType(exam_name, desc));
-                    System.out.println(exam_name +" "+desc);
+            while (result.next()) {
+                String exam_name = result.getString("exam_type_name");
+                String desc = result.getString("description");
+                examTypes.add(new ExamType(exam_name, desc));
+                System.out.println(exam_name + " " + desc);
             }
             return examTypes;
+        } catch (SQLException e) {
+            System.err.println("**SQLException: " + e.getMessage());
+            return null;
         } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
+            System.err.println("**Exception: " + e.getMessage());
             return null;
         } finally {
             if (pStmt != null) {
@@ -108,34 +112,40 @@ public class DBManager {
             }
         }
     }
-    
+
 //    public static ExamType getExamType(String name) {
 //        return null;
 //    }
-
     /**
      * Method to save an ExamType object into the database.
-     * 
-     * @param examType  new object to save
-     * @param type      new object or updated object
-     * @return          message with result
+     *
+     * @param examType new object to save
+     * @return message with result
      */
-    public static String saveExamType(ExamType examType){ //, String type) {
-        String querySQL = "";
-        //if (type == "new") {
-            querySQL = "INSERT INTO exam_type "
+    public static String saveExamType(ExamType examType) { //, String type) {
+        String querySQL = "INSERT INTO exam_type "
                 + "(exam_type_name, description, status0) "
                 + "VALUES (?,?,?)";
-        //}
-        /*else if (type == "update") { 
-            querySQL = "INSERT INTO exam_type "
+        return saveUpdateExamType(examType, querySQL);
+    }
+    /**
+     * Method to update an ExamType object into the database.
+     *
+     * @param examType new object to save
+     * @return message with result
+     */
+    public static String updateExamType(ExamType examType) { //, String type) {
+        String querySQL = "INSERT INTO exam_type "
                 + "(exam_type_name, description, status0) "
                 + "VALUES (?,?,?)";
-        }*/
+        return saveUpdateExamType(examType, querySQL);
+    }
+
+    public static String saveUpdateExamType(ExamType examType, String querySQL) { 
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
-            pStmt.setString(1, testString(examType.getName(), 1, 20));
+            pStmt.setString(1, testString(examType.getName(), 1, 40));
             pStmt.setString(2, testString(examType.getDescription(), 0, 200));
             String status;
             if (examType.getStatus()) {
@@ -164,12 +174,12 @@ public class DBManager {
 
     /**
      * Test length of a string against a min and a max.
-     * 
-     * @param str       string to test
-     * @param minLen    minimum length
-     * @param maxLen    maximum length
-     * @return          true if within bounds, false o/w
-     * @throws Exception 
+     *
+     * @param str string to test
+     * @param minLen minimum length
+     * @param maxLen maximum length
+     * @return true if within bounds, false o/w
+     * @throws Exception
      */
     private static String testString(String str, int minLen, int maxLen) throws Exception {
         if (str.length() > maxLen || str.length() < minLen) {
@@ -177,18 +187,19 @@ public class DBManager {
         }
         return str;
     }
+
     /**
      * Delete and ExamType from the database.
-     * 
-     * @param name  name of ExamType to delete
-     * @return      true if successful, false o/w
+     *
+     * @param name name of ExamType to delete
+     * @return true if successful, false o/w
      */
     public static boolean delete(String name) {
         String querySQL = "delete from exam_type where exam_type_name = ?";
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
-            pStmt.setString(1, testString(name, 0, 20));
+            pStmt.setString(1, testString(name, 0, 40));
             pStmt.executeUpdate();
             return true;
         } catch (SQLException e) {
