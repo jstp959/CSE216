@@ -186,11 +186,6 @@ public class GUI extends javax.swing.JFrame {
         examTypeUpdateLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         examTypeUpdateLabel.setText("Update Exam Types");
 
-        examTypeList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         examTypeList.setToolTipText("");
         examTypeListScrollPane.setViewportView(examTypeList);
 
@@ -377,7 +372,7 @@ public class GUI extends javax.swing.JFrame {
 
         DefaultListModel dlm = new DefaultListModel();
         for (ExamType exam : list) {
-            dlm.addElement(exam);
+            dlm.addElement(exam.getName());
         }
         examTypeList.setModel(dlm);
 
