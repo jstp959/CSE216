@@ -25,6 +25,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        refreshLabList();
     }
 
     /**
@@ -259,11 +260,6 @@ public class GUI extends javax.swing.JFrame {
         labUpdateLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         labUpdateLabel.setText("Update Labs");
 
-        labList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         labListScrollPane.setViewportView(labList);
 
         labSelectButton.setBackground(new java.awt.Color(250, 0, 0));
@@ -479,6 +475,7 @@ public class GUI extends javax.swing.JFrame {
         Lab selectedLab = selectLab();
         labNameField.setText(selectedLab.getName());
         labStreetField.setText(selectedLab.getAddress().getStreet());
+        labStateField.setText(selectedLab.getAddress().getState());
         labCityField.setText(selectedLab.getAddress().getCity());
         labEmailField.setText(selectedLab.getEmail());
         labFaxField.setText(selectedLab.getFaxNo());

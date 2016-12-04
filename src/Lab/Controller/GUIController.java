@@ -115,9 +115,13 @@ public class GUIController {
         //TODO
     }
     public static ArrayList<Lab> refreshList(){
-        DBManager.connector();
-        labList = DBManager.getAllLabs();
-        DBManager.closer();
+        try {
+            DBManager.connector();
+            labList = DBManager.getAllLabs();
+        }
+        finally {
+            DBManager.closer();
+        }
         return labList;
     }
 
