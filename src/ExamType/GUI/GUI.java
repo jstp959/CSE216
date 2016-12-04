@@ -340,9 +340,9 @@ public class GUI extends javax.swing.JFrame {
 
     private ExamType selectExamType() {
         int index = examTypeList.getSelectedIndex();
-        if(index == -1){
-            updateStatus("Error: Select an item to update");
-            return null;
+        if (index == -1) {
+            //updateStatus("Error: Select an item to update");
+            return GUIController.getExamType(0);
         }
         return GUIController.getExamType(index);
     }
@@ -357,7 +357,7 @@ public class GUI extends javax.swing.JFrame {
         ExamType selectedExamType = selectExamType();
         examTypeNameField.setText(selectedExamType.getName());
         examTypeDescriptionField.setText(selectedExamType.getDescription());
-        
+
         addNewETButton.setText("Update Exam Type");
         addETHeader.setText("Add Exam Type");
         isUpdate = true;
@@ -407,8 +407,8 @@ public class GUI extends javax.swing.JFrame {
     public String getExamTypeName() {
         return examTypeNameField.getName();
     }
-    
-    private void updateStatus(String message){
+
+    private void updateStatus(String message) {
         addExamTypeStatus.setText(splitMessage(message));
     }
 
