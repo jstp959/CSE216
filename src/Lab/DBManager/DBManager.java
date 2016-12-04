@@ -92,15 +92,15 @@ public class DBManager {
             while (result.next())
             {
                 //lab_name, street, city, us_state_abbr, zip, email, fnum, pnum, onsite
-                    String lab_name = result.getString(0);
-                    String street = result.getString(1);
-                    String city = result.getString(2);
-                    String state = result.getString(3);
-                    String zip = result.getString(4);
-                    String email = result.getString(5);
-                    String fnum = result.getString(6);
-                    String pnum = result.getString(7);
-                    String onOffSite = result.getString(8);
+                    String lab_name = result.getString(1);
+                    String street = result.getString(2);
+                    String city = result.getString(3);
+                    String state = result.getString(4);
+                    String zip = result.getString(5);
+                    String email = result.getString(6);
+                    String fnum = result.getString(7);
+                    String pnum = result.getString(8);
+                    String onOffSite = result.getString(9);
                     Boolean onSite;
                     if (onOffSite == "On Site") { 
                         onSite = true;
