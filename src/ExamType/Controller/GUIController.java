@@ -4,6 +4,7 @@ package ExamType.Controller;
 import ExamType.BusinessObjects.*;
 import ExamType.DBManager.*;
 import ExamType.GUI.*;
+import java.util.ArrayList;
 
 /**
  * GUI Controller for ExamType class.
@@ -13,6 +14,8 @@ import ExamType.GUI.*;
  * @author JSP, Ferg
  */
 public class GUIController {
+    
+    static ArrayList<ExamType> examTypeList;
     
 
     /**
@@ -77,6 +80,16 @@ public class GUIController {
             DBManager.closer();
             return "Error: Exam Type with name \"" + name + "\" already exists";
         }        
+    }
+    
+    public static ArrayList<ExamType> refreshList(){
+        //ArrayList<ExamType> returnList = DBManager.getAllExamTypes();
+        examTypeList= DBManager.getAllExamTypes();
+        return examTypeList;
+    }
+    
+    public static ExamType getExamType(int index){
+        return examTypeList.get(index);
     }
 }
 

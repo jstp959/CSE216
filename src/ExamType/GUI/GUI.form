@@ -295,9 +295,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="examTypeUpdateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="examTypeListScrollPane" alignment="0" min="-2" pref="329" max="-2" attributes="0"/>
-                          <Component id="examTypeRefreshButton" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
-                          <Component id="examTypeUpdateButton" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
-                          <Component id="examTypeActivationButton" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Component id="examTypeRefreshButton" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="examTypeActivationButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="examTypeSelectButton" alignment="0" pref="228" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="76" max="32767" attributes="0"/>
                   </Group>
@@ -313,7 +315,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="examTypeListScrollPane" min="-2" pref="217" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="examTypeUpdateButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="examTypeSelectButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="examTypeActivationButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -356,7 +358,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="examTypeUpdateButton">
+            <Component class="javax.swing.JButton" name="examTypeSelectButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="fa" type="rgb"/>
@@ -367,10 +369,10 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ee" green="ee" red="ee" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Update Lab"/>
+                <Property name="text" type="java.lang.String" value="Select Exam Type"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="examTypeUpdateButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="examTypeSelectButtonActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="examTypeActivationButton">
@@ -401,7 +403,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ee" green="ee" red="ee" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Refresh Labs"/>
+                <Property name="text" type="java.lang.String" value="Refresh Exam Types"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="examTypeRefreshButtonActionPerformed"/>

@@ -1,6 +1,7 @@
 package ExamType.GUI;
 
 import ExamType.Controller.*;
+import ExamType.BusinessObjects.*;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -13,10 +14,10 @@ import javax.swing.DefaultListModel;
 /**
  *
  * @authors Chris Alexander
- * 
+ *
  */
-
 public class GUI extends javax.swing.JFrame {
+
     DefaultListModel dlm = new DefaultListModel();
 
     /**
@@ -53,7 +54,7 @@ public class GUI extends javax.swing.JFrame {
         examTypeUpdateLabel = new javax.swing.JLabel();
         examTypeListScrollPane = new javax.swing.JScrollPane();
         examTypeList = new javax.swing.JList<>();
-        examTypeUpdateButton = new javax.swing.JButton();
+        examTypeSelectButton = new javax.swing.JButton();
         examTypeActivationButton = new javax.swing.JButton();
         examTypeRefreshButton = new javax.swing.JButton();
 
@@ -192,13 +193,13 @@ public class GUI extends javax.swing.JFrame {
         examTypeList.setToolTipText("");
         examTypeListScrollPane.setViewportView(examTypeList);
 
-        examTypeUpdateButton.setBackground(new java.awt.Color(250, 0, 0));
-        examTypeUpdateButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        examTypeUpdateButton.setForeground(new java.awt.Color(238, 238, 238));
-        examTypeUpdateButton.setText("Update Lab");
-        examTypeUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+        examTypeSelectButton.setBackground(new java.awt.Color(250, 0, 0));
+        examTypeSelectButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        examTypeSelectButton.setForeground(new java.awt.Color(238, 238, 238));
+        examTypeSelectButton.setText("Select Exam Type");
+        examTypeSelectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                examTypeUpdateButtonActionPerformed(evt);
+                examTypeSelectButtonActionPerformed(evt);
             }
         });
 
@@ -215,7 +216,7 @@ public class GUI extends javax.swing.JFrame {
         examTypeRefreshButton.setBackground(new java.awt.Color(250, 0, 0));
         examTypeRefreshButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         examTypeRefreshButton.setForeground(new java.awt.Color(238, 238, 238));
-        examTypeRefreshButton.setText("Refresh Labs");
+        examTypeRefreshButton.setText("Refresh Exam Types");
         examTypeRefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 examTypeRefreshButtonActionPerformed(evt);
@@ -231,9 +232,10 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(examTypeUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(examTypeUpdateLabel)
                     .addComponent(examTypeListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(examTypeRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(examTypeUpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(examTypeActivationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(examTypeRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(examTypeUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(examTypeActivationButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(examTypeSelectButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         examTypeUpdatePanelLayout.setVerticalGroup(
@@ -246,7 +248,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(examTypeListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(examTypeUpdateButton)
+                .addComponent(examTypeSelectButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(examTypeActivationButton)
                 .addContainerGap())
@@ -297,69 +299,87 @@ public class GUI extends javax.swing.JFrame {
     private void addNewETButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewETButtonMouseClicked
         String message = GUIController.addExamType(examTypeNameField.getText(), examTypeDescriptionField.getText());
 
-        
         //Changes the ERROR message to Red and Bold
-        if (message.substring(0,5).equals("Error")){
+        if (message.substring(0, 5).equals("Error")) {
             addExamTypeStatus.setForeground(Color.red);
             addExamTypeStatus.setFont(new java.awt.Font("Lucida Grande", 1, 16));
             examTypeNameLabel.setForeground(Color.red);
             examTypeNameLabel.setText("*Exam Type Name:");
 
-        }
-        else{
+        } else {
             addExamTypeStatus.setForeground(Color.black);
             addExamTypeStatus.setFont(new java.awt.Font("Lucida Grande", 0, 16));
             examTypeNameLabel.setForeground(Color.black);
             examTypeNameLabel.setText(" Exam Type Name:");
             dlm.addElement(examTypeNameField.getText());
-            
 
         }
         examTypeList.setModel(dlm);
-        
+
         addExamTypeStatus.setText(splitMessage(message));
+        refreshList();
     }//GEN-LAST:event_addNewETButtonMouseClicked
 
-    private void examTypeUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examTypeUpdateButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_examTypeUpdateButtonActionPerformed
+    private void examTypeSelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examTypeSelectButtonActionPerformed
+        ExamType selectedExamType = selectExamType();
+        examTypeNameField.setText(selectedExamType.getName());
+        examTypeDescriptionField.setText(selectedExamType.getDescription());
+    }//GEN-LAST:event_examTypeSelectButtonActionPerformed
+    
+    private ExamType selectExamType() {
+        int index = examTypeList.getSelectedIndex();
+        return GUIController.getExamType(index);
+    }
 
     private void examTypeActivationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examTypeActivationButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_examTypeActivationButtonActionPerformed
 
     private void examTypeRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_examTypeRefreshButtonActionPerformed
-        // TODO add your handling code here:
+        refreshList();
+
     }//GEN-LAST:event_examTypeRefreshButtonActionPerformed
 
-    private String splitMessage(String originalMessage){
+    private void refreshList() {
+        ArrayList<ExamType> list = GUIController.refreshList();
+
+        DefaultListModel dlm = new DefaultListModel();
+        for (ExamType exam : list) {
+            dlm.addElement(exam);
+        }
+        examTypeList.setModel(dlm);
+
+    }
+
+    private String splitMessage(String originalMessage) {
         String formattedMessage = "<html>";
         return splitMessage(formattedMessage, originalMessage);
     }
-    private String splitMessage(String formattedMessage, String originalMessage){
-        if (originalMessage.length() > 30){
-            String temp = "";
-            for (int i = 30; i >= 0; i--){
-                if (originalMessage.charAt(i) == ' '){
-                    formattedMessage += originalMessage.substring (0,i) + "<br>";
-                    temp = originalMessage.substring (i+1,originalMessage.length());
+
+    private String splitMessage(String formattedMessage, String originalMessage) {
+        if (originalMessage.length() > 30) {
+            String temp;
+            for (int i = 30; i >= 0; i--) {
+                if (originalMessage.charAt(i) == ' ') {
+                    formattedMessage += originalMessage.substring(0, i) + "<br>";
+                    temp = originalMessage.substring(i + 1, originalMessage.length());
                     originalMessage = temp;
                     break;
                 }
             }
-            
-        return splitMessage(formattedMessage, originalMessage);
-        }
-        else {
-              formattedMessage += originalMessage + "</html>";
-              return formattedMessage;
+
+            return splitMessage(formattedMessage, originalMessage);
+        } else {
+            formattedMessage += originalMessage + "</html>";
+            return formattedMessage;
         }
 
     }
-    
-    public String getExamTypeName(){
+
+    public String getExamTypeName() {
         return examTypeNameField.getName();
     }
+
     /**
      * @param args the command line arguments
      */
@@ -410,7 +430,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel examTypePane;
     private javax.swing.JButton examTypeRefreshButton;
     private javax.swing.JScrollPane examTypeScrollPane;
-    private javax.swing.JButton examTypeUpdateButton;
+    private javax.swing.JButton examTypeSelectButton;
     private javax.swing.JLabel examTypeUpdateLabel;
     private javax.swing.JPanel examTypeUpdatePanel;
     private javax.swing.JScrollPane examTypeUpdateScrollPane;
