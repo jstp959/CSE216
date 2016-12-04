@@ -7,6 +7,7 @@ package Lab.DBManager;
 
 import Lab.BusinessObjects.Lab;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *  DBManager deals with the database of labs.
@@ -64,6 +65,67 @@ public class DBManager {
             System.out.println("Failed: " + e.getMessage());
             System.out.println("Error Type: " + e.getClass().getName());
             return false;
+        } finally {
+            if (pStmt != null) {
+                try {
+                    pStmt.close();
+                } catch (SQLException ex) {
+                    System.out.println("pStmt.close() failed");
+                    System.out.println("Error Type: " + ex.getClass().getName());
+                }
+            }
+        }
+    }
+    
+    /**
+     * Method to send an arrayList of ExamType objects to the GUIController and GUI. 
+     * 
+     * @return          an arrayList of ExamTypes
+     */
+    public static ArrayList<Lab> getAllLabs() {
+        String querySQL = "select exam_type_name, description, status0 from exam_type";
+        PreparedStatement pStmt = null;
+        try {
+            pStmt = globalCon.prepareStatement(querySQL);
+            ResultSet result = pStmt.executeQuery();
+            ArrayList<Lab> labs = new ArrayList<>();
+            while (result.next())
+            {
+                //lab_name, street, city, us_state_abbr, zip, email, fnum, pnum, onsite
+                    String lab_name = result.getString(0);
+                    String street = result.getString(1);
+                    String city = result.getString(2);
+                    String state = result.getString(3);
+                    String zip = result.getString(4);
+                    String email = result.getString(5);
+                    String fnum = result.getString(6);
+                    String pnum = result.getString(7);
+                    String onOffSite = result.getString(8);
+                    Boolean onSite;
+                    if (onOffSite == "On Site") { 
+                        onSite = true;
+                    }
+                    else {
+                        onSite = false; 
+                    }
+                    labs.add(new Lab(lab_name, street, city, state, zip, email, fnum, pnum, onSite));
+                    System.out.println(lab_name + " " +
+                                        street + " " +
+                                        city + " " +
+                                        state + " " +
+                                        zip + " " +
+                                        email + " " +
+                                        fnum + " " +
+                                        pnum + " " +
+                                        onOffSite);
+            }
+            return labs;
+        } catch (SQLException e) {
+            System.err.println("**SQLException: " + e.getMessage());
+            return null;
+        } catch (Exception e) {
+            System.err.println("**Exception: " + e.getMessage());
+            return null;
         } finally {
             if (pStmt != null) {
                 try {
