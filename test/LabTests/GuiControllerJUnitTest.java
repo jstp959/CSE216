@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import Lab.BusinessObjects.*;
-import Lab.Controller.GuiController;
+import Lab.Controller.GUIController;
 
 /**
  *
@@ -31,32 +31,32 @@ public class GuiControllerJUnitTest {
     
     @Test
     public void testCheckPrivilege(){
-        assertEquals(GuiController.checkPrivilege(admin), true);
-        assertEquals(GuiController.checkPrivilege(noAdmin), false);
-        assertEquals(GuiController.checkPrivilege(null), false);
+        assertEquals(GUIController.checkPrivilege(admin), true);
+        assertEquals(GUIController.checkPrivilege(noAdmin), false);
+        assertEquals(GUIController.checkPrivilege(null), false);
     } 
     
     @Test
     public void testCreatLabType(){
         Lab lab1 = new Lab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
             "11570", "jes418", "516", "6328925", true);
-        Lab lab2 = GuiController.createLabType("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
+        Lab lab2 = GUIController.createLabType("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
             "11570", "jes418", "516", "6328925", true);
         
         assertEquals(lab1.compareTo(lab2), 0);
         
-        Lab lab3 = GuiController.createLabType("" , "10 Holyoke Road", "Rockville Centre,", "NY",
+        Lab lab3 = GUIController.createLabType("" , "10 Holyoke Road", "Rockville Centre,", "NY",
             "11570", "jes418", "516", "6328925", true);
         assertEquals(lab3, null);
     }
     
     @Test
     public void testIsValidLab(){
-        Boolean notValid = GuiController.isValidLab("" , "10 Holyoke Road", "Rockville Centre,", "NY",
+        Boolean notValid = GUIController.isValidLab("" , "10 Holyoke Road", "Rockville Centre,", "NY",
             "11570", "jes418", "516", "6328925", true);
         assertFalse(notValid);
         
-        Boolean valid = GuiController.isValidLab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
+        Boolean valid = GUIController.isValidLab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
             "11570", "jes418", "516", "6328925", true);
         assertTrue(valid);
         

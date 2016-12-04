@@ -390,7 +390,7 @@
                           <Component id="labListScrollPane" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
                           <Component id="labRefreshButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labUpdateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labUpdateButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labSelectButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labActivationButton" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="146" max="32767" attributes="0"/>
@@ -407,7 +407,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="labListScrollPane" min="-2" pref="217" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="labUpdateButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="labSelectButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="labActivationButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -449,7 +449,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="labUpdateButton">
+            <Component class="javax.swing.JButton" name="labSelectButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="fa" type="rgb"/>
@@ -460,10 +460,11 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ee" green="ee" red="ee" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Update Lab"/>
+                <Property name="text" type="java.lang.String" value="Select Lab"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="labUpdateButtonActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labSelectButtonMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="labSelectButtonActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="labActivationButton">
@@ -497,6 +498,7 @@
                 <Property name="text" type="java.lang.String" value="Refresh Labs"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labRefreshButtonMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="labRefreshButtonActionPerformed"/>
               </Events>
             </Component>

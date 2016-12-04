@@ -1,6 +1,7 @@
 package Lab.GUI;
 
 
+import Lab.BusinessObjects.Lab;
 import Lab.Controller.*;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ import javax.swing.DefaultListModel;
  * @authors Chris Alexander
  */
 public class GUI extends javax.swing.JFrame {
-    DefaultListModel dlm = new DefaultListModel();
 
+    boolean isUpdate = false;
     /**
      * Creates new form ExamType
      */
@@ -68,7 +69,7 @@ public class GUI extends javax.swing.JFrame {
         labUpdateLabel = new javax.swing.JLabel();
         labListScrollPane = new javax.swing.JScrollPane();
         labList = new javax.swing.JList<>();
-        labUpdateButton = new javax.swing.JButton();
+        labSelectButton = new javax.swing.JButton();
         labActivationButton = new javax.swing.JButton();
         labRefreshButton = new javax.swing.JButton();
 
@@ -265,13 +266,18 @@ public class GUI extends javax.swing.JFrame {
         });
         labListScrollPane.setViewportView(labList);
 
-        labUpdateButton.setBackground(new java.awt.Color(250, 0, 0));
-        labUpdateButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labUpdateButton.setForeground(new java.awt.Color(238, 238, 238));
-        labUpdateButton.setText("Update Lab");
-        labUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+        labSelectButton.setBackground(new java.awt.Color(250, 0, 0));
+        labSelectButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labSelectButton.setForeground(new java.awt.Color(238, 238, 238));
+        labSelectButton.setText("Select Lab");
+        labSelectButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labSelectButtonMouseClicked(evt);
+            }
+        });
+        labSelectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                labUpdateButtonActionPerformed(evt);
+                labSelectButtonActionPerformed(evt);
             }
         });
 
@@ -289,6 +295,11 @@ public class GUI extends javax.swing.JFrame {
         labRefreshButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         labRefreshButton.setForeground(new java.awt.Color(238, 238, 238));
         labRefreshButton.setText("Refresh Labs");
+        labRefreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labRefreshButtonMouseClicked(evt);
+            }
+        });
         labRefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 labRefreshButtonActionPerformed(evt);
@@ -305,7 +316,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(labListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labRefreshButton)
                     .addComponent(labUpdateLabel)
-                    .addComponent(labUpdateButton)
+                    .addComponent(labSelectButton)
                     .addComponent(labActivationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(146, Short.MAX_VALUE))
         );
@@ -319,7 +330,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labUpdateButton)
+                .addComponent(labSelectButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labActivationButton)
                 .addContainerGap())
@@ -360,6 +371,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addNewLabButtonActionPerformed
 
     private void addNewLabButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewLabButtonMouseClicked
+        String message;
+        
         String name = labNameField.getText();
         String street = labStreetField.getText();
         String city = labCityField.getText();
@@ -369,7 +382,18 @@ public class GUI extends javax.swing.JFrame {
         String phoneNo = labPhoneField.getText();
         String email = labEmailField.getText();
         Boolean onSite = labOnSiteCheckBox.isSelected();
-        String message = GuiController.addLabType(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
+        if (isUpdate) {
+            message = GUIController.updateLab(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
+            labNameField.setEditable(true);
+            labStreetField.setEditable(true);
+            addLabHeader.setText("Add Lab");
+            addNewLabButton.setText("Add New Lab");
+        }
+        else{
+            
+            message = GUIController.addLab(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
+
+        }
         
         //Changes the Color of the labels depending on if the field is missing
         if (name.equals("")){
@@ -430,28 +454,68 @@ public class GUI extends javax.swing.JFrame {
         else{
             addLabStatus.setForeground(Color.black);
             addLabStatus.setFont(new java.awt.Font("Lucida Grande", 0, 16));
-            dlm.addElement(labNameField.getText());
             
 
         }
-        labList.setModel(dlm);
-        
-        addLabStatus.setText(splitMessage(message));
+        refreshLabList();
+        updateStatus(message);
         
     }//GEN-LAST:event_addNewLabButtonMouseClicked
 
-    private void labUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labUpdateButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_labUpdateButtonActionPerformed
+    private void labSelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labSelectButtonActionPerformed
+
+    }//GEN-LAST:event_labSelectButtonActionPerformed
 
     private void labActivationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labActivationButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_labActivationButtonActionPerformed
 
     private void labRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labRefreshButtonActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_labRefreshButtonActionPerformed
 
+    private void labSelectButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labSelectButtonMouseClicked
+        isUpdate = true;
+        Lab selectedLab = selectLab();
+        labNameField.setText(selectedLab.getName());
+        labStreetField.setText(selectedLab.getAddress().getStreet());
+        labCityField.setText(selectedLab.getAddress().getCity());
+        labEmailField.setText(selectedLab.getEmail());
+        labFaxField.setText(selectedLab.getFaxNo());
+        labPhoneField.setText(selectedLab.getPhoneNo());
+        labZipField.setText(selectedLab.getAddress().getZip());
+        labOnSiteCheckBox.setSelected(selectedLab.getOnSite());
+        
+        labNameField.setEditable(false);
+        labStreetField.setEditable(false);
+        addLabHeader.setText("Update Lab");
+        addNewLabButton.setText("Update Lab");
+    }//GEN-LAST:event_labSelectButtonMouseClicked
+
+    private void labRefreshButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labRefreshButtonMouseClicked
+        refreshLabList();
+    }//GEN-LAST:event_labRefreshButtonMouseClicked
+
+    private void updateStatus(String message){
+        addLabStatus.setText(splitMessage(message));
+
+    }
+    private Lab selectLab(){
+        int index = labList.getSelectedIndex();
+        if (index == -1){
+            updateStatus("Error: Select an item to update");
+        }
+        return GUIController.getLab(index);
+        
+    }
+    private void refreshLabList(){
+        ArrayList<Lab> labs = GUIController.refreshList();
+        DefaultListModel dlm = new DefaultListModel();
+        for (int i = 0; i < labs.size() ; i++ ) {
+            dlm.addElement(labs.get(i).getName());
+        }
+        labList.setModel(dlm);
+    }
     private String splitMessage(String originalMessage){
         String formattedMessage = "<html>";
         return splitMessage(formattedMessage, originalMessage);
@@ -539,11 +603,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField labPhoneField;
     private javax.swing.JLabel labPhoneLabel;
     private javax.swing.JButton labRefreshButton;
+    private javax.swing.JButton labSelectButton;
     private javax.swing.JTextField labStateField;
     private javax.swing.JLabel labStateLabel;
     private javax.swing.JTextField labStreetField;
     private javax.swing.JLabel labStreetLabel;
-    private javax.swing.JButton labUpdateButton;
     private javax.swing.JLabel labUpdateLabel;
     private javax.swing.JPanel labUpdatePanel;
     private javax.swing.JScrollPane labUpdateScrollPane;

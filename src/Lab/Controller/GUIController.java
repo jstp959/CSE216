@@ -7,6 +7,7 @@ package Lab.Controller;
 
 import Lab.BusinessObjects.*;
 import Lab.DBManager.*;
+import java.util.ArrayList;
 
 /**
  *  GUI controller deals with communication between GUI and business objects
@@ -14,8 +15,9 @@ import Lab.DBManager.*;
  * 
  * @author JSP, Ferg
  */
-public class GuiController {
+public class GUIController {
 
+    static ArrayList<Lab> labList;
     /**
      * Check privilege of user logged into system.
      * Ensures the user has permission to make changes.
@@ -88,7 +90,7 @@ public class GuiController {
      * @param onSite    whether the lab is on-site, relative to the hospital
      * @return          message with result
      */
-    public static String addLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
+    public static String addLab(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         //check privilege
         if (!DBManager.connector()) {
             return "Error: Connection Failed";
@@ -107,4 +109,20 @@ public class GuiController {
             return "Error: Lab with name \"" + name + "\" and street \"" + street + "\" already exists";
         }
     }
+    
+    public static String updateLab(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
+        return null;
+        //TODO
+    }
+    public static ArrayList<Lab> refreshList(){
+        DBManager.connector();
+        labList = DBManager.getAllLabs();
+        DBManager.closer();
+        return labList;
+    }
+
+    public static Lab getLab(int index) {
+        return labList.get(index);
+    }
+    
 }
