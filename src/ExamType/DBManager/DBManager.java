@@ -48,7 +48,7 @@ public class DBManager {
      * @return true if unique, false o/w
      */
     public static Boolean checkUnique(ExamType examType) {
-        String querySQL = "select * where exam_type_name = ?";
+        String querySQL = "select * from exam_type where exam_type_name = ?";
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
@@ -138,29 +138,33 @@ public class DBManager {
         return saveUpdateExamType(examType, querySQL, 3, 1, 2, "Updated");
     }
 
-     /**
+    /**
      * Method to save or to update an ExamType object into the database.
      *
-     * @param examType  new object to save
-     * @param querySQl  string query
-     * @param a         sql index for exam_type_name
-     * @param b         sql index for description
-     * @param c         sql index for status0
-     * @param Action    the action (either save new or update) 
+     * @param examType new object to save
+     * @param querySQl string query
+     * @param a sql index for exam_type_name
+     * @param b sql index for description
+     * @param c sql index for status0
+     * @param Action the action (either save new or update)
      * @return message with result
-     */   
+     */
     public static String saveUpdateExamType(ExamType examType, String querySQL, int a, int b, int c, String action) {
         PreparedStatement pStmt = null;
         try {
+            //System.out.println("woooooooooo");
             pStmt = globalCon.prepareStatement(querySQL);
+            //System.out.println("woooooooooo2");
             pStmt.setString(a, testString(examType.getName(), 1, 40));
             pStmt.setString(b, testString(examType.getDescription(), 0, 200));
+            //System.out.println("woooooooooo3");
             String status;
             if (examType.getStatus()) {
                 status = "Active";
             } else {
                 status = "Not Active";
             }
+            //System.out.println("woooooooooo4");
             pStmt.setString(c, status);
             pStmt.executeUpdate();
             return "Exam Type \"" + examType.getName() + "\" " + action;//true
