@@ -138,6 +138,17 @@ public class DBManager {
         return saveUpdateExamType(examType, querySQL, 3, 1, 2, "Updated");
     }
 
+     /**
+     * Method to save or to update an ExamType object into the database.
+     *
+     * @param examType  new object to save
+     * @param querySQl  string query
+     * @param a         sql index for exam_type_name
+     * @param b         sql index for description
+     * @param c         sql index for status0
+     * @param Action    the action (either save new or update) 
+     * @return message with result
+     */   
     public static String saveUpdateExamType(ExamType examType, String querySQL, int a, int b, int c, String action) {
         PreparedStatement pStmt = null;
         try {
