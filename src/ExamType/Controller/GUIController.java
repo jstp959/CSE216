@@ -83,8 +83,7 @@ public class GUIController {
     }
     
     public static ArrayList<ExamType> refreshList(){
-        //ArrayList<ExamType> returnList = DBManager.getAllExamTypes();
-        examTypeList= DBManager.getAllExamTypes();
+        examTypeList = DBManager.getAllExamTypes();
         return examTypeList;
     }
     
