@@ -113,9 +113,6 @@ public class DBManager {
         }
     }
 
-//    public static ExamType getExamType(String name) {
-//        return null;
-//    }
     /**
      * Method to save an ExamType object into the database.
      *
@@ -126,8 +123,9 @@ public class DBManager {
         String querySQL = "INSERT INTO exam_type "
                 + "(exam_type_name, description, status0) "
                 + "VALUES (?,?,?)";
-        return saveUpdateExamType(examType, querySQL);
+        return saveUpdateExamType(examType, querySQL, 1, 2, 3, "Added");
     }
+
     /**
      * Method to update an ExamType object into the database.
      *
@@ -135,27 +133,26 @@ public class DBManager {
      * @return message with result
      */
     public static String updateExamType(ExamType examType) { //, String type) {
-        String querySQL = "INSERT INTO exam_type "
-                + "(exam_type_name, description, status0) "
-                + "VALUES (?,?,?)";
-        return saveUpdateExamType(examType, querySQL);
+        String querySQL = "update exam_type set description = ?, "
+                + "status0 = ? where exam_type_name = ?";
+        return saveUpdateExamType(examType, querySQL, 3, 1, 2, "Updated");
     }
 
-    public static String saveUpdateExamType(ExamType examType, String querySQL) { 
+    public static String saveUpdateExamType(ExamType examType, String querySQL, int a, int b, int c, String action) {
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
-            pStmt.setString(1, testString(examType.getName(), 1, 40));
-            pStmt.setString(2, testString(examType.getDescription(), 0, 200));
+            pStmt.setString(a, testString(examType.getName(), 1, 40));
+            pStmt.setString(b, testString(examType.getDescription(), 0, 200));
             String status;
             if (examType.getStatus()) {
                 status = "Active";
             } else {
                 status = "Not Active";
             }
-            pStmt.setString(3, status);
+            pStmt.setString(c, status);
             pStmt.executeUpdate();
-            return "Exam Type \"" + examType.getName() + "\" Added";//true
+            return "Exam Type \"" + examType.getName() + "\" " + action;//true
         } catch (SQLException e) {
             return "Error: Update Failed (Contact developers): " + e.getMessage(); //false
         } catch (Exception e) {
