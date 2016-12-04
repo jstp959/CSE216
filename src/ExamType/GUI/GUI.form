@@ -291,25 +291,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="examTypeUpdateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="examTypeListScrollPane" alignment="0" min="-2" pref="329" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="examTypeActivationButton" max="32767" attributes="0"/>
-                                  <Component id="examTypeUpdateButton" pref="176" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="examTypeRefreshButton" min="-2" pref="176" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="examTypeUpdateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="examTypeListScrollPane" alignment="0" min="-2" pref="329" max="-2" attributes="0"/>
+                          <Component id="examTypeRefreshButton" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Component id="examTypeUpdateButton" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Component id="examTypeActivationButton" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="76" max="32767" attributes="0"/>
                   </Group>

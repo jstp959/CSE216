@@ -52,7 +52,7 @@
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="labAddScrollPane" min="-2" pref="460" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="labUpdateScrollPane" pref="444" max="32767" attributes="0"/>
+              <Component id="labUpdateScrollPane" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -385,24 +385,15 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="labUpdateButton" max="32767" attributes="0"/>
-                                  <Component id="labActivationButton" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="labRefreshButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labListScrollPane" min="-2" pref="284" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="labListScrollPane" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
+                          <Component id="labRefreshButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labUpdateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labUpdateButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labActivationButton" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                      <EmptySpace pref="146" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

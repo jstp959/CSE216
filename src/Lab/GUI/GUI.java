@@ -300,19 +300,14 @@ public class GUI extends javax.swing.JFrame {
         labUpdatePanelLayout.setHorizontalGroup(
             labUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(labUpdatePanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(labUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(labUpdatePanelLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addGroup(labUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labUpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labActivationButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(labUpdatePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(labUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labRefreshButton)
-                            .addComponent(labListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(labUpdateLabel))
-                .addGap(74, 74, 74))
+                    .addComponent(labListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labRefreshButton)
+                    .addComponent(labUpdateLabel)
+                    .addComponent(labUpdateButton)
+                    .addComponent(labActivationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         labUpdatePanelLayout.setVerticalGroup(
             labUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +338,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(labAddScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(labUpdateScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
+                .addComponent(labUpdateScrollPane))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
