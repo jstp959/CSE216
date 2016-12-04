@@ -83,15 +83,14 @@ public class DBManager {
      * @return          an arrayList of ExamTypes
      */
     public static ArrayList<Lab> getAllLabs() {
-        String querySQL = "select exam_type_name, description, status0 from exam_type";
+        String querySQL = "select * from lab";
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
             ResultSet result = pStmt.executeQuery();
             ArrayList<Lab> labs = new ArrayList<>();
             while (result.next())
-            { //lab_name, street, city, us_state_abbr, zip, email, fnum, pnum, onsite
-                //lab_name, street, city, us_state_abbr, zip, email, fnum, pnum, onsite
+            { 
                     String lab_name = result.getString("lab_name");
                     String street = result.getString("street");
                     String city = result.getString("city");
