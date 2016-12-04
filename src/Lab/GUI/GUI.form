@@ -52,7 +52,7 @@
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="labAddScrollPane" min="-2" pref="460" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="labUpdateScrollPane" max="32767" attributes="0"/>
+              <Component id="labUpdateScrollPane" pref="444" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

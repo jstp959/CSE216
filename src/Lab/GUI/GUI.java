@@ -343,7 +343,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(labAddScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(labUpdateScrollPane))
+                .addComponent(labUpdateScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
