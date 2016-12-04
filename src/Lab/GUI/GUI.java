@@ -501,7 +501,7 @@ public class GUI extends javax.swing.JFrame {
     private Lab selectLab(){
         int index = labList.getSelectedIndex();
         if (index == -1){
-            updateStatus("Error: Select an item to update");
+            return GUIController.getLab(0);
         }
         return GUIController.getLab(index);
         
