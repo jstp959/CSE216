@@ -94,7 +94,7 @@ public class DBManager {
             pStmt.setString(2, testString(lab.getAddress().getStreet(), 0, 20));
             pStmt.setString(3, testString(lab.getAddress().getCity(), 0, 20));
             pStmt.setString(4, testString(lab.getAddress().getState(), 2, 2));
-            pStmt.setLong(5, testInt(lab.getAddress().getZip(), 10000, 99999));
+            pStmt.setLong(5, testInt(lab.getAddress().getZip(), 501, 99950));
             pStmt.setString(6, testString(lab.getEmail(), 50, "@"));
             pStmt.setLong(7, testInt(lab.getFaxNo(), 1000000000, 9999999999L));
             pStmt.setLong(8, testInt(lab.getPhoneNo(), 1000000000, 9999999999L));

@@ -7,6 +7,7 @@ package ExamType.DBManager;
 
 import ExamType.BusinessObjects.*;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *  Database Manager deals with transactions with the database.
@@ -73,7 +74,41 @@ public class DBManager {
             }
         }
     }
-
+    /**
+     * Method to send an arrayList of ExamType objects to the GUIController and GUI. 
+     * 
+     * @return          an arrayList of ExamTypes
+     */
+    public static ArrayList<ExamType> getAllExamTypes() {
+        String querySQL = "select exam_type_name, description, status0 from exam_type";
+        PreparedStatement pStmt = null;
+        try {
+            pStmt = globalCon.prepareStatement(querySQL);
+            ResultSet result = pStmt.executeQuery();
+            ArrayList<ExamType> examTypes = new ArrayList<>();
+            while (result.next())
+	    {
+                    String exam_name = result.getString(0);
+                    String desc = result.getString(1);
+                    examTypes.add(new ExamType(exam_name, desc));
+                    System.out.println(exam_name +" "+desc);
+            }
+            return examTypes;
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+            return null;
+        } finally {
+            if (pStmt != null) {
+                try {
+                    pStmt.close();
+                } catch (SQLException ex) {
+                    System.out.println("pStmt.close() failed");
+                    System.out.println("Error Type: " + ex.getClass().getName());
+                }
+            }
+        }
+    }
+    
 //    public static ExamType getExamType(String name) {
 //        return null;
 //    }
@@ -82,12 +117,21 @@ public class DBManager {
      * Method to save an ExamType object into the database.
      * 
      * @param examType  new object to save
+     * @param type      new object or updated object
      * @return          message with result
      */
-    public static String saveExamType(ExamType examType) {
-        String querySQL = "INSERT INTO exam_type "
+    public static String saveExamType(ExamType examType){ //, String type) {
+        String querySQL = "";
+        //if (type == "new") {
+            querySQL = "INSERT INTO exam_type "
                 + "(exam_type_name, description, status0) "
                 + "VALUES (?,?,?)";
+        //}
+        /*else if (type == "update") { 
+            querySQL = "INSERT INTO exam_type "
+                + "(exam_type_name, description, status0) "
+                + "VALUES (?,?,?)";
+        }*/
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
