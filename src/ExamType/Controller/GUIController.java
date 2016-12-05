@@ -89,10 +89,11 @@ public class GUIController {
         if (exam == null) {
             DBManager.closer();
             return "Error: Exam Type requires a name";
+        } else {
+            String msg = DBManager.updateExamType(exam);
+            DBManager.closer();
+            return msg;
         }
-        String msg = DBManager.updateExamType(exam);
-        DBManager.closer();
-        return msg;
 
     }
 
@@ -109,9 +110,9 @@ public class GUIController {
     public static ExamType getExamType(int index) {
         return examTypeList.get(index);
     }
-    
-    public static String deActivate(ExamType exam){
+
+    public static String deActivate(ExamType exam) {
         return "Error in deactivating";
     }
-        
+
 }
