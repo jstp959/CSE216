@@ -153,10 +153,10 @@ public class DBManager {
     /**
      * Method to update an ExamType object into the database.
      *
-     * @param examType new object to save
+     * @param lab new object to save
      * @return message with result
      */
-    public static String updateExamType(Lab lab) { //, String type) {
+    public static String updateLab(Lab lab) { //, String type) {
         String querySQL = "update lab set city = ?, us_state_abbr = ?, "
                 + "zip = ?, email = ?, fnum = ?, pnum = ?, onsite = ? where lab_name = ? AND street = ?";
         return saveUpdateLab(lab, querySQL, 8, 9, 1, 2, 3, 4, 5, 6, 7, "Updated");
@@ -199,7 +199,7 @@ public class DBManager {
             }
             pStmt.setString(9, status);
             pStmt.executeUpdate();
-            return "Lab \"" + lab.getName() + "\" Added";//true
+            return "Lab \"" + lab.getName() + "\" " + action;//true
         } catch (SQLException ex) {
             return "Error: Update Failed (Contact developers): " + ex.getMessage(); //false
         } catch (Exception ex) {
