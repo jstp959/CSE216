@@ -78,7 +78,22 @@ public class GUIController {
     }
 
     public static String updateExamType(String name, String desc) {
-        return " ";
+        //TODO: check privilege
+        //open DB
+        if (!DBManager.connector()) {
+            return "Error: Connection Failed";
+        }
+        //create exam type object
+        ExamType exam = createExamType(name, desc);
+        //check if creation was successfull
+        if (exam == null) {
+            DBManager.closer();
+            return "Error: Exam Type requires a name";
+        }
+        String msg = DBManager.updateExamType(exam);
+        DBManager.closer();
+        return msg;
+
     }
 
     public static ArrayList<ExamType> refreshList() {
