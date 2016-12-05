@@ -209,6 +209,11 @@ public class GUI extends javax.swing.JFrame {
         examTypeActivationButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         examTypeActivationButton.setForeground(new java.awt.Color(238, 238, 238));
         examTypeActivationButton.setText("Deactivate");
+        examTypeActivationButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                examTypeActivationButtonMouseClicked(evt);
+            }
+        });
         examTypeActivationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 examTypeActivationButtonActionPerformed(evt);
@@ -367,6 +372,12 @@ public class GUI extends javax.swing.JFrame {
     private void examTypeRefreshButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_examTypeRefreshButtonMouseClicked
         refreshList();
     }//GEN-LAST:event_examTypeRefreshButtonMouseClicked
+
+    private void examTypeActivationButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_examTypeActivationButtonMouseClicked
+        addExamTypeStatus.setText(GUIController.deActivate(selectExamType()));
+        
+        refreshList();
+    }//GEN-LAST:event_examTypeActivationButtonMouseClicked
 
     private void refreshList() {
         ArrayList<ExamType> list = GUIController.refreshList();

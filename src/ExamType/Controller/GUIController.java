@@ -94,4 +94,9 @@ public class GUIController {
     public static ExamType getExamType(int index) {
         return examTypeList.get(index);
     }
+    
+    public static String deActivate(ExamType exam){
+        return "Error in deactivating";
+    }
+        
 }
