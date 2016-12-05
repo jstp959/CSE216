@@ -384,7 +384,13 @@ public class GUI extends javax.swing.JFrame {
 
         DefaultListModel dlm = new DefaultListModel();
         for (ExamType exam : list) {
-            dlm.addElement(exam.getName());
+            if (exam.getStatus()){
+                dlm.addElement(exam.getName());
+            }
+            else{
+                dlm.addElement(exam.getName()+" - Inactive");
+
+            }
         }
         examTypeList.setModel(dlm);
 
