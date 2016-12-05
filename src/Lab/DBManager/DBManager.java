@@ -162,15 +162,15 @@ public class DBManager {
      *
      * @param examType new object to save
      * @param querySQl string query
-     * @param a sql index for name
-     * @param b sql index for street
-     * @param c sql index for city
-     * @param d sql index for state
-     * @param e sql index for zip
-     * @param f sql index for email
-     * @param g sql index for fnum
-     * @param h sql index for pnum
-     * @param i sql index for status
+     * @param a SQL index for name
+     * @param b SQL index for street
+     * @param c SQL index for city
+     * @param d SQL index for state
+     * @param e SQL index for zip
+     * @param f SQL index for email
+     * @param g SQL index for fnum
+     * @param h SQL index for pnum
+     * @param i SQL index for status
      * @param Action the action (either save new or update)
      * @return message with result
      */

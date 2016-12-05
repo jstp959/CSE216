@@ -90,7 +90,7 @@ public class GUIController {
             DBManager.closer();
             return "Error: Exam Type requires a name";
         } else {
-            String msg = DBManager.updateExamType(exam);
+            String msg = DBManager.updateExamType(exam, "Updated");
             DBManager.closer();
             return msg;
         }
@@ -112,7 +112,18 @@ public class GUIController {
     }
 
     public static String deActivate(ExamType exam) {
-        return "Error in deactivating";
+        if (exam == null) {
+            return "Error: Exam Type was null";
+        }
+        exam.setStatus(false);
+        if (!DBManager.connector()) {
+            return "Error: Connection Failed";
+        }
+        else {
+            String msg = DBManager.updateExamType(exam, "Deactivated");
+            DBManager.closer();
+            return msg;
+        }
     }
 
 }

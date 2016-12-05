@@ -96,10 +96,10 @@ public class DBManager {
             }
             return examTypes;
         } catch (SQLException e) {
-            System.err.println("**SQLException: " + e.getMessage());
+            System.err.println("**MySQLException: " + e.getMessage());
             return null;
         } catch (Exception e) {
-            System.err.println("**Exception: " + e.getMessage());
+            System.err.println("**MyException: " + e.getMessage());
             return null;
         } finally {
             if (pStmt != null) {
@@ -132,10 +132,10 @@ public class DBManager {
      * @param examType new object to save
      * @return message with result
      */
-    public static String updateExamType(ExamType examType) { //, String type) {
+    public static String updateExamType(ExamType examType, String status) { //, String type) {
         String querySQL = "update exam_type set description = ?, "
                 + "status0 = ? where exam_type_name = ?";
-        return saveUpdateExamType(examType, querySQL, 3, 1, 2, "Updated");
+        return saveUpdateExamType(examType, querySQL, 3, 1, 2, status);
     }
 
     /**
@@ -143,28 +143,24 @@ public class DBManager {
      *
      * @param examType new object to save
      * @param querySQl string query
-     * @param a sql index for exam_type_name
-     * @param b sql index for description
-     * @param c sql index for status0
+     * @param a SQL index for exam_type_name
+     * @param b SQL index for description
+     * @param c SQL index for status0
      * @param Action the action (either save new or update)
      * @return message with result
      */
     public static String saveUpdateExamType(ExamType examType, String querySQL, int a, int b, int c, String action) {
         PreparedStatement pStmt = null;
         try {
-            //System.out.println("woooooooooo");
             pStmt = globalCon.prepareStatement(querySQL);
-            //System.out.println("woooooooooo2");
             pStmt.setString(a, testString(examType.getName(), 1, 40));
             pStmt.setString(b, testString(examType.getDescription(), 0, 200));
-            //System.out.println("woooooooooo3");
             String status;
             if (examType.getStatus()) {
                 status = "Active";
             } else {
                 status = "Not Active";
             }
-            //System.out.println("woooooooooo4");
             pStmt.setString(c, status);
             pStmt.executeUpdate();
             return "Exam Type \"" + examType.getName() + "\" " + action;//true
