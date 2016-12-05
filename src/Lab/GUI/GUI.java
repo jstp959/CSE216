@@ -455,6 +455,7 @@ public class GUI extends javax.swing.JFrame {
 
         }
         refreshLabList();
+        clearFields();
         updateStatus(message);
         
     }//GEN-LAST:event_addNewLabButtonMouseClicked
@@ -494,9 +495,20 @@ public class GUI extends javax.swing.JFrame {
         refreshLabList();
     }//GEN-LAST:event_labRefreshButtonMouseClicked
 
+    
+    private void clearFields(){
+        labNameField.setText(null);
+        labStreetField.setText(null);
+        labStateField.setText(null);
+        labCityField.setText(null);
+        labEmailField.setText(null);
+        labFaxField.setText(null);
+        labPhoneField.setText(null);
+        labZipField.setText(null);
+        labOnSiteCheckBox.setSelected(false);
+    }
     private void updateStatus(String message){
         addLabStatus.setText(splitMessage(message));
-
     }
     private Lab selectLab(){
         int index = labList.getSelectedIndex();

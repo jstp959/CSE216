@@ -40,12 +40,12 @@ public class GuiControllerJUnitTest {
     public void testCreatLabType(){
         Lab lab1 = new Lab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
             "11570", "jes418", "516", "6328925", true);
-        Lab lab2 = GUIController.createLabType("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
+        Lab lab2 = GUIController.createLab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
             "11570", "jes418", "516", "6328925", true);
         
         assertEquals(lab1.compareTo(lab2), 0);
         
-        Lab lab3 = GUIController.createLabType("" , "10 Holyoke Road", "Rockville Centre,", "NY",
+        Lab lab3 = GUIController.createLab("" , "10 Holyoke Road", "Rockville Centre,", "NY",
             "11570", "jes418", "516", "6328925", true);
         assertEquals(lab3, null);
     }

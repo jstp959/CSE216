@@ -46,7 +46,7 @@ public class GUIController {
      * @param onSite    whether or not the lab is on-site (relative to hospital)
      * @return          lab object is creation is successful, null o/w
      */
-    public static Lab createLabType(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
+    public static Lab createLab(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         //check other besides just name
         if (isValidLab(name, street, city, state, zip, email, faxNo, phoneNo, onSite)) {
             Lab lab = new Lab(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
@@ -95,7 +95,7 @@ public class GUIController {
         if (!DBManager.connector()) {
             return "Error: Connection Failed";
         }
-        Lab lab = createLabType(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
+        Lab lab = createLab(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
         if (lab == null) {
             DBManager.closer();
             return "Error: Lab requires all fields be filled";
@@ -111,7 +111,20 @@ public class GUIController {
     }
     
     public static String updateLab(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
-        return null;
+        if (!DBManager.connector()) {
+            return "Error: Connection Failed";
+        }
+        Lab lab = createLab(name, street, city, state, zip, email, faxNo, phoneNo, onSite);
+        if (lab == null) {
+            DBManager.closer();
+            return "Error: Lab requires all fields be filled";
+        }
+        else {
+            String msg = DBManager.updateLab(lab);
+            DBManager.closer();
+            return msg;
+
+        }
         //TODO
     }
     public static ArrayList<Lab> refreshList(){
