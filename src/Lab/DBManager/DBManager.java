@@ -199,7 +199,7 @@ public class DBManager {
             }
             pStmt.setString(9, status);
             pStmt.executeUpdate();
-            return "Lab \"" + lab.getName() + "\"" + action;//true
+            return "Lab \"" + lab.getName() + "\" " + action;//true
         } catch (SQLException ex) {
             return "Error: Update Failed (Contact developers): " + ex.getMessage(); //false
         } catch (Exception ex) {
