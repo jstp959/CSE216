@@ -100,12 +100,7 @@ public class DBManager {
                 String fnum = result.getString("fnum");
                 String pnum = result.getString("pnum");
                 String onOffSite = result.getString("onsite");
-                Boolean onSite;
-                if (onOffSite == "On Site") {
-                    onSite = true;
-                } else {
-                    onSite = false;
-                }
+                Boolean onSite = onOffSite.equals("On Site");
                 labs.add(new Lab(lab_name, street, city, state, zip, email, fnum, pnum, onSite));
                 System.out.println(lab_name + " "
                         + street + " "
@@ -119,10 +114,10 @@ public class DBManager {
             }
             return labs;
         } catch (SQLException e) {
-            System.err.println("**SQLException: " + e.getMessage());
+            System.err.println("**MySQLException: " + e.getMessage());
             return null;
         } catch (Exception e) {
-            System.err.println("**Exception: " + e.getMessage());
+            System.err.println("**MyException: " + e.getMessage());
             return null;
         } finally {
             if (pStmt != null) {
