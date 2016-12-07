@@ -24,6 +24,7 @@ public class GUIControllerJUnitTest {
     User noAdmin;
     ExamType nullExam;
     ExamType exam;
+    ExamType exam2;
     
     @Before
     public void setUp() {
@@ -31,6 +32,8 @@ public class GUIControllerJUnitTest {
         noAdmin = new User("testID", "testPassword", "staff");
         nullExam = new ExamType("", "");
         exam = new ExamType("Colonoscopy", "Ouch");
+        exam2 = new ExamType("Blood test", "");
+        exam2.setStatus(true);
     }
     
     @Test
@@ -54,9 +57,22 @@ public class GUIControllerJUnitTest {
         //*****NEED TO CHECK WHEN CALLS TO DBMANAGER*****
         
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+   
+    @Test
+    public void testUpdateExamType() {
+        //simulate having an exam type selected by using same name 
+        //in function call
+        String result = GUIController.updateExamType("Blood test", "new desc");
+        assertEquals(result, "Exam Type \"Blood test\" Updated");
+        
+        result = GUIController.updateExamType("", "");
+        assertEquals(result, "Error: Exam Type requires a name");
+    }
+    
+    @Test
+    public void testDeactivate() {
+        assertEquals(exam2.getStatus(), true);
+        String result = GUIController.deActivate(exam2);
+        assertEquals(exam2.getStatus(), false);
+    }
 }

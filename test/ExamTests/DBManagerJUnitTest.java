@@ -50,16 +50,16 @@ public class DBManagerJUnitTest {
     }
 
     @Test
-    public void testSaveLab() {
+    public void testSaveExamType() {
         setUp();
         String testMsg;
-        ArrayList<ExamType> labs = new ArrayList<>();
-        labs.add(e1);
-        labs.add(e2);
-        labs.add(e3);
-        labs.add(e4);
-        labs.add(e5);
-        labs.add(e6);
+        ArrayList<ExamType> examtypes = new ArrayList<>();
+        examtypes.add(e1);
+        examtypes.add(e2);
+        examtypes.add(e3);
+        examtypes.add(e4);
+        examtypes.add(e5);
+        examtypes.add(e6);
         ArrayList<String> msgs = new ArrayList<>();
         msgs.add("Error: Update Failed (Contact developers): Duplicate entry 'test' for key 'PRIMARY'");//1
         msgs.add("Error: 123451234512345twentyplus has a length not in [1, 20]");//2
@@ -67,8 +67,8 @@ public class DBManagerJUnitTest {
         msgs.add("Exam Type \"" + e4.getName() + "\" Added");//4
         msgs.add("Error:  has a length not in [1, 20]");//5
         msgs.add("Exam Type \"" + e6.getName() + "\" Added");//6
-        for (int i = 0; i < labs.size(); i++) {
-            testMsg = DBManager.saveExamType(labs.get(i));
+        for (int i = 0; i < examtypes.size(); i++) {
+            testMsg = DBManager.saveExamType(examtypes.get(i));
             assertEquals(testMsg, msgs.get(i));
         }
         assertTrue(DBManager.delete(e4.getName()));

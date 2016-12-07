@@ -39,30 +39,53 @@ public class GuiControllerJUnitTest {
     @Test
     public void testCreatLabType(){
         Lab lab1 = new Lab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
-            "11570", "jes418", "516", "6328925", true);
+            "11570", "jes418@", "516", "6328925", true);
         Lab lab2 = GUIController.createLab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
-            "11570", "jes418", "516", "6328925", true);
+            "11570", "jes418@", "5165555555", "9999999999", true);
         
         assertEquals(lab1.compareTo(lab2), 0);
         
         Lab lab3 = GUIController.createLab("" , "10 Holyoke Road", "Rockville Centre,", "NY",
-            "11570", "jes418", "516", "6328925", true);
+            "11570", "jes418@", "5165555555", "9999999999", true);
         assertEquals(lab3, null);
     }
     
     @Test
     public void testIsValidLab(){
         Boolean notValid = GUIController.isValidLab("" , "10 Holyoke Road", "Rockville Centre,", "NY",
-            "11570", "jes418", "516", "6328925", true);
+            "11570", "jes418@", "5165555555", "9999999999", true);
         assertFalse(notValid);
         
         Boolean valid = GUIController.isValidLab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
-            "11570", "jes418", "516", "6328925", true);
+            "11570", "jes418@", "5165555555", "9999999999", true);
         assertTrue(valid);
         
         //NEED TO CHECK DBMANAGER CALLS
     }
     
+    @Test
+    public void testAddLab() {
+        String result = GUIController.addLab("", "", " ", "", "", "", "", "", Boolean.TRUE);
+        assertEquals(result, "Error: Lab requires all fields be filled");
+        
+        //can't test adding a new, unqiue lab because DB entries cannot be deleted
+        
+        result = GUIController.addLab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
+              "11570", "jes418@", "5165555555", "9999999999", true);
+        assertEquals(result, "Error: Lab with name \"Test\" and street \"10 Holyoke Road\" already exists");
+    }
+    
+    @Test
+    public void testUpdateLab() {
+        String result = GUIController.updateLab("", "", "", "", "", "", "", "", false);
+        assertEquals(result, "Error: Lab requires all fields be filled");
+    
+        result = GUIController.updateLab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
+              "11570", "enc216@", "5165555555", "9999999999", true);
+        assertEquals(result, "Lab \"Test\" Updated");
+        
+    }
+        
     @After
     public void tearDown() {
     }
