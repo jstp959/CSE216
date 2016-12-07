@@ -475,9 +475,13 @@ public class GUI extends javax.swing.JFrame {
         
         //Changes the Error message to Bold and RED
         
-        refreshLabList();
-        clearFields();
         updateStatus(message);
+        if (!message.substring(0,5).equals("Error")){
+            clearFields();
+        }
+        refreshLabList();
+
+
         
     }//GEN-LAST:event_addNewLabButtonMouseClicked
 
@@ -526,6 +530,7 @@ public class GUI extends javax.swing.JFrame {
         addNewLabButton.setText("Add New Lab");
         isUpdate = false;
         labNameField.setEditable(true);
+        labStreetField.setEditable(true);
         updateStatus("Select Lab cancelled.");
         cancelUpdate.setVisible(false);
         addNewLabButton.setEnabled(true);

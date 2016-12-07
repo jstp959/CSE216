@@ -342,7 +342,9 @@ public class GUI extends javax.swing.JFrame {
         examTypeList.setModel(dlm);
 
         updateStatus(message);
-        clearFields();
+        if (message.substring(0,5).equals("Error")){
+            clearFields();
+        }        
         refreshList();
     }//GEN-LAST:event_addNewETButtonMouseClicked
 
