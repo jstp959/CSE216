@@ -122,47 +122,43 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cancelUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="addLabHeader" alignment="0" min="-2" pref="422" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="labInformationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="labNameLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="labNameField" max="32767" attributes="0"/>
+                          <Component id="labInformationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labStreetLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labCityLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labZipLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labStateLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labEmailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labFaxLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labPhoneLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labOnSiteLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="labStreetLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labCityLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labZipLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labStateLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labEmailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labFaxLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labPhoneLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labOnSiteLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="labOnSiteCheckBox" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="labStreetField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="labCityField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="labStateField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="labZipField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="labFaxField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="labPhoneField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="labEmailField" min="-2" pref="160" max="-2" attributes="0"/>
-                                      </Group>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labOnSiteCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="labStreetField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labCityField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labStateField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labZipField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labFaxField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labPhoneField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labEmailField" min="-2" pref="160" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                                  <Component id="addNewLabButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="addLabStatus" alignment="1" min="-2" pref="340" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="addNewLabButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="addLabStatus" alignment="0" min="-2" pref="340" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="labNameLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="labNameField" min="-2" pref="226" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -172,9 +168,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="addLabHeader" min="-2" pref="66" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labNameField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="labNameLabel" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="labNameLabel" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                              <Component id="labNameField" min="-2" pref="26" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="labInformationLabel" min="-2" max="-2" attributes="0"/>
@@ -221,14 +220,19 @@
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="addNewLabButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cancelUpdate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="addLabStatus" min="-2" pref="92" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JTextField" name="labNameField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="labNameFieldActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="addLabHeader">
               <Properties>
@@ -280,7 +284,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="16" style="0"/>
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="   "/>
                 <Property name="verticalAlignment" type="int" value="1"/>
               </Properties>
             </Component>
@@ -363,6 +368,24 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="labOnSiteCheckBox">
+            </Component>
+            <Component class="javax.swing.JButton" name="cancelUpdate">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="fa" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fa" green="fa" red="fa" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cancel"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cancelUpdateMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelUpdateActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -6,6 +6,7 @@ import Lab.Controller.*;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JScrollBar;
 
 
 /*
@@ -21,12 +22,15 @@ public class GUI extends javax.swing.JFrame {
 
     
     boolean isUpdate = false;
+    private Lab nullLab = new Lab("", "", "", "", "", "", "", "", false);
     /**
      * Creates new form ExamType
      */
     public GUI() {
         initComponents();
         refreshLabList();
+        cancelUpdate.setVisible(false);
+
     }
 
     /**
@@ -66,6 +70,7 @@ public class GUI extends javax.swing.JFrame {
         labEmailLabel = new javax.swing.JLabel();
         labOnSiteLabel = new javax.swing.JLabel();
         labOnSiteCheckBox = new javax.swing.JCheckBox();
+        cancelUpdate = new javax.swing.JButton();
         labUpdateScrollPane = new javax.swing.JScrollPane();
         labUpdatePanel = new javax.swing.JPanel();
         labUpdateLabel = new javax.swing.JLabel();
@@ -108,6 +113,12 @@ public class GUI extends javax.swing.JFrame {
 
         labAddScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        labNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                labNameFieldActionPerformed(evt);
+            }
+        });
+
         addLabHeader.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         addLabHeader.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         addLabHeader.setText("Add Lab");
@@ -136,7 +147,8 @@ public class GUI extends javax.swing.JFrame {
         labInformationLabel.setText("Lab Information: ");
 
         addLabStatus.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        addLabStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addLabStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        addLabStatus.setText("   ");
         addLabStatus.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         labStreetLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -163,6 +175,21 @@ public class GUI extends javax.swing.JFrame {
         labOnSiteLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         labOnSiteLabel.setText("On-Site Lab?");
 
+        cancelUpdate.setBackground(new java.awt.Color(250, 0, 0));
+        cancelUpdate.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        cancelUpdate.setForeground(new java.awt.Color(250, 250, 250));
+        cancelUpdate.setText("Cancel");
+        cancelUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelUpdateMouseClicked(evt);
+            }
+        });
+        cancelUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelUpdateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout labAddPanelLayout = new javax.swing.GroupLayout(labAddPanel);
         labAddPanel.setLayout(labAddPanelLayout);
         labAddPanelLayout.setHorizontalGroup(
@@ -170,39 +197,37 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(labAddPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(labAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cancelUpdate)
                     .addComponent(addLabHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(labAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(labInformationLabel)
-                        .addGroup(labAddPanelLayout.createSequentialGroup()
-                            .addComponent(labNameLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(labNameField))
-                        .addGroup(labAddPanelLayout.createSequentialGroup()
-                            .addGroup(labAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labStreetLabel)
-                                .addComponent(labCityLabel)
-                                .addComponent(labZipLabel)
-                                .addComponent(labStateLabel)
-                                .addComponent(labEmailLabel)
-                                .addComponent(labFaxLabel)
-                                .addComponent(labPhoneLabel)
-                                .addComponent(labOnSiteLabel))
-                            .addGap(33, 33, 33)
-                            .addGroup(labAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labOnSiteCheckBox)
-                                .addGroup(labAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(labStreetField)
-                                    .addComponent(labCityField)
-                                    .addComponent(labStateField)
-                                    .addComponent(labZipField)
-                                    .addComponent(labFaxField)
-                                    .addComponent(labPhoneField)
-                                    .addComponent(labEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(labAddPanelLayout.createSequentialGroup()
-                            .addGap(77, 77, 77)
-                            .addComponent(addNewLabButton))
-                        .addComponent(addLabStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(labInformationLabel)
+                    .addGroup(labAddPanelLayout.createSequentialGroup()
+                        .addGroup(labAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labStreetLabel)
+                            .addComponent(labCityLabel)
+                            .addComponent(labZipLabel)
+                            .addComponent(labStateLabel)
+                            .addComponent(labEmailLabel)
+                            .addComponent(labFaxLabel)
+                            .addComponent(labPhoneLabel)
+                            .addComponent(labOnSiteLabel))
+                        .addGap(33, 33, 33)
+                        .addGroup(labAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labOnSiteCheckBox)
+                            .addGroup(labAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labStreetField)
+                                .addComponent(labCityField)
+                                .addComponent(labStateField)
+                                .addComponent(labZipField)
+                                .addComponent(labFaxField)
+                                .addComponent(labPhoneField)
+                                .addComponent(labEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(addNewLabButton)
+                    .addComponent(addLabStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(labAddPanelLayout.createSequentialGroup()
+                        .addComponent(labNameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         labAddPanelLayout.setVerticalGroup(
             labAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,9 +235,11 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(addLabHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(labAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(labAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(labAddPanelLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(labNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labInformationLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -250,6 +277,8 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(addNewLabButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cancelUpdate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addLabStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -369,7 +398,8 @@ public class GUI extends javax.swing.JFrame {
 
     private void addNewLabButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewLabButtonMouseClicked
         String message;
-        
+        cancelUpdate.setVisible(false);
+
         String name = labNameField.getText();
         String street = labStreetField.getText();
         String city = labCityField.getText();
@@ -444,16 +474,7 @@ public class GUI extends javax.swing.JFrame {
 
         
         //Changes the Error message to Bold and RED
-        if (message.substring(0,5).equals("Error")){
-            addLabStatus.setForeground(Color.red);
-            addLabStatus.setFont(new java.awt.Font("Lucida Grande", 1, 16));
-        }
-        else{
-            addLabStatus.setForeground(Color.black);
-            addLabStatus.setFont(new java.awt.Font("Lucida Grande", 0, 16));
-            
-
-        }
+        
         refreshLabList();
         clearFields();
         updateStatus(message);
@@ -475,6 +496,7 @@ public class GUI extends javax.swing.JFrame {
     private void labSelectButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labSelectButtonMouseClicked
         isUpdate = true;
         Lab selectedLab = selectLab();
+        
         labNameField.setText(selectedLab.getName());
         labStreetField.setText(selectedLab.getAddress().getStreet());
         labStateField.setText(selectedLab.getAddress().getState());
@@ -495,6 +517,34 @@ public class GUI extends javax.swing.JFrame {
         refreshLabList();
     }//GEN-LAST:event_labRefreshButtonMouseClicked
 
+    private void labNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_labNameFieldActionPerformed
+
+    private void cancelUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelUpdateMouseClicked
+        addLabHeader.setText("Add Lab");
+        addNewLabButton.setText("Add New Lab");
+        isUpdate = false;
+        labNameField.setEditable(true);
+        updateStatus("Select Lab cancelled.");
+        cancelUpdate.setVisible(false);
+        addNewLabButton.setEnabled(true);
+        clearFields();
+        refreshLabList();
+        
+
+    }//GEN-LAST:event_cancelUpdateMouseClicked
+
+    private void cancelUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelUpdateActionPerformed
+
+    private void checkScroll(){
+        JScrollBar sb = labAddScrollPane.getVerticalScrollBar();
+        if(addLabStatus.getText() != "   "){
+            sb.setValue( sb.getMaximum() );
+        }
+    }
     
     private void clearFields(){
         labNameField.setText(null);
@@ -508,12 +558,24 @@ public class GUI extends javax.swing.JFrame {
         labOnSiteCheckBox.setSelected(false);
     }
     private void updateStatus(String message){
+        checkScroll();
+        if (message.substring(0,5).equals("Error")){
+            addLabStatus.setForeground(Color.red);
+            addLabStatus.setFont(new java.awt.Font("Lucida Grande", 1, 16));
+        }
+        else{
+            addLabStatus.setForeground(Color.black);
+            addLabStatus.setFont(new java.awt.Font("Lucida Grande", 0, 16));
+        }
         addLabStatus.setText(splitMessage(message));
     }
     private Lab selectLab(){
+        cancelUpdate.setVisible(true);
         int index = labList.getSelectedIndex();
         if (index == -1){
-            return GUIController.getLab(0);
+            updateStatus("Error: Select a Lab from the list");
+            addNewLabButton.setEnabled(false);
+            return nullLab;
         }
         return GUIController.getLab(index);
         
@@ -591,6 +653,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel addLabHeader;
     private javax.swing.JLabel addLabStatus;
     private javax.swing.JButton addNewLabButton;
+    private javax.swing.JButton cancelUpdate;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
