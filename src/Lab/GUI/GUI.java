@@ -582,6 +582,7 @@ public class GUI extends javax.swing.JFrame {
             addNewLabButton.setEnabled(false);
             return nullLab;
         }
+        addNewLabButton.setEnabled(false);
         return GUIController.getLab(index);
         
     }

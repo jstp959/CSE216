@@ -359,6 +359,7 @@ public class GUI extends javax.swing.JFrame {
             addNewETButton.setEnabled(false);
             return nullExamType;
         }
+        addNewETButton.setEnabled(true);
         return GUIController.getExamType(index);
     }
 
@@ -390,6 +391,14 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_examTypeActivationButtonMouseClicked
 
     private void cancelUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelUpdateMouseClicked
+        cancelUpdate();
+    }//GEN-LAST:event_cancelUpdateMouseClicked
+
+    private void cancelUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelUpdateActionPerformed
+
+    private void cancelUpdate(){
         addETHeader.setText("Add Exam Type");
         addNewETButton.setText("Add New Exam Type");
         isUpdate = false;
@@ -399,12 +408,7 @@ public class GUI extends javax.swing.JFrame {
         addNewETButton.setEnabled(true);
         clearFields();
         refreshList();
-    }//GEN-LAST:event_cancelUpdateMouseClicked
-
-    private void cancelUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelUpdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelUpdateActionPerformed
-
+    }
     private void refreshList() {
         ArrayList<ExamType> list = GUIController.refreshList();
 
