@@ -130,6 +130,7 @@ public class DBManager {
      * Method to update an ExamType object into the database.
      *
      * @param examType new object to save
+     * @param status   Updated or Deactivated tag
      * @return message with result
      */
     public static String updateExamType(ExamType examType, String status) { //, String type) {
@@ -142,11 +143,11 @@ public class DBManager {
      * Method to save or to update an ExamType object into the database.
      *
      * @param examType new object to save
-     * @param querySQl string query
+     * @param querySQL string query
      * @param a SQL index for exam_type_name
      * @param b SQL index for description
      * @param c SQL index for status0
-     * @param Action the action (either save new or update)
+     * @param action the action (either save new or update)
      * @return message with result
      */
     public static String saveUpdateExamType(ExamType examType, String querySQL, int a, int b, int c, String action) {
