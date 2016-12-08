@@ -60,7 +60,7 @@ public class ExamType implements Comparable<ExamType> {
     // ----------------------------------------------------------
     /**
      * Set the name of an Exam Type
-     *
+     *@param name - the name to set
      */
     public void setName(String name) {
         this.name = name;
@@ -69,7 +69,7 @@ public class ExamType implements Comparable<ExamType> {
     // ----------------------------------------------------------
     /**
      * Set an Exam Type's description
-     *
+     *@param desc - description
      */
     public void setDescription(String desc) {
         this.description = desc;

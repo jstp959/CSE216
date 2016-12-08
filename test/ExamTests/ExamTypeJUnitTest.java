@@ -56,6 +56,20 @@ public class ExamTypeJUnitTest {
     }
     
     @Test
+    public void testSetName() {
+        setUp();
+        testExam.setName("Name1");
+        assertEquals(testExam.getName(), "Name1");
+    }
+    
+    @Test
+    public void testSetDescription(){
+        setUp();
+        testExam.setDescription("Desc1");
+        assertEquals(testExam.getDescription(),"Desc1");
+    }
+    
+    @Test
     public void testSetStatus() {
         setUp();
         assertEquals(nullTest.getStatus(), true);
