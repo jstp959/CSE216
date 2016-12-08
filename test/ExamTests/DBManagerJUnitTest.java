@@ -24,16 +24,24 @@ public class DBManagerJUnitTest {
 
     Boolean conn;
     ExamType e1, e2, e3, e4, e5, e6;
-
+    ArrayList<ExamType> examtypes;
+    
     @Before
     public void setUp() {
         conn = DBManager.connector();
-        e1 = new ExamType("test", "blahblah");
-        e2 = new ExamType("123451234512345twentyplus", "blahblah");
+        e1 = new ExamType("Open gastric biopsy", "");
+        e2 = new ExamType("123451234512345twentyplusBUT_ACTUALLY40now123451234512345", "blahblah");
         e3 = new ExamType("black", "twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_");
         e4 = new ExamType("bobo", "");
         e5 = new ExamType("", "blahblah");
         e6 = new ExamType("newTests", "blahblah");
+        examtypes = new ArrayList<>();
+        examtypes.add(e1);
+        examtypes.add(e2);
+        examtypes.add(e3);
+        examtypes.add(e4);
+        examtypes.add(e5);
+        examtypes.add(e6);
     }
 
     @Test
@@ -53,19 +61,12 @@ public class DBManagerJUnitTest {
     public void testSaveExamType() {
         setUp();
         String testMsg;
-        ArrayList<ExamType> examtypes = new ArrayList<>();
-        examtypes.add(e1);
-        examtypes.add(e2);
-        examtypes.add(e3);
-        examtypes.add(e4);
-        examtypes.add(e5);
-        examtypes.add(e6);
         ArrayList<String> msgs = new ArrayList<>();
-        msgs.add("Error: Update Failed (Contact developers): Duplicate entry 'test' for key 'PRIMARY'");//1
-        msgs.add("Error: 123451234512345twentyplus has a length not in [1, 20]");//2
+        msgs.add("Error: Update Failed (Contact developers): Duplicate entry 'Open gastric biopsy' for key 'PRIMARY'");//1
+        msgs.add("Error: 123451234512345twentyplusBUT_ACTUALLY40now123451234512345 has a length not in [1, 40]");//2
         msgs.add("Error: twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_ has a length not in [0, 200]");//3
         msgs.add("Exam Type \"" + e4.getName() + "\" Added");//4
-        msgs.add("Error:  has a length not in [1, 20]");//5
+        msgs.add("Error:  has a length not in [1, 40]");//5
         msgs.add("Exam Type \"" + e6.getName() + "\" Added");//6
         for (int i = 0; i < examtypes.size(); i++) {
             testMsg = DBManager.saveExamType(examtypes.get(i));
@@ -73,6 +74,38 @@ public class DBManagerJUnitTest {
         }
         assertTrue(DBManager.delete(e4.getName()));
         assertTrue(DBManager.delete(e6.getName()));
+    }
+
+    public void testGetAllExams(){
+        //setUp();
+        ArrayList<ExamType> exams = DBManager.getAllExamTypes();
+        assertNotNull(exams);
+        assertTrue(exams.contains(e1));
+    }
+    
+    public void testUpdateExamType(){
+        setUp();
+        String testMsg;
+        String oldDesc;
+        ArrayList<String> msgs = new ArrayList<>();
+        msgs.add("Error: Update Failed (Contact developers): Duplicate entry 'Open gastric biopsy' for key 'PRIMARY'");//1
+        msgs.add("Error: 123451234512345twentyplusBUT_ACTUALLY40now123451234512345 has a length not in [1, 40]");//2
+        msgs.add("Error: twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_ has a length not in [0, 200]");//3
+        msgs.add("Exam Type ???\"" + e4.getName() + "\" Updated");//4
+        msgs.add("Error:  has a length not in [1, 40]");//5
+        msgs.add("Exam Type ???\"" + e6.getName() + "\" Updated");//6
+        //TODO: fix error messaging ... I dont know what to expected
+        for (int i = 0; i < examtypes.size(); i++) {
+            oldDesc = examtypes.get(i).getDescription();
+            examtypes.get(i).setDescription("testing");
+            testMsg = DBManager.updateExamType(examtypes.get(i), "Updated");
+            System.out.println(testMsg);
+            assertEquals(testMsg, msgs.get(i));   
+            examtypes.get(i).setDescription(oldDesc);
+
+        }
+        DBManager.updateExamType(examtypes.get(1), "Updated");
+        
     }
 
     @After
