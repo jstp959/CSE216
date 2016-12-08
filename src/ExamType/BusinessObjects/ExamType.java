@@ -57,7 +57,23 @@ public class ExamType implements Comparable<ExamType> {
     public Boolean getStatus() {
         return this.status;
     }
-    
+    // ----------------------------------------------------------
+    /**
+     * Set the name of an Exam Type
+     *
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // ----------------------------------------------------------
+    /**
+     * Set an Exam Type's description
+     *
+     */
+    public void setDescription(String desc) {
+        this.description = desc;
+    }
     // ----------------------------------------------------------
     /**
      * Set an Exam Type's status (1 = active; 0 = inactive)
