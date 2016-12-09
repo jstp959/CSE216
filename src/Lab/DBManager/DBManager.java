@@ -160,8 +160,8 @@ public class DBManager {
     /**
      * Method to save or to update an ExamType object into the database.
      *
-     * @param examType new object to save
-     * @param querySQl string query
+     * @param lab new object to save
+     * @param querySQL string query
      * @param a SQL index for name
      * @param b SQL index for street
      * @param c SQL index for city
@@ -171,28 +171,28 @@ public class DBManager {
      * @param g SQL index for fnum
      * @param h SQL index for pnum
      * @param i SQL index for status
-     * @param Action the action (either save new or update)
+     * @param action the action (either save new or update)
      * @return message with result
      */
     public static String saveUpdateLab(Lab lab, String querySQL, int a, int b, int c, int d, int e, int f, int g, int h, int i, String action) {
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
-            pStmt.setString(1, testString(lab.getName(), 0, 20));
-            pStmt.setString(2, testString(lab.getAddress().getStreet(), 0, 20));
-            pStmt.setString(3, testString(lab.getAddress().getCity(), 0, 20));
-            pStmt.setString(4, testString(lab.getAddress().getState(), 2, 2));
-            pStmt.setLong(5, testInt(lab.getAddress().getZip(), 501, 99950));
-            pStmt.setString(6, testString(lab.getEmail(), 50, "@"));
-            pStmt.setLong(7, testInt(lab.getFaxNo(), 1000000000, 9999999999L));
-            pStmt.setLong(8, testInt(lab.getPhoneNo(), 1000000000, 9999999999L));
+            pStmt.setString(a, testString(lab.getName(), 0, 20));
+            pStmt.setString(b, testString(lab.getAddress().getStreet(), 0, 20));
+            pStmt.setString(c, testString(lab.getAddress().getCity(), 0, 20));
+            pStmt.setString(d, testString(lab.getAddress().getState(), 2, 2));
+            pStmt.setLong(e, testInt(lab.getAddress().getZip(), 501, 99950));
+            pStmt.setString(f, testString(lab.getEmail(), 50, "@"));
+            pStmt.setLong(g, testInt(lab.getFaxNo(), 1000000000, 9999999999L));
+            pStmt.setLong(h, testInt(lab.getPhoneNo(), 1000000000, 9999999999L));
             String status;
             if (lab.getOnSite()) {
                 status = "On Site";
             } else {
                 status = "Off Site";
             }
-            pStmt.setString(9, status);
+            pStmt.setString(i, status);
             int num = pStmt.executeUpdate();
             if (num == 0) {
                 return "Error: No Lab with name \"" + lab.getName() + "\" so no changes made";
@@ -227,7 +227,7 @@ public class DBManager {
         long ans;
         try {
             ans = Long.parseLong(num);
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             throw new Exception(num + " cannot be parsed to a number");
         }
         if (ans > max || ans < min) {

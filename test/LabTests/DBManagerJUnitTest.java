@@ -30,7 +30,7 @@ public class DBManagerJUnitTest {
         conn = DBManager.connector();
         l1 = new Lab("Test23", "10 Holyoke Road", "Rockville Centre,", "NY",
                 "11570", "jes418@lehigh.edu", "9148884040", "9148884030", true);
-        l2 = new Lab("lab", "1286 2nd Avenue", "Rockville Centre,", "NY",
+        l2 = new Lab("lab", "1286 2nd Avenue", "Rockville CENT,", "NY",
                 "11570", "jes418@lehigh.edu", "9148884040", "9148884030", true);
         l3 = new Lab("labbelabbelabbelabbelabbe", "1286 2nd Avenue", "Rockville Centre,", "NY",
                 "11570", "jes418@lehigh.edu", "9148884040", "9148884030", true);
@@ -119,24 +119,23 @@ public class DBManagerJUnitTest {
         String oldEmail;
         ArrayList<String> msgs = new ArrayList<>();
         msgs.add("Error: No Lab with name \"" + l1.getName() + "\" so no changes made");//1
-        msgs.add("Error: No Lab with name \"" + l2.getName() + "\" so no changes made");//2
+        msgs.add("Lab \"" + l2.getName() + "\" Updated");//2
         msgs.add("Error: labbelabbelabbelabbelabbe has a length not in [0, 20]");//3
         msgs.add("Error: NY0 has a length not in [2, 2]");//4
         msgs.add("Error: 115870 not in valid range: [501, 99950]");//5
         msgs.add("Error: -110 not in valid range: [501, 99950]");//6
         msgs.add("Error: kasfdaf cannot be parsed to a number");//7
-        msgs.add("Error: No Lab with name \"" + l8.getName() + "\" so no changes made");//8
+        msgs.add("Lab \"" + l8.getName() + "\" Updated");//8
         msgs.add("Error: 9148884040999 not in valid range: [1000000000, 9999999999]");//9
         msgs.add("Error: 914888 not in valid range: [1000000000, 9999999999]");//10
         for (int i = 0; i < labs.size(); i++) {
             oldEmail = labs.get(i).getEmail();
-            labs.get(i).setEmail("new@blah.com");
+            labs.get(i).setEmail(i + "new@blah.com");
             testMsg = DBManager.updateLab(labs.get(i));
             assertEquals(testMsg, msgs.get(i));   
             labs.get(i).setEmail(oldEmail);
         }
         DBManager.updateLab(labs.get(1));
-        
     }
 
     @After
