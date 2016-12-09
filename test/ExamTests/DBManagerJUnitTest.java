@@ -76,33 +76,34 @@ public class DBManagerJUnitTest {
         assertTrue(DBManager.delete(e6.getName()));
     }
 
+    @Test
     public void testGetAllExams(){
         //setUp();
         ArrayList<ExamType> exams = DBManager.getAllExamTypes();
         assertNotNull(exams);
-        assertTrue(exams.contains(e1));
+        assertTrue(exams.get(3).getName().equals(e1.getName()));
+        assertTrue(exams.get(3).getDescription().equals(e1.getDescription()));
     }
     
+    @Test
     public void testUpdateExamType(){
         setUp();
         String testMsg;
         String oldDesc;
         ArrayList<String> msgs = new ArrayList<>();
-        msgs.add("Error: Update Failed (Contact developers): Duplicate entry 'Open gastric biopsy' for key 'PRIMARY'");//1
+        msgs.add("Exam Type \"Open gastric biopsy\" Updated");//1
         msgs.add("Error: 123451234512345twentyplusBUT_ACTUALLY40now123451234512345 has a length not in [1, 40]");//2
-        msgs.add("Error: twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_twenty_letters_here_!_ has a length not in [0, 200]");//3
-        msgs.add("Exam Type ???\"" + e4.getName() + "\" Updated");//4
+        msgs.add("No Exam Type with name \""+e3.getName()+"\" so no changes made");//3
+        msgs.add("No Exam Type with name \""+e4.getName()+"\" so no changes made");//4
         msgs.add("Error:  has a length not in [1, 40]");//5
-        msgs.add("Exam Type ???\"" + e6.getName() + "\" Updated");//6
+        msgs.add("No Exam Type with name \""+e6.getName()+"\" so no changes made");//6
         //TODO: fix error messaging ... I dont know what to expected
         for (int i = 0; i < examtypes.size(); i++) {
             oldDesc = examtypes.get(i).getDescription();
             examtypes.get(i).setDescription("testing");
             testMsg = DBManager.updateExamType(examtypes.get(i), "Updated");
-            System.out.println(testMsg);
             assertEquals(testMsg, msgs.get(i));   
             examtypes.get(i).setDescription(oldDesc);
-
         }
         DBManager.updateExamType(examtypes.get(1), "Updated");
         

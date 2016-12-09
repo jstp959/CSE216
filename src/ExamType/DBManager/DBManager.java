@@ -163,7 +163,10 @@ public class DBManager {
                 status = "Not Active";
             }
             pStmt.setString(c, status);
-            pStmt.executeUpdate();
+            int num = pStmt.executeUpdate();
+            if (num == 0) {
+                return "No Exam Type with name \"" + examType.getName() + "\" so no changes made";
+            }
             return "Exam Type \"" + examType.getName() + "\" " + action;//true
         } catch (SQLException e) {
             return "Error: Update Failed (Contact developers): " + e.getMessage(); //false
