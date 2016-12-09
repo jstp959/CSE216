@@ -195,7 +195,7 @@ public class DBManager {
             pStmt.setString(9, status);
             int num = pStmt.executeUpdate();
             if (num == 0) {
-                return "No Exam Type with name \"" + lab.getName() + "\" so no changes made";
+                return "Error: No Lab with name \"" + lab.getName() + "\" so no changes made";
             }
             return "Lab \"" + lab.getName() + "\" " + action;//true
         } catch (SQLException ex) {

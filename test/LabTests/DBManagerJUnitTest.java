@@ -28,7 +28,7 @@ public class DBManagerJUnitTest {
     @Before
     public void setUp() {
         conn = DBManager.connector();
-        l1 = new Lab("Test2", "10 Holyoke Road", "Rockville Centre,", "NY",
+        l1 = new Lab("Test23", "10 Holyoke Road", "Rockville Centre,", "NY",
                 "11570", "jes418@lehigh.edu", "9148884040", "9148884030", true);
         l2 = new Lab("lab", "1286 2nd Avenue", "Rockville Centre,", "NY",
                 "11570", "jes418@lehigh.edu", "9148884040", "9148884030", true);
@@ -83,8 +83,8 @@ public class DBManagerJUnitTest {
         msgs.add("Error: Update Failed (Contact developers): Duplicate entry 'lab-1286 2nd Avenue' for key 'PRIMARY'");//2
         msgs.add("Error: labbelabbelabbelabbelabbe has a length not in [0, 20]");//3
         msgs.add("Error: NY0 has a length not in [2, 2]");//4
-        msgs.add("Error: 115870 not in valid range: [10000, 99999]");//5
-        msgs.add("Error: -110 not in valid range: [10000, 99999]");//6
+        msgs.add("Error: 115870 not in valid range: [501, 99950]");//5
+        msgs.add("Error: -110 not in valid range: [501, 99950]");//6
         msgs.add("Error: kasfdaf cannot be parsed to a number");//7
         msgs.add("Error: jes418 does not have @ in it");//8
         msgs.add("Error: 9148884040999 not in valid range: [1000000000, 9999999999]");//9
@@ -100,10 +100,16 @@ public class DBManagerJUnitTest {
     @Test
     public void testGetAllExams(){
         //setUp();
-        ArrayList<Lab> labs = DBManager.getAllLabs();
-        assertNotNull(labs);
-        //assertTrue(labs.get(3).getName().equals(e1.getName()));
-        //assertTrue(labs.get(3).getDescription().equals(e1.getDescription()));
+        ArrayList<Lab> labList = DBManager.getAllLabs();
+        assertNotNull(labList);
+        Boolean name = false;
+        Boolean street = false;
+        for (Lab l: labList) {
+            name |= l.getName().equals(l2.getName());
+            street = l.getAddress().getStreet().equals(l2.getAddress().getStreet()); 
+        }
+        assertTrue(name); 
+        assertTrue(street);
     }
     
     @Test
@@ -112,14 +118,14 @@ public class DBManagerJUnitTest {
         String testMsg;
         String oldEmail;
         ArrayList<String> msgs = new ArrayList<>();
-        msgs.add("Lab \"" + l1.getName() + "\" Added");//1
-        msgs.add("Error: Update Failed (Contact developers): Duplicate entry 'lab-1286 2nd Avenue' for key 'PRIMARY'");//2
+        msgs.add("Error: No Lab with name \"" + l1.getName() + "\" so no changes made");//1
+        msgs.add("Error: No Lab with name \"" + l2.getName() + "\" so no changes made");//2
         msgs.add("Error: labbelabbelabbelabbelabbe has a length not in [0, 20]");//3
         msgs.add("Error: NY0 has a length not in [2, 2]");//4
-        msgs.add("Error: 115870 not in valid range: [10000, 99999]");//5
-        msgs.add("Error: -110 not in valid range: [10000, 99999]");//6
+        msgs.add("Error: 115870 not in valid range: [501, 99950]");//5
+        msgs.add("Error: -110 not in valid range: [501, 99950]");//6
         msgs.add("Error: kasfdaf cannot be parsed to a number");//7
-        msgs.add("Error: jes418 does not have @ in it");//8
+        msgs.add("Error: No Lab with name \"" + l8.getName() + "\" so no changes made");//8
         msgs.add("Error: 9148884040999 not in valid range: [1000000000, 9999999999]");//9
         msgs.add("Error: 914888 not in valid range: [1000000000, 9999999999]");//10
         for (int i = 0; i < labs.size(); i++) {
