@@ -77,7 +77,6 @@ public class GUI extends javax.swing.JFrame {
         labListScrollPane = new javax.swing.JScrollPane();
         labList = new javax.swing.JList<>();
         labSelectButton = new javax.swing.JButton();
-        labActivationButton = new javax.swing.JButton();
         labRefreshButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -307,16 +306,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        labActivationButton.setBackground(new java.awt.Color(250, 0, 0));
-        labActivationButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labActivationButton.setForeground(new java.awt.Color(238, 238, 238));
-        labActivationButton.setText("Deactivate");
-        labActivationButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                labActivationButtonActionPerformed(evt);
-            }
-        });
-
         labRefreshButton.setBackground(new java.awt.Color(250, 0, 0));
         labRefreshButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         labRefreshButton.setForeground(new java.awt.Color(238, 238, 238));
@@ -342,8 +331,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(labListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labRefreshButton)
                     .addComponent(labUpdateLabel)
-                    .addComponent(labSelectButton)
-                    .addComponent(labActivationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labSelectButton))
                 .addContainerGap(146, Short.MAX_VALUE))
         );
         labUpdatePanelLayout.setVerticalGroup(
@@ -357,9 +345,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(labListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labSelectButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labActivationButton)
-                .addContainerGap())
+                .addGap(64, 64, 64))
         );
 
         labUpdateScrollPane.setViewportView(labUpdatePanel);
@@ -384,7 +370,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labUpdateScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+                    .addComponent(labUpdateScrollPane)
                     .addComponent(labAddScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -489,10 +475,6 @@ public class GUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_labSelectButtonActionPerformed
 
-    private void labActivationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labActivationButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_labActivationButtonActionPerformed
-
     private void labRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labRefreshButtonActionPerformed
 
     }//GEN-LAST:event_labRefreshButtonActionPerformed
@@ -533,7 +515,7 @@ public class GUI extends javax.swing.JFrame {
         labStreetField.setEditable(true);
         updateStatus("Select Lab cancelled.");
         cancelUpdate.setVisible(false);
-        addNewLabButton.setEnabled(true);
+        addNewLabButton.setVisible(true);
         clearFields();
         refreshLabList();
         
@@ -579,10 +561,10 @@ public class GUI extends javax.swing.JFrame {
         int index = labList.getSelectedIndex();
         if (index == -1){
             updateStatus("Error: Select a Lab from the list");
-            addNewLabButton.setEnabled(false);
+            addNewLabButton.setVisible(false);
             return nullLab;
         }
-        addNewLabButton.setEnabled(false);
+        addNewLabButton.setVisible(true);
         return GUIController.getLab(index);
         
     }
@@ -663,7 +645,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JButton labActivationButton;
     private javax.swing.JPanel labAddPanel;
     private javax.swing.JScrollPane labAddScrollPane;
     private javax.swing.JTextField labCityField;

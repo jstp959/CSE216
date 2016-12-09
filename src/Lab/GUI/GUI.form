@@ -63,7 +63,7 @@
               <Component id="Header" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="labUpdateScrollPane" pref="426" max="32767" attributes="0"/>
+                  <Component id="labUpdateScrollPane" max="32767" attributes="0"/>
                   <Component id="labAddScrollPane" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -414,7 +414,6 @@
                           <Component id="labRefreshButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labUpdateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labSelectButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labActivationButton" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="146" max="32767" attributes="0"/>
                   </Group>
@@ -431,9 +430,7 @@
                       <Component id="labListScrollPane" min="-2" pref="217" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="labSelectButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="labActivationButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -482,23 +479,6 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labSelectButtonMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="labSelectButtonActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="labActivationButton">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="fa" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="18" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ee" green="ee" red="ee" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Deactivate"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="labActivationButtonActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="labRefreshButton">

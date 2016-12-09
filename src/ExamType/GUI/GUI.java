@@ -356,10 +356,10 @@ public class GUI extends javax.swing.JFrame {
         int index = examTypeList.getSelectedIndex();
         if (index == -1) {
             updateStatus("Error: Select an Exam Type from the list");
-            addNewETButton.setEnabled(false);
+            addNewETButton.setVisible(false);
             return nullExamType;
         }
-        addNewETButton.setEnabled(true);
+        addNewETButton.setVisible(true);
         return GUIController.getExamType(index);
     }
 
@@ -385,8 +385,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_examTypeRefreshButtonMouseClicked
 
     private void examTypeActivationButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_examTypeActivationButtonMouseClicked
-        addExamTypeStatus.setText(GUIController.deActivate(selectExamType()));
-        
+        updateStatus(GUIController.deActivate(selectExamType()));
+        clearFields();
         refreshList();
     }//GEN-LAST:event_examTypeActivationButtonMouseClicked
 
@@ -405,7 +405,7 @@ public class GUI extends javax.swing.JFrame {
         examTypeNameField.setEditable(true);
         updateStatus("Select Exam Type cancelled.");
         cancelUpdate.setVisible(false);
-        addNewETButton.setEnabled(true);
+        addNewETButton.setVisible(true);
         clearFields();
         refreshList();
     }
