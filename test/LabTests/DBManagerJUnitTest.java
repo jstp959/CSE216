@@ -24,7 +24,7 @@ public class DBManagerJUnitTest {
     Boolean conn;
     Lab l1, l2, l3, l4, l5, l6, l7, l8, l9, l10;
     ArrayList<Lab> labs;
-    
+
     @Before
     public void setUp() {
         conn = DBManager.connector();
@@ -95,25 +95,24 @@ public class DBManagerJUnitTest {
         }
         assertTrue(DBManager.delete(l1.getName(), l1.getAddress().getStreet()));
     }
-    
-    
+
     @Test
-    public void testGetAllExams(){
+    public void testGetAllExams() {
         //setUp();
         ArrayList<Lab> labList = DBManager.getAllLabs();
         assertNotNull(labList);
         Boolean name = false;
         Boolean street = false;
-        for (Lab l: labList) {
+        for (Lab l : labList) {
             name |= l.getName().equals(l2.getName());
-            street = l.getAddress().getStreet().equals(l2.getAddress().getStreet()); 
+            street = l.getAddress().getStreet().equals(l2.getAddress().getStreet());
         }
-        assertTrue(name); 
+        assertTrue(name);
         assertTrue(street);
     }
-    
+
     @Test
-    public void testUpdateExamType(){
+    public void testUpdateExamType() {
         setUp();
         String testMsg;
         String oldEmail;
@@ -132,7 +131,7 @@ public class DBManagerJUnitTest {
             oldEmail = labs.get(i).getEmail();
             labs.get(i).setEmail(i + "new@blah.com");
             testMsg = DBManager.updateLab(labs.get(i));
-            assertEquals(testMsg, msgs.get(i));   
+            assertEquals(testMsg, msgs.get(i));
             labs.get(i).setEmail(oldEmail);
         }
         DBManager.updateLab(labs.get(1));

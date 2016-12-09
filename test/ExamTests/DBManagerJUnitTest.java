@@ -16,8 +16,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *  Test class for ExamType classes/methods.
- * 
+ * Test class for ExamType classes/methods.
+ *
  * @author owner
  */
 public class DBManagerJUnitTest {
@@ -25,7 +25,7 @@ public class DBManagerJUnitTest {
     Boolean conn;
     ExamType e1, e2, e3, e4, e5, e6;
     ArrayList<ExamType> examtypes;
-    
+
     @Before
     public void setUp() {
         conn = DBManager.connector();
@@ -77,39 +77,39 @@ public class DBManagerJUnitTest {
     }
 
     @Test
-    public void testGetAllExams(){
+    public void testGetAllExams() {
         //setUp();
         ArrayList<ExamType> exams = DBManager.getAllExamTypes();
         assertNotNull(exams);
         Boolean name = false;
-        for (ExamType e: exams) {
+        for (ExamType e : exams) {
             name |= e.getName().equals(e1.getName());
         }
         assertTrue(name);
     }
-    
+
     @Test
-    public void testUpdateExamType(){
+    public void testUpdateExamType() {
         setUp();
         String testMsg;
         String oldDesc;
         ArrayList<String> msgs = new ArrayList<>();
         msgs.add("Exam Type \"Open gastric biopsy\" Updated");//1
         msgs.add("Error: 123451234512345twentyplusBUT_ACTUALLY40now123451234512345 has a length not in [1, 40]");//2
-        msgs.add("Error: No Exam Type with name \""+e3.getName()+"\" so no changes made");//3
-        msgs.add("Error: No Exam Type with name \""+e4.getName()+"\" so no changes made");//4
+        msgs.add("Error: No Exam Type with name \"" + e3.getName() + "\" so no changes made");//3
+        msgs.add("Error: No Exam Type with name \"" + e4.getName() + "\" so no changes made");//4
         msgs.add("Error:  has a length not in [1, 40]");//5
-        msgs.add("Error: No Exam Type with name \""+e6.getName()+"\" so no changes made");//6
+        msgs.add("Error: No Exam Type with name \"" + e6.getName() + "\" so no changes made");//6
         //TODO: fix error messaging ... I dont know what to expected
         for (int i = 0; i < examtypes.size(); i++) {
             oldDesc = examtypes.get(i).getDescription();
             examtypes.get(i).setDescription("testing");
             testMsg = DBManager.updateExamType(examtypes.get(i), "Updated");
-            assertEquals(testMsg, msgs.get(i));   
+            assertEquals(testMsg, msgs.get(i));
             examtypes.get(i).setDescription(oldDesc);
         }
         DBManager.updateExamType(examtypes.get(1), "Updated");
-        
+
     }
 
     @After
