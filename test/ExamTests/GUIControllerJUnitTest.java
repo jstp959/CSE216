@@ -54,7 +54,8 @@ public class GUIControllerJUnitTest {
         String testResult = GUIController.addExamType("", "");
         assertEquals(testResult, "Error: Exam Type requires a name");
         
-        //*****NEED TO CHECK WHEN CALLS TO DBMANAGER*****
+        testResult = GUIController.addExamType("Colonoscopy", "Ouch");
+        assertEquals(testResult, "Error: Exam Type with name \"Colonoscopy\" already exists");
         
     }
    
