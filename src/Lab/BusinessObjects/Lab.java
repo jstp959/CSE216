@@ -6,9 +6,9 @@
 package Lab.BusinessObjects;
 
 /**
- *  Lab object represents a physical lab location.
- * Labs are utilized by hospital for testing, etc.
- * 
+ * Lab object represents a physical lab location. Labs are utilized by hospital
+ * for testing, etc.
+ *
  * @author Elise
  */
 public class Lab implements Comparable<Lab> {
@@ -22,16 +22,16 @@ public class Lab implements Comparable<Lab> {
 
     /**
      * Constructor.
-     * 
-     * @param name      Lab's name
-     * @param street    street address
-     * @param city      city
-     * @param state     2 letter state abbreviation
-     * @param zip       5 digit zip code
-     * @param email     email contact information
-     * @param faxNo      fax number
-     * @param phoneNo    phone number
-     * @param onSite    whether or not the lab is on-site (relative to hospital)
+     *
+     * @param name Lab's name
+     * @param street street address
+     * @param city city
+     * @param state 2 letter state abbreviation
+     * @param zip 5 digit zip code
+     * @param email email contact information
+     * @param faxNo fax number
+     * @param phoneNo phone number
+     * @param onSite whether or not the lab is on-site (relative to hospital)
      */
     public Lab(String name, String street, String city, String state, String zip, String email, String faxNo, String phoneNo, Boolean onSite) {
         this.name = name;
@@ -44,38 +44,61 @@ public class Lab implements Comparable<Lab> {
 
     /**
      * Get name of lab
-     * @return  name
+     *
+     * @return name
      */
     public String getName() {
         return name;
     }
 
     /**
+     * Set Name
+     *
+     * @param n - new name
+     */
+    public void setName(String n) {
+        this.name = n;
+    }
+
+    /**
      * Get address of lab
-     * @return  address object containing address information
+     *
+     * @return address object containing address information
      */
     public Address getAddress() {
         return address;
     }
 
     /**
-     * Set email
-     * @param  e - new email
+     * Set Address
+     *
+     * @param a - new address
      */
-    public void setEmail(String e) {
-        this.email = e;
+    public void setAddress(Address a) {
+        this.address = a;
     }
-    
+
     /**
      * Get email
-     * @return  email
+     *
+     * @return email
      */
     public String getEmail() {
         return email;
     }
 
     /**
+     * Set email
+     *
+     * @param e - new email
+     */
+    public void setEmail(String e) {
+        this.email = e;
+    }
+
+    /**
      * Get fax number
+     *
      * @return fax number
      */
     public String getFaxNo() {
@@ -83,7 +106,17 @@ public class Lab implements Comparable<Lab> {
     }
 
     /**
+     * Set fax number
+     *
+     * @param f - new fax number
+     */
+    public void setFaxNo(String f) {
+        this.faxNo = f;
+    }
+
+    /**
      * Get phone number
+     *
      * @return phone number
      */
     public String getPhoneNo() {
@@ -91,19 +124,38 @@ public class Lab implements Comparable<Lab> {
     }
 
     /**
+     * Set phone number
+     *
+     * @param p - new phone number
+     */
+    public void setPhoneNo(String p) {
+        this.phoneNo = p;
+    }
+
+    /**
      * Get whether lab is on-site
-     * @return  true if on-site, false if not
+     *
+     * @return true if on-site, false if not
      */
     public Boolean getOnSite() {
         return onSite;
     }
 
     /**
-     * Compare two lab objects.
-     * Labs are the same if they share the same name and address.
-     * 
-     * @param lab   lab object to compare to this one
-     * @return      o if they are the same, -1 o/w
+     * Set onSite
+     *
+     * @param s - new onSite
+     */
+    public void setOnSite(Boolean s) {
+        this.onSite = s;
+    }
+
+    /**
+     * Compare two lab objects. Labs are the same if they share the same name
+     * and address.
+     *
+     * @param lab lab object to compare to this one
+     * @return o if they are the same, -1 o/w
      */
     @Override
     public int compareTo(Lab lab) {

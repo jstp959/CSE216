@@ -60,7 +60,49 @@ public class LabJUnitTest {
     
     @Test
     public void testGetOnSite(){
-        assertEquals(l.getOnSite(), true);
+        assertTrue(l.getOnSite());
+    }
+    
+        
+    @Test
+    public void testSetName(){
+        l.setName("new");
+        assertEquals(l.getName(), "new");
+    }
+    
+    @Test
+    public void testSetAddress(){
+        Address address1 = new Address("10 Holyoke Road", "Rockville Centre,", "NY",
+            "11570");
+        Address address2 = new Address("Fail", "Rockville Centre,", "NY",
+            "11570");
+        l.setAddress(address2);
+        assertEquals(address1.compareTo(l.getAddress()), -1);
+        assertEquals(address2.compareTo(l.getAddress()), 0);
+    }
+    
+    @Test
+    public void testSetEmail(){
+        l.setEmail("new@gmail.com");
+        assertEquals(l.getEmail(), "new@gmail.com");
+    }
+    
+    @Test
+    public void testSetFaxNo(){
+        l.setFaxNo("8882221111");
+        assertEquals(l.getFaxNo(), "8882221111");
+    }
+    
+    @Test
+    public void testSetPhoneNo(){
+        l.setPhoneNo("8882221111");
+        assertEquals(l.getPhoneNo(), "8882221111");
+    }
+    
+    @Test
+    public void testSetOnSite(){
+        l.setOnSite(false);
+        assertFalse(l.getOnSite());
     }
     
     @Test
