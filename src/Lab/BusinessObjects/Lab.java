@@ -59,6 +59,14 @@ public class Lab implements Comparable<Lab> {
     }
 
     /**
+     * Set email
+     * @return  email
+     */
+    public void setEmail(String e) {
+        this.email = e;
+    }
+    
+    /**
      * Get email
      * @return  email
      */
