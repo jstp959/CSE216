@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * GUI controller deals with communication between GUI and business objects for
  * lab interactions.
  *
- * @author JSP, Ferg
+ * @author JSP, Ferg, Chris
  */
 public class GUIController {
 
