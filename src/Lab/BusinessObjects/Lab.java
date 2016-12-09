@@ -60,7 +60,7 @@ public class Lab implements Comparable<Lab> {
 
     /**
      * Set email
-     * @return  email
+     * @param  e - new email
      */
     public void setEmail(String e) {
         this.email = e;
