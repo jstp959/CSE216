@@ -165,7 +165,7 @@ public class DBManager {
             pStmt.setString(c, status);
             int num = pStmt.executeUpdate();
             if (num == 0) {
-                return "No Exam Type with name \"" + examType.getName() + "\" so no changes made";
+                return "Error: No Exam Type with name \"" + examType.getName() + "\" so no changes made";
             }
             return "Exam Type \"" + examType.getName() + "\" " + action;//true
         } catch (SQLException e) {

@@ -81,8 +81,11 @@ public class DBManagerJUnitTest {
         //setUp();
         ArrayList<ExamType> exams = DBManager.getAllExamTypes();
         assertNotNull(exams);
-        assertTrue(exams.get(3).getName().equals(e1.getName()));
-        assertTrue(exams.get(3).getDescription().equals(e1.getDescription()));
+        Boolean name = false;
+        for (ExamType e: exams) {
+            name |= e.getName().equals(e1.getName());
+        }
+        assertTrue(name);
     }
     
     @Test
@@ -93,10 +96,10 @@ public class DBManagerJUnitTest {
         ArrayList<String> msgs = new ArrayList<>();
         msgs.add("Exam Type \"Open gastric biopsy\" Updated");//1
         msgs.add("Error: 123451234512345twentyplusBUT_ACTUALLY40now123451234512345 has a length not in [1, 40]");//2
-        msgs.add("No Exam Type with name \""+e3.getName()+"\" so no changes made");//3
-        msgs.add("No Exam Type with name \""+e4.getName()+"\" so no changes made");//4
+        msgs.add("Error: No Exam Type with name \""+e3.getName()+"\" so no changes made");//3
+        msgs.add("Error: No Exam Type with name \""+e4.getName()+"\" so no changes made");//4
         msgs.add("Error:  has a length not in [1, 40]");//5
-        msgs.add("No Exam Type with name \""+e6.getName()+"\" so no changes made");//6
+        msgs.add("Error: No Exam Type with name \""+e6.getName()+"\" so no changes made");//6
         //TODO: fix error messaging ... I dont know what to expected
         for (int i = 0; i < examtypes.size(); i++) {
             oldDesc = examtypes.get(i).getDescription();
