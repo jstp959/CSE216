@@ -23,7 +23,8 @@ public class DBManagerJUnitTest {
 
     Boolean conn;
     Lab l1, l2, l3, l4, l5, l6, l7, l8, l9, l10;
-
+    ArrayList<Lab> labs;
+    
     @Before
     public void setUp() {
         conn = DBManager.connector();
@@ -47,7 +48,17 @@ public class DBManagerJUnitTest {
                 "11570", "jes418@lehigh.edu", "9148884040999", "9148884030", true);
         l10 = new Lab("lab", "1286 2nd Avenue", "Rockville Centre,", "NY",
                 "11570", "jes418@lehigh.edu", "9148884040", "914888", true);
-
+        labs = new ArrayList<>();
+        labs.add(l1);
+        labs.add(l2);
+        labs.add(l3);
+        labs.add(l4);
+        labs.add(l5);
+        labs.add(l6);
+        labs.add(l7);
+        labs.add(l8);
+        labs.add(l9);
+        labs.add(l10);
     }
 
     @Test
@@ -67,17 +78,6 @@ public class DBManagerJUnitTest {
     public void testSaveLab() {
         setUp();
         String testMsg;
-        ArrayList<Lab> labs = new ArrayList<>();
-        labs.add(l1);
-        labs.add(l2);
-        labs.add(l3);
-        labs.add(l4);
-        labs.add(l5);
-        labs.add(l6);
-        labs.add(l7);
-        labs.add(l8);
-        labs.add(l9);
-        labs.add(l10);
         ArrayList<String> msgs = new ArrayList<>();
         msgs.add("Lab \"" + l1.getName() + "\" Added");//1
         msgs.add("Error: Update Failed (Contact developers): Duplicate entry 'lab-1286 2nd Avenue' for key 'PRIMARY'");//2
@@ -94,6 +94,43 @@ public class DBManagerJUnitTest {
             assertEquals(testMsg, msgs.get(i));
         }
         assertTrue(DBManager.delete(l1.getName(), l1.getAddress().getStreet()));
+    }
+    
+    
+    @Test
+    public void testGetAllExams(){
+        //setUp();
+        ArrayList<Lab> labs = DBManager.getAllLabs();
+        assertNotNull(labs);
+        //assertTrue(labs.get(3).getName().equals(e1.getName()));
+        //assertTrue(labs.get(3).getDescription().equals(e1.getDescription()));
+    }
+    
+    @Test
+    public void testUpdateExamType(){
+        setUp();
+        String testMsg;
+        String oldEmail;
+        ArrayList<String> msgs = new ArrayList<>();
+        msgs.add("Lab \"" + l1.getName() + "\" Added");//1
+        msgs.add("Error: Update Failed (Contact developers): Duplicate entry 'lab-1286 2nd Avenue' for key 'PRIMARY'");//2
+        msgs.add("Error: labbelabbelabbelabbelabbe has a length not in [0, 20]");//3
+        msgs.add("Error: NY0 has a length not in [2, 2]");//4
+        msgs.add("Error: 115870 not in valid range: [10000, 99999]");//5
+        msgs.add("Error: -110 not in valid range: [10000, 99999]");//6
+        msgs.add("Error: kasfdaf cannot be parsed to a number");//7
+        msgs.add("Error: jes418 does not have @ in it");//8
+        msgs.add("Error: 9148884040999 not in valid range: [1000000000, 9999999999]");//9
+        msgs.add("Error: 914888 not in valid range: [1000000000, 9999999999]");//10
+        for (int i = 0; i < labs.size(); i++) {
+            oldEmail = labs.get(i).getEmail();
+            labs.get(i).setEmail("new@blah.com");
+            testMsg = DBManager.updateLab(labs.get(i));
+            assertEquals(testMsg, msgs.get(i));   
+            labs.get(i).setEmail(oldEmail);
+        }
+        DBManager.updateLab(labs.get(1));
+        
     }
 
     @After

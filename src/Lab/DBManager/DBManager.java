@@ -193,7 +193,10 @@ public class DBManager {
                 status = "Off Site";
             }
             pStmt.setString(9, status);
-            pStmt.executeUpdate();
+            int num = pStmt.executeUpdate();
+            if (num == 0) {
+                return "No Exam Type with name \"" + lab.getName() + "\" so no changes made";
+            }
             return "Lab \"" + lab.getName() + "\" " + action;//true
         } catch (SQLException ex) {
             return "Error: Update Failed (Contact developers): " + ex.getMessage(); //false
