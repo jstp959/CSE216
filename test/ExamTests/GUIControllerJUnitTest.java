@@ -61,6 +61,8 @@ public class GUIControllerJUnitTest {
    
     @Test
     public void testUpdateExamType() {
+        GUIController.addExamType("Blood test", "");
+        
         //simulate having an exam type selected by using same name 
         //in function call
         String result = GUIController.updateExamType("Blood test", "new desc");
