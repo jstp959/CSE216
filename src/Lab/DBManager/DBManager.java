@@ -285,8 +285,8 @@ public class DBManager {
         PreparedStatement pStmt = null;
         try {
             pStmt = globalCon.prepareStatement(querySQL);
-            pStmt.setString(1, testString(name, 0, 20));
-            pStmt.setString(2, testString(street, 0, 20));
+            pStmt.setString(1, testString(name, 0, 40));
+            pStmt.setString(2, testString(street, 0, 40));
             pStmt.executeUpdate();
             return true;
         } catch (SQLException e) {

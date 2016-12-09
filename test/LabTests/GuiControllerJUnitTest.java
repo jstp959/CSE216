@@ -13,6 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import Lab.BusinessObjects.*;
 import Lab.Controller.GUIController;
+import Lab.DBManager.*;
 
 /**
  *
@@ -60,19 +61,26 @@ public class GuiControllerJUnitTest {
             "11570", "jes418@", "5165555555", "9999999999", true);
         assertTrue(valid);
         
-        //NEED TO CHECK DBMANAGER CALLS
     }
     
     @Test
     public void testAddLab() {
+        DBManager.connector();
+         
+        //test that empty labs cant be submitted
         String result = GUIController.addLab("", "", " ", "", "", "", "", "", Boolean.TRUE);
         assertEquals(result, "Error: Lab requires all fields be filled");
         
-        //can't test adding a new, unqiue lab because DB entries cannot be deleted
-        
+        //add test to db
+       result = GUIController.addLab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
+              "11570", "jes418@", "5165555555", "9999999999", true);
+       
+       //add test again to ensure that it doesnt work
         result = GUIController.addLab("Test" , "10 Holyoke Road", "Rockville Centre,", "NY",
               "11570", "jes418@", "5165555555", "9999999999", true);
         assertEquals(result, "Error: Lab with name \"Test\" and street \"10 Holyoke Road\" already exists");
+      
+        DBManager.closer();
     }
     
     @Test
